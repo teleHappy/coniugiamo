@@ -6,6 +6,9 @@
 
 
 import areTableGenerator from './areTableGenerator';
+import ereTableGenerator from './ereTableGenerator';
+import ireTableGenerator from './ireTableGenerator';
+
 import _ from 'lodash';
 
 //require data files
@@ -32,11 +35,18 @@ class VerbFactory{
         //get conjugation position
         let conjugationPosition = this.getConjugationPosition(name)
         //get conjugated verb
+        
+        const verbTableData = this.getVerbTableData(verbDataObj, conjugationPosition)
+        
+        console.log(verbTableData[person])
+    }
+
+    getVerbTableData(verbDataObj, conjugationPosition){
         let verbTable = []
         for(let i = 0; i <rules.pronouns.length; i++){ //TODO: stem logic
             verbTable.push(rules.pronouns[i] + " " + verbDataObj.stem + rules[conjugationPosition].present[i]  )
         }
-        console.log(verbTable[person])
+        return verbTable
     }
 
     validateVerbName(name){

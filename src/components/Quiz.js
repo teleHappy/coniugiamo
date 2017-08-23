@@ -12,13 +12,9 @@ no-useless-constructor: 0
  */
 
 import React, { Component } from 'react';
-import _ from 'lodash';
 
 import VerbFactory from './verbs/VerbFactory'
 
-//require data files
-const rules = require('../data/rules.json');
-const verbs = require('../data/verbs.json');
 const verbFactory = new VerbFactory()
 
 class Quiz extends Component{
