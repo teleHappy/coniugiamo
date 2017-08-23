@@ -16,6 +16,8 @@ class areTableGenerator {
         }
         return verbTableData;
     }
+    
+    getStem(){}
 
 }
 

@@ -43,10 +43,9 @@ class VerbFactory{
         (conjugation === 'ere') ? this.ereTableGenerator.getTableData(verbDataObj, tense) : 
         (conjugation === 'ire') ? this.ireTableGenerator.getTableData(verbDataObj, tense) : () => {throw new Error ('unhandled verb')}
 
-         
+        return verbTableData;
 
-        console.log(verbTableData[person])
-        console.log(verbTableData)
+        
     }
 
     validateVerbName(name){
