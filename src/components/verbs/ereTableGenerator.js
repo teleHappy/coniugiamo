@@ -5,6 +5,8 @@ class ereTableGenerator {
      */
     getTableData(){}
 
+    getStem(){}
+    
 }
 
 export default ereTableGenerator

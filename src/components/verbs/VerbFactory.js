@@ -18,7 +18,10 @@ const verbs = require('../../data/verbs.json');
 class VerbFactory{
 
     constructor(){
-        return 
+        this.areTableGenerator = new areTableGenerator()
+        this.ereTableGenerator = new ereTableGenerator()
+        this.ireTableGenerator = new ireTableGenerator()
+ 
     }
 
     getConjugatedVerbTable(name, person, tense){
@@ -31,15 +34,16 @@ class VerbFactory{
         if(!this.validateVerbName(name)) throw new Error('non-valid verb ending')
 
         const verbDataObj = this.getVerbDataObj(name)
+        const isIrregular = verbDataObj.type;
+        const conjugation = name.slice(-3);
 
-        const conjugationPosition = this.getConjugationPosition(verbDataObj.name)
-        
-        //TODO: move this into specific TableGenerators with Observables
-        // see areTableGenerator.js getTableData
-        let verbTableData = []
-        for(let i = 0; i <rules.pronouns.length; i++){ //TODO: stem logic
-            verbTableData.push(rules.pronouns[i] + " " + verbDataObj.stem + rules[conjugationPosition][tense][i]  )
-        }
+        // TODSO: handle irregular verbs
+        // consciously choosing ternary vs switch statement
+        const verbTableData = (conjugation === 'are') ? this.areTableGenerator.getTableData(verbDataObj, tense) : 
+        (conjugation === 'ere') ? this.ereTableGenerator.getTableData(verbDataObj, tense) : 
+        (conjugation === 'ire') ? this.ireTableGenerator.getTableData(verbDataObj, tense) : () => {throw new Error ('unhandled verb')}
+
+         
 
         console.log(verbTableData[person])
         console.log(verbTableData)
