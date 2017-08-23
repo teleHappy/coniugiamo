@@ -1,5 +1,10 @@
-class areTableGenerator {
+class ireTableGenerator {
 
+    /**
+     * returns array of conjugated verbs
+     */
+    getTableData(){}
+    
 }
 
-export default areTableGenerator
+export default ireTableGenerator

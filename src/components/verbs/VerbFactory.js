@@ -34,6 +34,8 @@ class VerbFactory{
 
         const conjugationPosition = this.getConjugationPosition(verbDataObj.name)
         
+        //TODO: move this into specific TableGenerators with Observables
+        // see areTableGenerator.js getTableData
         let verbTableData = []
         for(let i = 0; i <rules.pronouns.length; i++){ //TODO: stem logic
             verbTableData.push(rules.pronouns[i] + " " + verbDataObj.stem + rules[conjugationPosition][tense][i]  )

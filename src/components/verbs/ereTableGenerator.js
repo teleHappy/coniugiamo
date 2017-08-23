@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import _ from 'lodash';
+class ereTableGenerator {
 
-class areTableGenerator extends Component {
+    /**
+     * returns array of conjugated verbs
+     */
+    getTableData(){}
 
-    render(){
-        return null
-    }
 }
 
-export default areTableGenerator
+export default ereTableGenerator
