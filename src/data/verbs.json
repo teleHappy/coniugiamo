@@ -1,0 +1,44 @@
+[
+    {
+        "name": "parlare",
+        "stem": "parl",
+        "translation": "to speak",
+        "type": "regular",
+        "aux_verb": "avere",
+        "past_participle": "",
+        "gerund": "",
+        "conjugation": 1,
+        "present_stem": "",
+        "future_stem": ""
+    }, 
+    {   "name": "vendere",
+        "translation": "to sell",
+        "type": "regular",
+        "past_participle": "venduto",
+        "gerund": "vendendo",
+        "aux_verb": "avere",
+        "conjugation": 2,
+        "present_stem": "vend",
+        "future_stem": "vender"
+    }, 
+    {   "name": "dormire",
+        "translation": "to sleep",
+        "type": "regular",
+        "past_participle": "dormito",
+        "gerund": "dormendo",
+        "aux_verb": "avere",
+        "conjugation": 3,
+        "present_stem": "dorm",
+        "future_stem": "dormir"
+    },
+    {   "name": "andare",
+        "translation": "to go",
+        "type": "irregular",
+        "past_participle": "andato",
+        "gerund": "andando",
+        "aux_verb": "avere",
+        "tenses": {
+            "presente": ["vado", "via", "va", "andiamo", "andate", "vanno"]
+        }   
+    }
+]
