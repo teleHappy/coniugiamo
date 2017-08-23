@@ -30,23 +30,17 @@ class VerbFactory{
 
         if(!this.validateVerbName(name)) throw new Error('non-valid verb ending')
 
-        // need the conjugation position, stem, verb endings
-        let verbDataObj = this.getVerbDataObj(name)
-        //get conjugation position
-        let conjugationPosition = this.getConjugationPosition(name)
-        //get conjugated verb
-        
-        const verbTableData = this.getVerbTableData(verbDataObj, conjugationPosition)
-        
-        console.log(verbTableData[person])
-    }
+        const verbDataObj = this.getVerbDataObj(name)
 
-    getVerbTableData(verbDataObj, conjugationPosition){
-        let verbTable = []
+        const conjugationPosition = this.getConjugationPosition(verbDataObj.name)
+        
+        let verbTableData = []
         for(let i = 0; i <rules.pronouns.length; i++){ //TODO: stem logic
-            verbTable.push(rules.pronouns[i] + " " + verbDataObj.stem + rules[conjugationPosition].present[i]  )
+            verbTableData.push(rules.pronouns[i] + " " + verbDataObj.stem + rules[conjugationPosition][tense][i]  )
         }
-        return verbTable
+
+        console.log(verbTableData[person])
+        console.log(verbTableData)
     }
 
     validateVerbName(name){
