@@ -1,7 +1,6 @@
 [
     {
         "name": "parlare",
-        "stem": "parl",
         "translation": "to speak",
         "type": "regular",
         "aux_verb": "avere",

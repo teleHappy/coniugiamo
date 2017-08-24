@@ -13,9 +13,9 @@ no-useless-constructor: 0
 
 import React, { Component } from 'react';
 
-import VerbFactory from './verbs/VerbFactory'
+import Verbs from './verbs/Verbs'
 
-const verbFactory = new VerbFactory()
+const verbs = new Verbs()
 
 class Quiz extends Component{
     constructor(props){
@@ -34,7 +34,7 @@ class Quiz extends Component{
      * initializes Quiz 
      */
     startQuiz(){
-        let currentQuestion = verbFactory.getConjugatedVerbTable('parlare', 2, 'present');
+        let currentQuestion = verbs.getConjugatedVerbTable('parlare', 'future');
         console.log(currentQuestion)
         this.setState({'currentQuestion': currentQuestion})
     }

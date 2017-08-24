@@ -12,12 +12,21 @@ class areTableGenerator {
     getTableData(verbDataObj, tense){
         let verbTableData = [];
         for(let i = 0; i <rules.pronouns.length; i++){ //TODO: stem logic
-            verbTableData.push(rules.pronouns[i] + " " + verbDataObj.stem + rules['are'][tense][i]  )
+            verbTableData.push(rules.pronouns[i] + " " + this.getVerbStem(verbDataObj.name, tense) + rules['are'][tense][i]  )
         }
         return verbTableData;
     }
     
-    getStem(){}
+    getVerbStem(name, tense){
+        let stem = '';
+        if(tense === 'future'){
+            stem = name.slice(0, name.length-1)
+        }
+        else{
+            stem = name.slice(0, name.length-3)
+        }
+        return stem
+    }
 
 }
 

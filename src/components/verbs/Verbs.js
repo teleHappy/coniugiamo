@@ -15,7 +15,7 @@ import _ from 'lodash';
 const rules = require('../../data/rules.json');
 const verbs = require('../../data/verbs.json');
 
-class VerbFactory{
+class Verbs{
 
     constructor(){
         this.areTableGenerator = new areTableGenerator()
@@ -24,28 +24,25 @@ class VerbFactory{
  
     }
 
-    getConjugatedVerbTable(name, person, tense){
+    getConjugatedVerbTable(name, tense){
         if(!name) throw new Error('verb not supplied')
-
-        if(person<0 || person > 6) throw new Error('person index out of bounds')
 
         if(!tense) throw new Error('tense not supplied')
 
         if(!this.validateVerbName(name)) throw new Error('non-valid verb ending')
 
         const verbDataObj = this.getVerbDataObj(name)
-        const isIrregular = verbDataObj.type;
+        const type = verbDataObj.type;
         const conjugation = name.slice(-3);
-
-        // TODSO: handle irregular verbs
-        // consciously choosing ternary vs switch statement
-        const verbTableData = (conjugation === 'are') ? this.areTableGenerator.getTableData(verbDataObj, tense) : 
-        (conjugation === 'ere') ? this.ereTableGenerator.getTableData(verbDataObj, tense) : 
-        (conjugation === 'ire') ? this.ireTableGenerator.getTableData(verbDataObj, tense) : () => {throw new Error ('unhandled verb')}
+        let verbTableData
+        // TODO: handle irregular verbs
+        if(type === 'regular'){
+            verbTableData = (conjugation === 'are') ? this.areTableGenerator.getTableData(verbDataObj, tense) : 
+            (conjugation === 'ere') ? this.ereTableGenerator.getTableData(verbDataObj, tense) : 
+            (conjugation === 'ire') ? this.ireTableGenerator.getTableData(verbDataObj, tense) : () => {throw new Error ('unhandled verb')}
+        }
 
         return verbTableData;
-
-        
     }
 
     validateVerbName(name){
@@ -65,4 +62,4 @@ class VerbFactory{
 
 }
 
-export default VerbFactory
+export default Verbs
