@@ -9,6 +9,7 @@ Italian verb application that quizzes your knowledge of italian verb conjugation
 ## The Purpose
 Coniugiamo translates from italian as 
 > We conjugate, or let's conjugate.
+
 Coniugiamo tests your knowledge of Italian verb conjugation, eventually comprised of the following:
 * Regular and irregular verbs
 * Simple Tenses
