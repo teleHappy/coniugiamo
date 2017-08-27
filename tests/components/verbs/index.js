@@ -6,10 +6,10 @@ var assert = require('chai').assert;
 
 
 
-describe('Verb components test code ...', function(){
+describe('Testing verb components', function(){
     let verbs = null;
 
-    before(function(){
+    beforeEach(function(){
         verbs = new Verbs();
     })
     it('verbs is an object', function(){

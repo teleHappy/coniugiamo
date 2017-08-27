@@ -34,7 +34,7 @@ class Quiz extends Component{
      * initializes Quiz 
      */
     startQuiz(){
-        let currentQuestion = verbs.getConjugatedVerbTable('parlare', 'future');
+        let currentQuestion = verbs.getConjugatedVerbTable('parlare', 'present');
         console.log(currentQuestion)
         this.setState({'currentQuestion': currentQuestion})
     }
