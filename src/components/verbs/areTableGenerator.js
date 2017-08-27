@@ -12,16 +12,16 @@ class areTableGenerator {
     getTableData(verbDataObj, tense){
         let verbTableData = [];
         for(let i = 0; i <rules.pronouns.length; i++){ //TODO: stem logic
-            verbTableData.push([rules.pronouns[i], this.getVerbStem(verbDataObj.name, tense) + rules['are'][tense][i]])
+            verbTableData.push([rules.pronouns[i], this.getVerbStem(verbDataObj.name, tense, rules.pronouns[i]) + rules['are'][tense][i]])
         }
         return verbTableData;
     }
     
-    getVerbStem(name, tense){
+    getVerbStem(name, tense, pronoun){
         let stem = '';
         
         if(tense === 'present'){
-           return this.getPresentVerbStem(name)
+           return this.getPresentVerbStem(name, pronoun)
         }
         
 
@@ -34,23 +34,24 @@ class areTableGenerator {
         return stem
     }
 
-    getPresentVerbStem(name){
-        let stem = name.slice(0, name.length-3);
-        //if the infinitive ending is -ciare, or -giare
-        if(name.slice(name.length-5) === 'ciare' || name.slice(name.length-5) === 'giare'){
+    getPresentVerbStem(name, pronoun){
+    
+    let stem = name.slice(0, name.length-3);
+    
+    //handle -ciare, -giare endings
+    if(name.slice(name.length-5) === 'ciare' || name.slice(name.length-5) === 'giare'){
         //drop the -are and retain the i of the ending
-        //do not werite a double 'i' in the present indicative endings 'i' and 'iamo'
-        //test with cominciare and mangiare    
-        }
-            
-            
-        //if the infinitive ending is -care, or -gare
-        if(name.slice(name.length-4) === 'care' || name.slice(name.length-4) === 'gare'){
-        //drop the -are but add an 'h' before the present indicative endings 'i' and 'iamo'
-        //test with cercare and pagare
-        }
+        //do not write a double 'i' in the present indicative endings for 3rd person singular or 1st person plural
+        stem = (pronoun === 'lui/lei/Lei' || pronoun === 'noi') ? name.slice(0, name.length-4) : stem
+    }
 
-        return stem
+    //handle -care, -gare endings
+    if(name.slice(name.length-4) === 'care' || name.slice(name.length-4) === 'gare'){
+        //drop the -are but add an 'h' before the present indicative endings 'i' and 'iamo'
+        stem = (pronoun === 'lui/lei/Lei' || pronoun === 'noi') ? stem + 'h' : stem
+    }
+
+    return stem
     }
 
 }
