@@ -1,23 +1,20 @@
 
 /* eslint no-undef: 0 */ 
-import Verbs from '../../../src/components/verbs/Verbs'
-
+import Verb from '../../../src/components/verbs/Verb'
 var assert = require('chai').assert;
 
-
-
 describe('Testing verb components', function(){
-    let verbs = null;
+    let verb = null;
 
     beforeEach(function(){
-        verbs = new Verbs();
+        verb = new Verb();
     })
     it('verbs is an object', function(){
-        assert.exists(verbs, 'verbs is either `null` or `undefined`');
+        assert.exists(verb, 'verbs is either `null` or `undefined`');
     })
 
     it('should validate verb names', function() {
-        assert.isTrue(verbs.validateVerbName("parlare"), 'parlare is a valid verb name')
-        assert.isFalse(verbs.validateVerbName("parlaro"), 'parlare is a valid verb name')
+        assert.isTrue(verb.validateVerbName("parlare"), 'parlare is a valid verb name')
+        assert.isFalse(verb.validateVerbName("parlaro"), 'parlare is a valid verb name')
     });
 })
