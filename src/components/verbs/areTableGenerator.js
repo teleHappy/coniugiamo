@@ -1,8 +1,9 @@
-import _ from 'lodash';
 
-//require data files
+/**
+ * areTableGenerator: manages logic for forming regular "are" verb conjugations
+ */
+
 const rules = require('../../data/rules.json');
-const verbs = require('../../data/verbs.json');
 
 class areTableGenerator {
 
@@ -23,7 +24,6 @@ class areTableGenerator {
         if(tense === 'present'){
            return this.getPresentVerbStem(name, pronoun)
         }
-        
 
         if(tense === 'future'){
             stem = name.slice(0, name.length-1)
