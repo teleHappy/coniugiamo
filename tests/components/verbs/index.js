@@ -3,7 +3,7 @@
 import Verb from '../../../src/components/verbs/Verb'
 var assert = require('chai').assert;
 
-describe('Testing verb components', function(){
+describe('Testing Verb component', function(){
     let verb = null;
 
     beforeEach(function(){
@@ -53,4 +53,10 @@ describe('Testing verb components', function(){
         assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'voi'), 'pag')
         assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'loro/Loro'), 'pag')
     })
+
+    it('returns properly formatted regular verb stem for standard "ere" verbs')
+    
+    it('returns properly formatted regular verb stem for type 1 "ire" verbs')
+    it('returns properly formatted regular verb stem for type 2 "ire" verbs')
+
 })
