@@ -15,7 +15,7 @@ import _ from 'lodash';
 const rules = require('../../data/rules.json');
 const verbs = require('../../data/verbs.json');
 
-class Verbs{
+class Verb{
 
     constructor(){
         this.areTableGenerator = new areTableGenerator()
@@ -62,4 +62,4 @@ class Verbs{
 
 }
 
-export default Verbs
+export default Verb

@@ -13,9 +13,9 @@ no-useless-constructor: 0
 
 import React, { Component } from 'react';
 
-import Verbs from './verbs/Verbs'
+import Verb from './verbs/Verb'
 
-const verbs = new Verbs()
+const verbs = new Verb()
 
 class Quiz extends Component{
     constructor(props){
