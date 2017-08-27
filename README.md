@@ -2,10 +2,15 @@
 ### coniugiamo
 Italian verb application that quizzes your knowledge of italian verb conjugation.
 
-## Intructions
+## Instructions
 1. clone this repo
 2. cd into cloned repo
-3. `npm start`
+3. `npm install`
+4. `npm start`
+
+Mocha tests can be run from root of repo: `npm run test-mocha`.
+
+Currently developing verb logic functionality. The UI is non-representational of the intended designs. 
 
 ## The Purpose
 Coniugiamo translates from italian as 
