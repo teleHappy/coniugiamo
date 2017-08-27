@@ -1,4 +1,5 @@
-//** Verbs test file */
+
+/* eslint no-undef: 0 */ 
 import Verbs from '../../../src/components/verbs/Verbs'
 
 var assert = require('chai').assert;
