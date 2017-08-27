@@ -2,7 +2,7 @@
     "endingsArray" : ["are", "ere", "ire"],
     "are" : {
         "present": ["o", "i", "a", "iamo", "ate", "ano" ],
-        "future": ["eró", "ai", "á", "emo", "ete", "anno" ],
+        "future": ["ó", "ai", "á", "emo", "ete", "anno" ],
         "conditional": ["o", "i", "a", "iamo", "ate", "ano" ]
     },
     "ere" : {
