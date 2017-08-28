@@ -55,7 +55,10 @@ describe('Testing Verb component', function(){
             assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'loro/Loro'), 'pag')
         })
     
-        it('present tense: returns properly formatted regular verb stem for standard "ere" verbs')
+        it('present tense: returns properly formatted regular verb stem for standard "ere" verbs', function(){
+            assert.equal(verb.areTableGenerator.getVerbStem('vedere', 'present', 'io'), 'ved')
+            assert.equal(verb.areTableGenerator.getVerbStem('vedere', 'present', 'noi'), 'ved')
+        })
         
         it('present tense: returns properly formatted regular verb stem for type 1 "ire" verbs')
         it('present tense: returns properly formatted regular verb stem for type 2 "ire" verbs')
