@@ -10,6 +10,14 @@
         "present_stem": "",
         "future_stem": ""
     }, 
+    {
+        "name": "cominciare",
+        "regular": true
+    },
+    {
+        "name": "cercare",
+        "regular": true
+    },
     {   "name": "vendere",
         "translation": "to sell",
         "regular": "regular",
@@ -32,15 +40,15 @@
         "future_stem": "dormir"
     },
     {   "name": "capire",
-        "type": 1,
-        "translation": "to sleep",
+        "type": 2,
+        "translation": "to know",
         "regular": "regular",
-        "past_participle": "dormito",
-        "gerund": "dormendo",
+        "past_participle": "capito",
+        "gerund": "capendo",
         "aux_verb": "avere",
         "conjugation": 3,
-        "present_stem": "dorm",
-        "future_stem": "dormir"
+        "present_stem": "cap",
+        "future_stem": "capir"
     },
     {   "name": "andare",
         "translation": "to go",

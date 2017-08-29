@@ -54,7 +54,18 @@ class areTableGenerator {
     }
 
     getFutureVerbStem(name){
-        return name.slice(0, name.length-3) + "er"
+        let stem = name.slice(0, name.length-3) + "er"
+        
+        if(name.slice(name.length-5) === 'ciare' || name.slice(name.length-5) === 'giare'){
+            // replace ciare|giare with er
+            stem = name.replace('iare', 'er')
+        }
+
+        if(name.slice(name.length-4) === 'care' || name.slice(name.length-4) === 'gare'){
+            stem = name.replace('are', 'her')
+        }
+
+        return stem;
     }
 }
 
