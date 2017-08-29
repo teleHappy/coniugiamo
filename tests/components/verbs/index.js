@@ -79,9 +79,19 @@ describe('Testing Verb component', function(){
     describe('Testing verb endings for regular "ire" verbs', function(){
         it('present tense: returns the proper verb ending for "type1" "ire" verbs', function(){
             assert.equal(verb.ireTableGenerator.getPresentVerbEnding(1, 0), 'o')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(1, 1), 'i')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(1, 2), 'e')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(1, 3), 'iamo')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(1, 4), 'ite')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(1, 5), 'ono')
         })
         it('present tense: returns the proper verb ending for "type2" "ire" verbs', function(){
             assert.equal(verb.ireTableGenerator.getPresentVerbEnding(2, 0), 'isco')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(2, 1), 'isci')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(2, 2), 'isce')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(2, 3), 'iamo')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(2, 4), 'ite')
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(2, 5), 'iscono')
         })
     })
 })

@@ -36,12 +36,10 @@ class ireTableGenerator {
 
         if(type === 1){
             ending = rules["ire"]["present"]["type1"][idx]
-            console.log("type1 ending = " + ending)
         }
 
         if(type === 2){
             ending = rules["ire"]["present"]["type2"][idx]
-            console.log("type2 ending = " + ending)
         }
 
         return ending;
