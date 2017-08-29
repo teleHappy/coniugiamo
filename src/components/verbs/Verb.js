@@ -32,11 +32,11 @@ class Verb{
         if(!this.validateVerbName(name)) throw new Error('non-valid verb ending')
 
         const verbDataObj = this.getVerbDataObj(name)
-        const type = verbDataObj.type;
+        const regular = verbDataObj.regular;
         const conjugation = name.slice(-3);
         let verbTableData
         // TODO: handle irregular verbs
-        if(type === 'regular'){
+        if(regular){
             verbTableData = (conjugation === 'are') ? this.areTableGenerator.getTableData(verbDataObj, tense) : 
             (conjugation === 'ere') ? this.ereTableGenerator.getTableData(verbDataObj, tense) : 
             (conjugation === 'ire') ? this.ireTableGenerator.getTableData(verbDataObj, tense) : () => {throw new Error ('unhandled verb')}
