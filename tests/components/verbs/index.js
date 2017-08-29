@@ -18,7 +18,7 @@ describe('Testing Verb component', function(){
         assert.isFalse(verb.validateVerbName("parlar"), 'parlare is a valid verb name')
     });
 
-    describe('Testing regular present tense verb stems for conjugation', function(){
+    describe('Testing verb stems for regular "are" conjugation', function(){
         it('present tense: returns properly formatted regular verb stem for standard "are" verbs', function(){
             assert.equal(verb.areTableGenerator.getVerbStem('parlare', 'present', 'io'), 'parl')
         })
@@ -54,23 +54,34 @@ describe('Testing Verb component', function(){
             assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'voi'), 'pag')
             assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'loro/Loro'), 'pag')
         })
+
+        it('future tense: returns properly formatted regular verb stem for "are verbs', function(){
+            assert.equal(verb.areTableGenerator.getVerbStem('parlare', 'future', 'io'), 'parler')
+        })
+        it('future tense: returns properly formatted regular verb stem for "-ciare" and "-giare" verbs')
+        it('future tense: returns properly formatted regular verb stem for "-care" and "-gare" verbs')
+    })
     
+    describe('Testing verb stems for regular "ere" conjugation', function (){
         it('present tense: returns properly formatted regular verb stem for standard "ere" verbs', function(){
             assert.equal(verb.areTableGenerator.getVerbStem('vedere', 'present', 'io'), 'ved')
             assert.equal(verb.areTableGenerator.getVerbStem('vedere', 'present', 'noi'), 'ved')
         })
-        
-        it('present tense: returns properly formatted regular verb stem for type 1 "ire" verbs')
-        it('present tense: returns properly formatted regular verb stem for type 2 "ire" verbs')
     })
-    
-    describe('Testing regular future tense verb stems for conjugation', function(){
-        it('future tense: returns properly formatted regular verb stem for "are verbs', function(){
-            assert.equal(verb.areTableGenerator.getVerbStem('parlare', 'future', 'io'), 'parler')
+
+    describe('Testing verb stems for regular "ire" conjugation', function(){
+        it('present tense: returns properly formatted regular verb stem for "ire" verbs', function(){
+            assert.equal(verb.ireTableGenerator.getVerbStem('dormire'), 'dorm')
+            assert.equal(verb.ireTableGenerator.getVerbStem('capire'), 'cap')
         })
     })
     
-
-
-
+    describe('Testing verb endings for regular "ire" verbs', function(){
+        it('present tense: returns the proper verb ending for "type1" "ire" verbs', function(){
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(1, 0), 'o')
+        })
+        it('present tense: returns the proper verb ending for "type2" "ire" verbs', function(){
+            assert.equal(verb.ireTableGenerator.getPresentVerbEnding(2, 0), 'isco')
+        })
+    })
 })

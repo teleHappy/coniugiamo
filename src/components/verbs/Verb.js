@@ -53,13 +53,6 @@ class Verb{
         return _.find(verbs, {"name": verb})
     }
 
-    getConjugationPosition(verb){
-        if( _.indexOf(rules.endingsArray, verb.slice(-3)) === -1) throw new Error('non-valid verb ending')
-    
-        return verb.slice(-3);
-    }
-
-
 }
 
 export default Verb

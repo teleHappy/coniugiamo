@@ -9,7 +9,10 @@
         "present": ["o", "i", "e", "iamo", "ete", "ono"]
     },
     "ire" : {
-        "present": ["o", "i", "e", "iamo", "ite", "ono"]
+        "present": {
+            "type1": ["o", "i", "e", "iamo", "ite", "ono"],
+            "type2": ["isco", "isci", "isce", "iamo", "ite", "iscono"]
+        }
     },
     "pronouns" : ["io", "tu", "lui/lei/Lei", "noi", "voi", "loro/Loro"]
 }
