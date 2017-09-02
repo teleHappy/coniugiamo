@@ -1,4 +1,4 @@
-[
+const verbs = [
     {
         "name": "parlare",
         "translation": "to speak",
@@ -61,3 +61,5 @@
         }   
     }
 ]
+
+export default verbs;

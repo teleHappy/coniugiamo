@@ -12,10 +12,9 @@ no-useless-constructor: 0
  */
 
 import React, { Component } from 'react';
+import Question from './question/Question';
 
-import Verb from './verb/Verb'
-
-const verb = new Verb()
+const question = new Question();
 
 class Quiz extends Component{
     constructor(props){
@@ -31,12 +30,12 @@ class Quiz extends Component{
             'conjugationTableData': []
         }
         this.startQuiz = this.startQuiz.bind(this)
-        this.getQuestion = this.getQuestion.bind(this)
+        this.getNextQuestion = this.getNextQuestion.bind(this)
     }
 
-    getQuestion(){
-        
-        
+    getNextQuestion(verbEnding){
+        const q = question.getQuestion(verbEnding)
+        console.log(q)
         // this.setState({
         //     'conjugationTableData': conjugatedVerbTable,
         //     'person': person,
@@ -46,7 +45,7 @@ class Quiz extends Component{
         // })  
     }
 
-    getAnswers(){}
+    getNextAnswers(){}
 
 
     // ui:
@@ -61,9 +60,13 @@ class Quiz extends Component{
      * initializes Quiz 
      */
     startQuiz(){
-        this.getQuestion()
+        const verbEnding = this.getRandomVerbEnding();
+        this.getNextQuestion(verbEnding)
     }
 
+    getRandomVerbEnding(){
+        return 'are';
+    }
 
     
     /**
@@ -73,7 +76,7 @@ class Quiz extends Component{
     finishQuiz(){}    
 
     componentWillMount(){
-        //this.startQuiz();        
+        this.startQuiz();        
     }
 
     render(){

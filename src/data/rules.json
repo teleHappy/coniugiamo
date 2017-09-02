@@ -14,5 +14,6 @@
             "type2": ["isco", "isci", "isce", "iamo", "ite", "iscono"]
         }
     },
-    "pronouns" : ["io", "tu", "lui/lei/Lei", "noi", "voi", "loro/Loro"]
+    "pronouns" : ["io", "tu", "lui/lei/Lei", "noi", "voi", "loro/Loro"],
+    "tenses" : ["present"]
 }

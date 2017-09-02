@@ -3,8 +3,7 @@
  * delegates regular/irregular verb table creation
  */
 
-
-
+import {verbs, are} from '../../data/verbs';
 import areTableGenerator from './areTableGenerator';
 import ereTableGenerator from './ereTableGenerator';
 import ireTableGenerator from './ireTableGenerator';
@@ -13,7 +12,6 @@ import _ from 'lodash';
 
 //require data files
 const rules = require('../../data/rules.json');
-const verbs = require('../../data/verbs.json');
 
 class Verb{
 
@@ -21,7 +19,6 @@ class Verb{
         this.areTableGenerator = new areTableGenerator()
         this.ereTableGenerator = new ereTableGenerator()
         this.ireTableGenerator = new ireTableGenerator()
- 
     }
 
     getConjugatedVerbTable(name, tense){
@@ -50,7 +47,7 @@ class Verb{
     }
 
     getVerbDataObj(verb){
-        return _.find(verbs, {"name": verb})
+        return _.find(are, {"name": verb})
     }
 
 }
