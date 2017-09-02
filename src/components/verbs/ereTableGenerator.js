@@ -1,3 +1,7 @@
+/**
+ * ereTableGenerator: manages logic for forming regular "ere" verb conjugations
+ */
+
 const rules = require('../../data/rules.json');
 
 class ereTableGenerator {

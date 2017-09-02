@@ -15,7 +15,7 @@ import React, { Component } from 'react';
 
 import Verb from './verbs/Verb'
 
-const verbs = new Verb()
+const verb = new Verb()
 
 class Quiz extends Component{
     constructor(props){
@@ -34,7 +34,7 @@ class Quiz extends Component{
      * initializes Quiz 
      */
     startQuiz(){
-        let currentQuestion = verbs.getConjugatedVerbTable('cercare', 'future');
+        let currentQuestion = verb.getConjugatedVerbTable('parlare', 'present');
         console.log(currentQuestion)
         this.setState({'currentQuestion': currentQuestion})
     }
