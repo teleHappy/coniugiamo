@@ -13,32 +13,59 @@ no-useless-constructor: 0
 
 import React, { Component } from 'react';
 
-import Verb from './verbs/Verb'
+import Verb from './verb/Verb'
 
 const verb = new Verb()
 
 class Quiz extends Component{
     constructor(props){
-        console.log('initiate quiz...')
         super(props)
         this.state = {
+            'verbName': '',
+            'person': null,
+            'tense': '',
             'score': 0,
-            'questions': [],
-            'userAnswers': [],
-            'currentQuestion': []
+            'question': null,
+            'userAnswer': [],
+            'currentQuestionIndex': 0,
+            'conjugationTableData': []
         }
         this.startQuiz = this.startQuiz.bind(this)
+        this.getQuestion = this.getQuestion.bind(this)
     }
+
+    getQuestion(){
+        
+        
+        // this.setState({
+        //     'conjugationTableData': conjugatedVerbTable,
+        //     'person': person,
+        //     'question': question,
+        //     'tense': tense,
+        //     'verbName': verbName
+        // })  
+    }
+
+    getAnswers(){}
+
+
+    // ui:
+    // `which is the correct {pronoun} form for the {tense} tense of {verb}?`
+    // method that randomly generates three verb conjugation tables using the same verb but different tenses/moods
+    // also, randomly selects which pronoun to test with in the question
+    // behavior:
+    // user selects right/wrong choice green/red text coloring
+    // display verb/tense formatted conjugation table
 
     /**
      * initializes Quiz 
      */
     startQuiz(){
-        let currentQuestion = verb.getConjugatedVerbTable('parlare', 'present');
-        console.log(currentQuestion)
-        this.setState({'currentQuestion': currentQuestion})
+        this.getQuestion()
     }
 
+
+    
     /**
      * When user is finished with quiz, calculate total, display finish screen
      * could have a replay button, 'show me my wrong answers...
@@ -50,7 +77,14 @@ class Quiz extends Component{
     }
 
     render(){
-        const qArr = this.state.currentQuestion;
+
+        // question
+
+        // answers list
+
+        // link to toggle conjugation table (after answer is selected)
+
+        const qArr = this.state.conjugationTableData;
         // eslint-disable-next-line
         let s1Label, s1Verb, s2Label, s2Verb, s3Label, s3Verb, p1Label, p1Verb, p2Label, p2Verb, p3Label, p3Verb = "";
         if(qArr.length > 0){

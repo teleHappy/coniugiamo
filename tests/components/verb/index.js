@@ -1,11 +1,11 @@
 
 /* eslint no-undef: 0 */ 
-import Verb from '../../../src/components/verbs/Verb'
+import Verb from '../../../src/components/verb/Verb'
 var assert = require('chai').assert;
 
 describe('Testing Verb component', function(){
     let verb = null;
-
+    
     before(function(){
         verb = new Verb();
     })
@@ -94,4 +94,6 @@ describe('Testing Verb component', function(){
             assert.equal(verb.ireTableGenerator.getPresentVerbEnding(2, 5), 'iscono')
         })
     })
+
+    
 })

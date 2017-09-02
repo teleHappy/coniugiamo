@@ -22,7 +22,6 @@ class ireTableGenerator {
     }
 
     getVerbEnding(verbDataObj, tense, idx){
-        const name = verbDataObj.name
         const type = verbDataObj.type
         let ending = rules["ire"][tense][idx]
 
