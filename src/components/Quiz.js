@@ -49,7 +49,7 @@ class Quiz extends Component{
 
 
     // ui:
-    // `which is the correct {pronoun} form for the {tense} tense of {verb}?`
+    
     // method that randomly generates three verb conjugation tables using the same verb but different tenses/moods
     // also, randomly selects which pronoun to test with in the question
     // behavior:

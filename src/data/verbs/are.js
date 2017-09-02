@@ -2,7 +2,7 @@ const are = [
     {
         "name": "parlare",
         "translation": "to speak",
-        "regular": "true",
+        "regular": true,
         "aux_verb": "avere",
         "past_participle": "",
         "gerund": "",
@@ -17,17 +17,6 @@ const are = [
     {
         "name": "cercare",
         "regular": true
-    },
-    {   
-        "name": "andare",
-        "translation": "to go",
-        "regular": false,
-        "past_participle": "andato",
-        "gerund": "andando",
-        "aux_verb": "avere",
-        "tenses": {
-            "presente": ["vado", "via", "va", "andiamo", "andate", "vanno"]
-        }   
     }
 ];
 
