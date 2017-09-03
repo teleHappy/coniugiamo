@@ -3,7 +3,7 @@
  * delegates regular/irregular verb table creation
  */
 
-import {verbs, are} from '../../data/verbs';
+import {are} from '../../data/verbs';
 import areTableGenerator from './areTableGenerator';
 import ereTableGenerator from './ereTableGenerator';
 import ireTableGenerator from './ireTableGenerator';
@@ -22,6 +22,7 @@ class Verb{
     }
 
     getConjugatedVerbTable(name, tense){
+        
         if(!name) throw new Error('verb not supplied')
 
         if(!tense) throw new Error('tense not supplied')

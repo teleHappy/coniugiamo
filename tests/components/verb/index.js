@@ -18,7 +18,7 @@ describe('Testing Verb component', function(){
         assert.isFalse(verb.validateVerbName("parlar"), 'parlare is a valid verb name')
     });
 
-    describe.only('Testing verb stems for regular "are" conjugation', function(){
+    describe('Testing verb stems for regular "are" conjugation', function(){
         it('present tense: returns properly formatted regular verb stem for standard "are" verbs', function(){
             assert.equal(verb.areTableGenerator.getVerbStem('parlare', 'present', 'io'), 'parl')
         })

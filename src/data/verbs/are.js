@@ -5,18 +5,39 @@ const are = [
         "regular": true,
         "aux_verb": "avere",
         "past_participle": "",
-        "gerund": "",
-        "conjugation": 1,
-        "present_stem": "",
-        "future_stem": ""
+        "gerund": ""
     }, 
     {
         "name": "cominciare",
-        "regular": true
+        "translation": "to begin",
+        "regular": true,
+        "aux_verb": "avere",
+        "past_participle": "cominciato",
+        "gerund": ""
     },
     {
         "name": "cercare",
-        "regular": true
+        "translation": "to speak",
+        "regular": true,
+        "aux_verb": "avere",
+        "past_participle": "",
+        "gerund": ""
+    },
+    {
+        "name": "mangiare",
+        "translation": "to speak",
+        "regular": true,
+        "aux_verb": "avere",
+        "past_participle": "",
+        "gerund": ""
+    },
+    {
+        "name": "pagare",
+        "translation": "to speak",
+        "regular": true,
+        "aux_verb": "avere",
+        "past_participle": "",
+        "gerund": ""
     }
 ];
 

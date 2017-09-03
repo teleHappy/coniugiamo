@@ -14,35 +14,16 @@ no-useless-constructor: 0
 import React, { Component } from 'react';
 import Question from './question/Question';
 
-const question = new Question();
-
 class Quiz extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            'verbName': '',
-            'person': null,
-            'tense': '',
-            'score': 0,
-            'question': null,
-            'userAnswer': [],
-            'currentQuestionIndex': 0,
-            'conjugationTableData': []
-        }
+    constructor(){
+        super()
+        
         this.startQuiz = this.startQuiz.bind(this)
         this.getNextQuestion = this.getNextQuestion.bind(this)
     }
 
     getNextQuestion(verbEnding){
-        const q = question.getQuestion(verbEnding)
-        console.log(q)
-        // this.setState({
-        //     'conjugationTableData': conjugatedVerbTable,
-        //     'person': person,
-        //     'question': question,
-        //     'tense': tense,
-        //     'verbName': verbName
-        // })  
+        
     }
 
     getNextAnswers(){}
@@ -60,15 +41,13 @@ class Quiz extends Component{
      * initializes Quiz 
      */
     startQuiz(){
-        const verbEnding = this.getRandomVerbEnding();
-        this.getNextQuestion(verbEnding)
+        this.setState({
+            "questionParams" : {
+                "verbEnding": "are"
+            }
+        })
     }
 
-    getRandomVerbEnding(){
-        return 'are';
-    }
-
-    
     /**
      * When user is finished with quiz, calculate total, display finish screen
      * could have a replay button, 'show me my wrong answers...
@@ -81,67 +60,69 @@ class Quiz extends Component{
 
     render(){
 
-        // question
+        return(
+            <Question params = {this.state.questionParams} />
+        )
 
         // answers list
 
         // link to toggle conjugation table (after answer is selected)
 
-        const qArr = this.state.conjugationTableData;
-        // eslint-disable-next-line
-        let s1Label, s1Verb, s2Label, s2Verb, s3Label, s3Verb, p1Label, p1Verb, p2Label, p2Verb, p3Label, p3Verb = "";
-        if(qArr.length > 0){
-            s1Label = qArr[0][0];
-            s1Verb = qArr[0][1];
+        // const qArr = this.state.conjugationTableData;
+        // // eslint-disable-next-line
+        // let s1Label, s1Verb, s2Label, s2Verb, s3Label, s3Verb, p1Label, p1Verb, p2Label, p2Verb, p3Label, p3Verb = "";
+        // if(qArr.length > 0){
+        //     s1Label = qArr[0][0];
+        //     s1Verb = qArr[0][1];
 
-            s2Label = qArr[1][0];
-            s2Verb = qArr[1][1];
+        //     s2Label = qArr[1][0];
+        //     s2Verb = qArr[1][1];
 
-            s3Label = qArr[2][0];
-            s3Verb = qArr[2][1];
+        //     s3Label = qArr[2][0];
+        //     s3Verb = qArr[2][1];
 
-            p1Label = qArr[3][0];
-            p1Verb = qArr[3][1];
+        //     p1Label = qArr[3][0];
+        //     p1Verb = qArr[3][1];
 
-            p2Label = qArr[4][0];
-            p2Verb = qArr[4][1];
+        //     p2Label = qArr[4][0];
+        //     p2Verb = qArr[4][1];
 
-            p3Label = qArr[5][0];
-            p3Verb = qArr[5][1];
+        //     p3Label = qArr[5][0];
+        //     p3Verb = qArr[5][1];
             
-        }            
-        return (
-            <div>
-            <div>
-                <button name="startQuiz" onClick={this.startQuiz}>Start Verb Quiz</button> 
-            </div>
-            <div>
-                <table>
+        // }            
+        // return (
+        //     <div>
+        //     <div>
+        //         <button name="startQuiz" onClick={this.startQuiz}>Start Verb Quiz</button> 
+        //     </div>
+        //     <div>
+        //         <table>
                     
-                    <tbody>
-                        <tr>
-                            <th>{s1Label}</th>
-                            <td>{s1Verb}</td>
-                            <th>{p2Label}</th>
-                            <td>{p1Verb}</td>
-                        </tr>
-                        <tr>
-                            <th>{s2Label}</th>
-                            <td>{s2Verb}</td>
-                            <th>{p2Label}</th>
-                            <td>{p2Verb}</td>
-                        </tr>
-                        <tr>
-                            <th>{s3Label}</th>
-                            <td>{s3Verb}</td>
-                            <th>{p3Label}</th>
-                            <td>{p3Verb}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            </div>
-        )
+        //             <tbody>
+        //                 <tr>
+        //                     <th>{s1Label}</th>
+        //                     <td>{s1Verb}</td>
+        //                     <th>{p2Label}</th>
+        //                     <td>{p1Verb}</td>
+        //                 </tr>
+        //                 <tr>
+        //                     <th>{s2Label}</th>
+        //                     <td>{s2Verb}</td>
+        //                     <th>{p2Label}</th>
+        //                     <td>{p2Verb}</td>
+        //                 </tr>
+        //                 <tr>
+        //                     <th>{s3Label}</th>
+        //                     <td>{s3Verb}</td>
+        //                     <th>{p3Label}</th>
+        //                     <td>{p3Verb}</td>
+        //                 </tr>
+        //             </tbody>
+        //         </table>
+        //     </div>
+        //     </div>
+    
     }
 
 
