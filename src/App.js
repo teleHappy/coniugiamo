@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Quiz from './components/Quiz'
+import Quiz from './components/quiz/Quiz'
 
 class App extends Component {
   render() {

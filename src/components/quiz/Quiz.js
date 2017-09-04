@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Question from './question/Question';
-import Verb from './verb/Verb'
-import {are, ere, ire} from '../data/verbs'
+import Question from '../question/Question';
+import Verb from '../verb/Verb'
+import {are, ere, ire} from '../../data/verbs'
 import _ from 'lodash';
 
 //require data files
-const rules = require('../data/rules.json');
+const rules = require('../../data/rules.json');
 const verb = new Verb();
 
 class Quiz extends Component{
@@ -54,7 +54,7 @@ class Quiz extends Component{
         return newArray
     }
     
-    // returns an array opf three random verb names from verbObjectArry
+    // returns an array of {count} random verb names from verbObjectArry
     getUniqueKeyValuesFromObjectArrayByCount(value, array, count, seedValue){
         const verbNameArray = this.getVerbNamesFromObjectArray(array)
         const countOffset = (seedValue) ? count-1: count
