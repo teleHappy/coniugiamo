@@ -1,67 +1,135 @@
-/* eslint no-tabs: 0, 
-indent: 0, 
-consistent-this: 0, 
-no-trailing-spaces: 0,
-brace-style: 0,
-padded-blocks: 0,
-no-console: 0,
-semi: 0,
-object-curly-spacing: 0,
-space-before-blocks: 0,
-no-useless-constructor: 0
- */
-
 import React, { Component } from 'react';
 import Question from './question/Question';
+import Verb from './verb/Verb'
+import {are, ere, ire} from '../data/verbs'
+import _ from 'lodash';
+
+//require data files
+const rules = require('../data/rules.json');
+const verb = new Verb();
 
 class Quiz extends Component{
     constructor(){
         super()
+        this.state = {
+            "params" : {
+                "verbEnding": "",
+                "verbName": "",
+                "verbObj": null,
+                "personIndex": 0,
+                "tense": "",
+                "verbTablesArray": []
+            }
+        }
         
         this.startQuiz = this.startQuiz.bind(this)
-        this.getNextQuestion = this.getNextQuestion.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
-    getNextQuestion(verbEnding){
-        
-    }
+    // TODO: verbEnding should be random, but need to add verb data to ere and ire verbs first
+    // every question has its answers
+    handleClick(e){
+        const verbEnding = "are"
+        const verbObj = this.getRandomVerbObject(verbEnding)
+        const personIndex = this.getRandomPersonIndex()
+        const tense = this.getRandomTense()
+        const tenses = this.getUniqueTenseArrayByCount(tense, 3)
+        const verbTables = this.getThreeVerbTables(verbObj.name, tenses)
+        const verbName = verbObj.name
 
-    getNextAnswers(){}
-
-
-    // ui:
-    
-    // method that randomly generates three verb conjugation tables using the same verb but different tenses/moods
-    // also, randomly selects which pronoun to test with in the question
-    // behavior:
-    // user selects right/wrong choice green/red text coloring
-    // display verb/tense formatted conjugation table
-
-    /**
-     * initializes Quiz 
-     */
-    startQuiz(){
         this.setState({
-            "questionParams" : {
-                "verbEnding": "are"
+            "params" : {
+                "verbEnding": verbEnding,
+                "verbName": verbName,
+                "personIndex": personIndex,
+                "tense": tense,
+                "verbTablesArray": verbTables
             }
         })
     }
 
-    /**
-     * When user is finished with quiz, calculate total, display finish screen
-     * could have a replay button, 'show me my wrong answers...
-     */
-    finishQuiz(){}    
-
-    componentWillMount(){
-        this.startQuiz();        
+    getVerbNamesFromObjectArray(arr) {
+        const newArray = arr.map(function(o){
+            return o.name
+        })
+        return newArray
     }
+    
+    // returns an array opf three random verb names from verbObjectArry
+    getUniqueKeyValuesFromObjectArrayByCount(value, array, count, seedValue){
+        const verbNameArray = this.getVerbNamesFromObjectArray(array)
+        const countOffset = (seedValue) ? count-1: count
+        let uniqueArray = [seedValue]
+        
+        for(var i=0; i<countOffset; i++){
+            let differenceArray = (_.difference(verbNameArray, uniqueArray))
+            let min = Math.ceil(0);
+            let max = Math.floor(differenceArray.length);
+            uniqueArray.push(differenceArray[Math.floor(Math.random() * (max - min)) + min])
+
+        }
+        
+        return uniqueArray
+    }
+
+    getUniqueTenseArrayByCount(tense, count){
+        const tensesArray = rules['tenses']
+        const countOffset = count-1;
+        let uniqueArray = [tense]
+            
+        for(var i = 0; i<countOffset; i++){
+            let differenceArray = _.difference(tensesArray, uniqueArray)
+            let min = Math.ceil(0)
+            let max = Math.floor(differenceArray.length)
+            uniqueArray.push(differenceArray[Math.floor(Math.random() * (max - min)) + min])
+        }
+        
+        return uniqueArray
+    }
+
+    // handle generating three unique verb tables (tracking against random)
+    getThreeVerbTables(name, tenses){
+        let conjugatedVerbTables = [];
+        // populate three conjugation tables
+        for(var i=0; i<tenses.length; i++){
+            conjugatedVerbTables.push(verb.getConjugatedVerbTable(name, tenses[i]))
+        }
+        return conjugatedVerbTables;
+
+    }
+
+    getRandomTense(){
+        let min = Math.ceil(0);
+        let max = Math.floor(rules['tenses'].length)
+        return rules['tenses'][Math.floor(Math.random() * (max - min) + min)];
+    }
+
+    getRandomPersonIndex(){
+        let min = Math.ceil(0);
+        let max = Math.floor(rules['pronouns'].length);
+
+        return Math.floor(Math.random() * (max - min) + min) 
+    }
+
+    getRandomVerbObject (verbEnding) {
+        const verbs = (verbEnding === 'are') ? are : (verbEnding === 'ere') ? ere : ire
+        let min = Math.ceil(0);
+        let max = Math.floor(are.length);
+
+        return verbs[Math.floor(Math.random() * (max - min)) + min] 
+    }
+
+    startQuiz(){}
+
+    finishQuiz(){}    
 
     render(){
 
         return(
-            <Question params = {this.state.questionParams} />
+            <div>
+                <Question params = {this.state.params}/>
+                <button onClick={this.handleClick}>Next Question</button>
+            </div>
         )
 
         // answers list
