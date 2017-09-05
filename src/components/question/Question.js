@@ -14,16 +14,14 @@ class Question extends Component{
     }
 
     // returns display question str
-    getDisplayQuestion(){
+    getDisplayQuestion(pronoun, tense, verbName){
         return (
-            <p className="questionText">Which is the correct <strong>{rules['pronouns'][this.props.params.personIndex]}</strong> form for the <strong>{this.props.params.tense}</strong> tense of <b>{this.props.params.verbName}</b>?</p>
+            <p className="questionText">Which is the correct <strong>{pronoun}</strong> form for the <strong>{tense}</strong> tense of <b>{verbName}</b>?</p>
         )
     }
 
-    getAnswerList(){
-        const verbTablesArray = this.props.params.verbTablesArray
-        const personIndex = this.props.params.personIndex
-        let listItems = verbTablesArray.map(function(vt, idx){
+    getAnswerList(verbTablesArray, personIndex){
+        const listItems = verbTablesArray.map(function(vt, idx){
             return (<li key={idx} className="questionText">{vt[personIndex][1]}</li>)
         })
         
@@ -36,16 +34,21 @@ class Question extends Component{
     }
     
     render(){
-        if(this.props.params.verbName === "") {
+        const personIndex = this.props.params.personIndex
+        const pronoun = rules['pronouns'][personIndex]
+        const tense = this.props.params.tense
+        const verbName = this.props.params.verbName
+        const verbTablesArray = this.props.params.verbTablesArray
+
+        if(verbName === "") {
             return(
             <p className="questionText">Click Next Question to get Started</p>
         )}
         return(           
             <div>
-                {this.getDisplayQuestion()}          
-                {this.getAnswerList()}
+                {this.getDisplayQuestion(pronoun, tense, verbName)}          
+                {this.getAnswerList(verbTablesArray, personIndex)}
             </div>
-            //<VerbDisplayTable verbTable={this.props.params.verbTablesArray[0]}/>
         )
         
     }
