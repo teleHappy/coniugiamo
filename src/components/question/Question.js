@@ -48,6 +48,7 @@ class Question extends Component{
             <div>
                 {this.getDisplayQuestion(pronoun, tense, verbName)}          
                 {this.getAnswerList(verbTablesArray, personIndex)}
+                {VerbDisplayTable(verbTablesArray[0])}
             </div>
         )
         
