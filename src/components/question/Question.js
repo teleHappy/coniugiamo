@@ -3,7 +3,6 @@ import VerbDisplayTable from '../verb/ui/VerbDisplayTable'
 
 //require data files
 const rules = require('../../data/rules.json');
-const ANSWERS_LENGTH = 3;
 
 class Question extends Component{
     
@@ -21,8 +20,13 @@ class Question extends Component{
     }
 
     getAnswerList(verbTablesArray, personIndex){
-        const listItems = verbTablesArray.map(function(vt, idx){
-            return (<li key={idx} className="questionText">{vt[personIndex][1]}</li>)
+        
+
+        const listItems = verbTablesArray.map((vt, idx) => {
+            let classNameString = 'questionText';    
+            classNameString += (this.getHasIsCorrectProp(vt)) ? ' correct': ''
+            
+            return <li key={idx} className={classNameString}>{vt[personIndex][1]}</li>
         })
         
         return(
@@ -32,6 +36,11 @@ class Question extends Component{
         )
 
     }
+
+    getHasIsCorrectProp(vt){
+        return vt[vt.length-1]['isCorrect']
+    }
+
     
     render(){
         const personIndex = this.props.params.personIndex

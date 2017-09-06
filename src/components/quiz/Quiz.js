@@ -7,6 +7,7 @@ import _ from 'lodash';
 //require data files
 const rules = require('../../data/rules.json');
 const verb = new Verb();
+const ANSWERS_LENGTH = 3;
 
 class Quiz extends Component{
     constructor(){
@@ -32,7 +33,7 @@ class Quiz extends Component{
         const verbObj = this.getRandomVerbObject(verbEnding)
         const personIndex = this.getRandomPersonIndex()
         const tense = this.getRandomTense()
-        const tenses = this.getUniqueTenseArrayByCount(tense, 3)
+        const tenses = this.getUniqueTenseArrayByCount(tense, ANSWERS_LENGTH)
         const verbTables = this.getThreeVerbTables(verbObj.name, tenses)
         const verbName = verbObj.name
 
@@ -85,13 +86,18 @@ class Quiz extends Component{
         
         return uniqueArray
     }
-
-    // handle generating three unique verb tables (tracking against random)
+    
+    // handle generating three unique verb tables and decorate each with an 'isCorrect' object
     getThreeVerbTables(name, tenses){
+        let vt = []
         let conjugatedVerbTables = [];
         // populate three conjugation tables
         for(var i=0; i<tenses.length; i++){
-            conjugatedVerbTables.push(verb.getConjugatedVerbTable(name, tenses[i]))
+            vt = verb.getConjugatedVerbTable(name, tenses[i])
+            // the first entry is the correct quiz verb, track with this added object
+            vt.push( (i === 0) ? {'isCorrect': true} : {'isCorrect': false}) 
+            
+            conjugatedVerbTables.push(vt)
         }
         return conjugatedVerbTables;
 
