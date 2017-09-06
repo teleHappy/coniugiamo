@@ -28,8 +28,7 @@ const VerbDisplayTable = ({verbTablesArray}) =>{
             
         }            
         return (
-            <div>
-            <div>
+            <div id="verbTableContainer">
                 <table>
                     
                     <tbody>
@@ -53,7 +52,6 @@ const VerbDisplayTable = ({verbTablesArray}) =>{
                         </tr>
                     </tbody>
                 </table>
-            </div>
             </div>)
     }
 

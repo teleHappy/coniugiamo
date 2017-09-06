@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DisplayAnswers = ({verbTablesArray, personIndex}) => {
+const DisplayAnswers = ({verbTablesArray, personIndex, checkAnswer}) => {
 
     const getHasIsCorrectProp = function(vt){
         return vt[vt.length-1]['isCorrect']
@@ -9,17 +9,16 @@ const DisplayAnswers = ({verbTablesArray, personIndex}) => {
     const listItems = verbTablesArray.map((vt, idx) => {
         let classNameString = 'questionText';    
         classNameString += (getHasIsCorrectProp(vt)) ? ' correct': ''
-        
-        return <li key={idx} className={classNameString}>{vt[personIndex][1]}</li>
+        // TODO: event delagation
+        return <li key={idx} className={classNameString} onClick={checkAnswer}>{vt[personIndex][1]}</li>
     })
     
     return(
-        <ol id="answerList">
+        <ul id="answerList">
             {listItems}
-        </ol>
+        </ul>
     )
-
-
+    
 }
 
 export default DisplayAnswers

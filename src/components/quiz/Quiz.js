@@ -13,20 +13,27 @@ class Quiz extends Component{
     constructor(){
         super()
         this.state = {
-            "verbEnding": "",
-            "verbName": "",
-            "verbObj": null,
-            "personIndex": 0,
-            "tense": "",
-            "verbTablesArray": []
+            "inProgress": false,
+            "count": 0,
+            "correctAnswers": 0,
+            "checkAnswer": true,
+            "question": {
+                "verbEnding": "",
+                "verbName": "",
+                "verbObj": null,
+                "personIndex": 0,
+                "tense": "",
+                "verbTablesArray": []
+            }
         }
         
-        this.handleClick = this.handleClick.bind(this)
+        this.nextQuestion = this.nextQuestion.bind(this);
+        this.checkAnswer = this.checkAnswer.bind(this);
     }
 
     // TODO: verbEnding should be random, but need to add verb data to ere and ire verbs first
     // every question has its answers
-    handleClick(e){
+    nextQuestion(e){
         const verbEnding = "are"
         const verbObj = this.getRandomVerbObject(verbEnding)
         const personIndex = this.getRandomPersonIndex()
@@ -34,14 +41,36 @@ class Quiz extends Component{
         const tenses = this.getUniqueTenseArrayByCount(tense, ANSWERS_LENGTH)
         const verbTables = this.getThreeVerbTables(verbObj.name, tenses)
         const verbName = verbObj.name
+        const count = this.state.count + 1 
 
         this.setState({
-            "verbEnding": verbEnding,
-            "verbName": verbName,
-            "personIndex": personIndex,
-            "tense": tense,
-            "verbTablesArray": verbTables
-        
+            "inProgress": true,
+            "count": count,
+            "checkAnswer": true,
+            "question":{
+                "verbEnding": verbEnding,
+                "verbName": verbName,
+                "personIndex": personIndex,
+                "tense": tense,
+                "verbTablesArray": verbTables
+            }
+            
+        })
+    }
+
+    checkAnswer(e, elements){
+        if(!this.state.checkAnswer) return;
+
+        const isCorrect = e.target.className.match(/correct/) !== null
+        let correctAnswers = this.state.correctAnswers
+
+        if(isCorrect){
+            correctAnswers = correctAnswers + 1
+        }
+
+        this.setState({
+            "correctAnswers": correctAnswers, 
+            "checkAnswer": false
         })
     }
 
@@ -121,17 +150,32 @@ class Quiz extends Component{
         return verbs[Math.floor(Math.random() * (max - min)) + min] 
     }
 
+    //user clicks the answer, calculate score, show reference table  
+
     startQuiz(){}
 
     finishQuiz(){}    
 
     render(){
-        const {verbEnding, verbName, verbObj, personIndex, tense, verbTablesArray} = this.state;
-
+        console.log(this.state)
+        const {verbEnding, verbName, verbObj, personIndex, tense, verbTablesArray} = this.state.question;
+        const {inProgress} = this.state;
+        const buttonLabel = (inProgress) ? 'Next Question' : 'Start Quiz'
         return(
             <div>
-                <Question verbEnding={verbEnding} verbName={verbName} verbObj={verbObj} personIndex={personIndex} tense={tense} verbTablesArray={verbTablesArray}/>
-                <button onClick={this.handleClick}>Next Question</button>
+                <div className="questionContainer">    
+                <Question 
+                    verbEnding={verbEnding} 
+                    verbName={verbName} 
+                    verbObj={verbObj} 
+                    personIndex={personIndex} 
+                    tense={tense} 
+                    verbTablesArray={verbTablesArray}
+                    checkAnswer={this.checkAnswer}
+                    />
+                </div>
+                <button onClick={this.nextQuestion}>{buttonLabel}</button>
+            
             </div>
         )
     }

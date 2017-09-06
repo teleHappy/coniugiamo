@@ -10,7 +10,7 @@ const rules = require('../../data/rules.json');
 class Question extends Component{
     
     render(){
-        const {personIndex, tense, verbName, verbTablesArray} = this.props
+        const {personIndex, tense, verbName, verbTablesArray, checkAnswer} = this.props
         const pronoun = rules['pronouns'][personIndex]
 
         if(verbName === "") {
@@ -18,9 +18,9 @@ class Question extends Component{
             <p className="questionText">Click Next Question to get Started</p>
         )}
         return(           
-            <div>
+            <div className="questionContainer">
                 <DisplayQuestion pronoun={pronoun} tense={tense} verbName={verbName} />
-                <DisplayAnswers verbTablesArray={verbTablesArray} personIndex={personIndex} />
+                <DisplayAnswers verbTablesArray={verbTablesArray} personIndex={personIndex} checkAnswer={checkAnswer}/>
                 <VerbDisplayTable verbTablesArray={verbTablesArray} />
             </div>
         )

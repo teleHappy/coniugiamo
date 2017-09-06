@@ -14,9 +14,48 @@
   padding: 20px;
   color: white;
 }
-.App div p.questionText, .App ol li.questionText{
+
+.App div.questionContainer{
   text-align: left; 
   padding-left: 20px;
   color: #ffffff
 }
 
+.questionContainer{
+  height: 130px;
+}
+
+.questionContainer p.questionText{
+  padding-left: 20px;
+}
+
+/* answer styles*/
+#answerList{
+  list-style: none
+}
+
+/*verb tables*/
+
+#verbTableContainer{
+  position: relative;
+  left: 200px;
+  top: -70px;
+}
+
+table {		
+  width: 50%;
+  background-color: #fff;
+  color: #333333
+}
+  
+td {	
+  text-align: left;
+  padding: 0 10px;
+  width: 50%;
+}
+  
+th {	
+  text-align: left;
+  padding: 0 10px;
+  width: 50%;
+}
