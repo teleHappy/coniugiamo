@@ -1,5 +1,5 @@
 /* eslint no-undef: 0 */ 
-import Quiz from '../../../src/components/Quiz'
+import Quiz from '../../../src/components/quiz/Quiz'
 import {are, ere, ire} from '../../../src/data/verbs'
 const quiz = new Quiz();
 
