@@ -13,14 +13,12 @@ class Quiz extends Component{
     constructor(){
         super()
         this.state = {
-            "params" : {
-                "verbEnding": "",
-                "verbName": "",
-                "verbObj": null,
-                "personIndex": 0,
-                "tense": "",
-                "verbTablesArray": []
-            }
+            "verbEnding": "",
+            "verbName": "",
+            "verbObj": null,
+            "personIndex": 0,
+            "tense": "",
+            "verbTablesArray": []
         }
         
         this.handleClick = this.handleClick.bind(this)
@@ -38,13 +36,12 @@ class Quiz extends Component{
         const verbName = verbObj.name
 
         this.setState({
-            "params" : {
-                "verbEnding": verbEnding,
-                "verbName": verbName,
-                "personIndex": personIndex,
-                "tense": tense,
-                "verbTablesArray": verbTables
-            }
+            "verbEnding": verbEnding,
+            "verbName": verbName,
+            "personIndex": personIndex,
+            "tense": tense,
+            "verbTablesArray": verbTables
+        
         })
     }
 
@@ -86,7 +83,7 @@ class Quiz extends Component{
         
         return uniqueArray
     }
-    
+
     // handle generating three unique verb tables and decorate each with an 'isCorrect' object
     getThreeVerbTables(name, tenses){
         let vt = []
@@ -129,10 +126,11 @@ class Quiz extends Component{
     finishQuiz(){}    
 
     render(){
+        const {verbEnding, verbName, verbObj, personIndex, tense, verbTablesArray} = this.state;
 
         return(
             <div>
-                <Question params = {this.state.params}/>
+                <Question verbEnding={verbEnding} verbName={verbName} verbObj={verbObj} personIndex={personIndex} tense={tense} verbTablesArray={verbTablesArray}/>
                 <button onClick={this.handleClick}>Next Question</button>
             </div>
         )

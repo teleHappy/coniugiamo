@@ -2,9 +2,9 @@ import React from 'react'
 
 // TODO: far from beautiful, this function can be improved...
 
-const VerbDisplayTable = (tableData) =>{
-    
-        const qArr = tableData;
+const VerbDisplayTable = ({verbTablesArray}) =>{
+        debugger
+        const qArr = verbTablesArray[0];
         // eslint-disable-next-line
         let s1Label, s1Verb, s2Label, s2Verb, s3Label, s3Verb, p1Label, p1Verb, p2Label, p2Verb, p3Label, p3Verb = "";
         if(qArr.length > 0){
