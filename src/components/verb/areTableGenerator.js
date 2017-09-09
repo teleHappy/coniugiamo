@@ -60,7 +60,10 @@ class areTableGenerator {
         if(tense === 'present'){
             stem = (pronoun === 'tu' || pronoun === 'noi') ? stem + 'h' : stem;
         }
-        if(tense === 'future' || tense === 'subjunctive' || tense === 'conditional'){
+        if(tense === 'subjunctive'){
+            stem = stem + 'h';
+        }
+        if(tense === 'future' || tense === 'conditional'){
             stem = name.replace('are', 'her')
         }
         return stem;
