@@ -22,16 +22,25 @@
 }
 
 .questionContainer{
-  height: 130px;
+  height: 140px;
+}
+
+.questionContainer p.questionText p.displayQuestionText{
+  padding-left: 20px;
 }
 
 .questionContainer p.questionText{
-  padding-left: 20px;
+  text-align: center;
+}
+
+.questionContainer p.displayQuestionText span.param{
+  color: #f5c03f
 }
 
 /* answer styles*/
 #answerList{
-  list-style: none
+  list-style: none;
+  margin-top: 20px;
 }
 
 /*verb tables*/
