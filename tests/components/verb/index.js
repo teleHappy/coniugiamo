@@ -41,15 +41,15 @@ describe('Testing Verb component', function(){
     
         it('present tense: returns properly formatted regular verb stem for "-care", "-gare" verbs', function(){
             assert.equal(verb.areTableGenerator.getVerbStem('cercare', 'present', 'io'), 'cerc')
-            assert.equal(verb.areTableGenerator.getVerbStem('cercare', 'present', 'tu'), 'cerc')
-            assert.equal(verb.areTableGenerator.getVerbStem('cercare', 'present', 'lui/lei/Lei'), 'cerch')
+            assert.equal(verb.areTableGenerator.getVerbStem('cercare', 'present', 'tu'), 'cerch')
+            assert.equal(verb.areTableGenerator.getVerbStem('cercare', 'present', 'lui/lei/Lei'), 'cerc')
             assert.equal(verb.areTableGenerator.getVerbStem('cercare', 'present', 'noi'), 'cerch')
             assert.equal(verb.areTableGenerator.getVerbStem('cercare', 'present', 'io'), 'cerc')
             assert.equal(verb.areTableGenerator.getVerbStem('cercare', 'present', 'io'), 'cerc')
       
             assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'io'), 'pag')
-            assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'tu'), 'pag')
-            assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'lui/lei/Lei'), 'pagh')
+            assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'tu'), 'pagh')
+            assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'lui/lei/Lei'), 'pag')
             assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'noi'), 'pagh')
             assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'voi'), 'pag')
             assert.equal(verb.areTableGenerator.getVerbStem('pagare', 'present', 'loro/Loro'), 'pag')
