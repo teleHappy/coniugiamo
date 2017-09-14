@@ -21,50 +21,51 @@ class areTableGenerator {
     getVerbStem(name, tense, pronoun){
         
         let stem = name.slice(0, name.length-3);
-        
-        if(tense === 'present'){
-           stem = this.getPresentVerbStem(name, pronoun)
-        }
 
         if(tense === 'future'){
-            stem = this.getFutureVerbStem(name);
+            stem = stem + 'er'
+        }
+        
+        if(name.slice(name.length-5) === 'ciare' || name.slice(name.length-5) === 'giare'){
+            stem = this.getVerbStemForCiareGiareEndings(name, pronoun, tense)
+        }
+
+        if(name.slice(name.length-4) === 'care' || name.slice(name.length-4) === 'gare'){
+            stem = this.getVerbStemForCareGareEndings(name, pronoun, tense)
         }
 
         return stem
     }
 
-    getPresentVerbStem(name, pronoun){
-    
+    getVerbStemForCiareGiareEndings(name, pronoun, tense){
         let stem = name.slice(0, name.length-3);
-        
-        //handle -ciare, -giare endings
-        if(name.slice(name.length-5) === 'ciare' || name.slice(name.length-5) === 'giare'){
-            //drop the -are and retain the i of the ending
-            //do not write a double 'i' in the present indicative endings for 3rd person singular or 1st person plural
-            stem = (pronoun === 'lui/lei/Lei' || pronoun === 'noi') ? name.slice(0, name.length-4) : stem;
-        }
 
-        //handle -care, -gare endings
-        if(name.slice(name.length-4) === 'care' || name.slice(name.length-4) === 'gare'){
-            //drop the -are but add an 'h' before the present indicative endings 'i' and 'iamo'
-            stem = (pronoun === 'lui/lei/Lei' || pronoun === 'noi') ? stem + 'h' : stem;
+        if(tense === 'present'){
+            if(pronoun === 'tu' || pronoun === 'noi'){ // avoid double i
+                stem = name.slice(0, name.length-4)
+            }
         }
-
-        return stem;
+        if(tense === 'subjunctive'){
+            stem = name.slice(0, name.length-4)
+        }
+        if(tense === 'future' || tense === 'conditional'){
+            stem = name.replace('iare', 'er');
+        }
+        return stem;    
     }
 
-    getFutureVerbStem(name){
-        let stem = name.slice(0, name.length-3) + "er"
-        
-        if(name.slice(name.length-5) === 'ciare' || name.slice(name.length-5) === 'giare'){
-            // replace ciare|giare with er
-            stem = name.replace('iare', 'er')
-        }
+    getVerbStemForCareGareEndings(name, pronoun, tense){
+        let stem = name.slice(0, name.length-3);
 
-        if(name.slice(name.length-4) === 'care' || name.slice(name.length-4) === 'gare'){
+        if(tense === 'present'){
+            stem = (pronoun === 'tu' || pronoun === 'noi') ? stem + 'h' : stem;
+        }
+        if(tense === 'subjunctive'){
+            stem = stem + 'h';
+        }
+        if(tense === 'future' || tense === 'conditional'){
             stem = name.replace('are', 'her')
         }
-
         return stem;
     }
 }
