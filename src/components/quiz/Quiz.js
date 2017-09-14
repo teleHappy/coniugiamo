@@ -1,4 +1,6 @@
-/* eslint no-warning-comments: ["error", { "terms": ["fixme", "any other term"], "location": "anywhere" }] */
+/* eslint   no-warning-comments: ["error", { "terms": ["fixme", "any other term"], "location": "anywhere" }],
+            id-length: 0, no-console: 0, no-mixed-operators: 1, no-empty-function: 1
+*/
 import React, {Component} from 'react';
 import Question from '../question/Question';
 import Verb from '../verb/Verb';
@@ -245,7 +247,6 @@ class Quiz extends Component {
     finishQuiz () {
 
     }
-    
 
     getButtonLabel () {
 
@@ -262,7 +263,7 @@ class Quiz extends Component {
 
         }
 
-        return label
+        return label;
 
     }
 

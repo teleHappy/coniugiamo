@@ -22,7 +22,7 @@ class areTableGenerator {
         
         let stem = name.slice(0, name.length-3);
 
-        if(tense === 'future'){
+        if(tense === 'future' || tense === 'conditional'){
             stem = stem + 'er'
         }
         
