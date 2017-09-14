@@ -3,7 +3,7 @@
     "are" : {
         "present": ["o", "i", "a", "iamo", "ate", "ano" ],
         "future": ["ò", "ai", "à", "emo", "ete", "anno" ],
-        "conditional": ["ei", "esti", "ebbe", "emmo", "ests", "ebbero" ],
+        "conditional": ["ei", "esti", "ebbe", "emmo", "este", "ebbero" ],
         "imperfect": ["avo", "avi", "ava", "avamo", "avate", "avano"],
         "pastAbsolute": ["ai", "asti", "ò", "ammo", "aste", "arono"],
         "subjunctive": ["i", "i", "i", "iamo", "iate", "ino"] 

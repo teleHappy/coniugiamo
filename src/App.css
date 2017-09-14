@@ -14,16 +14,57 @@
   padding: 20px;
   color: white;
 }
-.App div p.questionText, .App ol li.questionText{
-  text-align: left;
+
+.App div.questionContainer{
+  text-align: left; 
   padding-left: 20px;
   color: #ffffff
 }
-.App-intro {
-  font-size: large;
+
+.questionContainer{
+  height: 140px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.questionContainer p.questionText p.displayQuestionText{
+  padding-left: 20px;
+}
+
+.questionContainer p.questionText{
+  text-align: center;
+}
+
+.questionContainer p.displayQuestionText span.param{
+  color: #f5c03f
+}
+
+/* answer styles*/
+#answerList{
+  list-style: none;
+  margin-top: 20px;
+}
+
+/*verb tables*/
+
+#verbTableContainer{
+  position: relative;
+  left: 200px;
+  top: -70px;
+}
+
+table {		
+  width: 50%;
+  background-color: #fff;
+  color: #333333
+}
+  
+td {	
+  text-align: left;
+  padding: 0 10px;
+  width: 50%;
+}
+  
+th {	
+  text-align: left;
+  padding: 0 10px;
+  width: 50%;
 }

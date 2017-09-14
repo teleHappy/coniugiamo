@@ -1,12 +1,10 @@
- import React, {Component} from 'react'
+import React from 'react'
 
-class VerbDisplayTable extends Component{
-    constructor(props){
-        super(props)
-    }
+// TODO: far from beautiful, this function can be improved...
 
-    render(){
-        const qArr = this.props.verbTable;
+const VerbDisplayTable = ({verbTablesArray}) =>{
+        
+        const qArr = verbTablesArray[0];
         // eslint-disable-next-line
         let s1Label, s1Verb, s2Label, s2Verb, s3Label, s3Verb, p1Label, p1Verb, p2Label, p2Verb, p3Label, p3Verb = "";
         if(qArr.length > 0){
@@ -30,8 +28,7 @@ class VerbDisplayTable extends Component{
             
         }            
         return (
-            <div>
-            <div>
+            <div id="verbTableContainer">
                 <table>
                     
                     <tbody>
@@ -55,11 +52,8 @@ class VerbDisplayTable extends Component{
                         </tr>
                     </tbody>
                 </table>
-            </div>
             </div>)
     }
-    
- }
 
  export default VerbDisplayTable;
  
