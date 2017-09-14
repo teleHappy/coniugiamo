@@ -279,12 +279,7 @@ class Quiz extends Component {
             <div>
                 <div className="questionContainer">
                     <Question
-                        verbEnding={verbEnding}
-                        verbName={verbName}
-                        verbObj={verbObj}
-                        personIndex={personIndex}
-                        tense={tense}
-                        verbTablesArray={verbTablesArray}
+                        {...this.state.question}
                         checkAnswer={this.checkAnswer}
                     />
                 </div>
