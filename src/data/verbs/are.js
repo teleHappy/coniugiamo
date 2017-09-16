@@ -57,8 +57,8 @@ const are = [
         'gerund': ''
     },
     {
-        'name': 'desidare',
-        'translation': 'to want',
+        'name': 'desiderare',
+        'translation': 'to wish',
         'regular': true,
         'aux_verb': 'avere',
         'past_participle': '',

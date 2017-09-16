@@ -7,8 +7,9 @@
  * VerbTableFactory returns verb tables
  * delegates regular/irregular verb table creation
  */
+import are from '../../data/verbs/are'
 
-import {are} from '../../data/verbs';
+
 import areTableGenerator from './areTableGenerator';
 import ereTableGenerator from './ereTableGenerator';
 import ireTableGenerator from './ireTableGenerator';

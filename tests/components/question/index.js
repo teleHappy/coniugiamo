@@ -1,6 +1,6 @@
 /* eslint no-undef: 0 */
 import Quiz from '../../../src/components/quiz/Quiz';
-import {are, ere, ire} from '../../../src/data/verbs';
+import are from '../../../src/data/verbs/are';
 const quiz = new Quiz();
 
 const {assert} = require('chai');
