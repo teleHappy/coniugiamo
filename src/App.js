@@ -1,18 +1,14 @@
 import React, {Component} from 'react';
 import Quiz from './components/quiz/Quiz';
 import './App.css';
+import bulma from 'bulma';
 class App extends Component {
 
     render () {
 
         return (
             <div className="App">
-                <h3 style={{'backgroundColor': '#de3941',
-                    'color': 'white',
-                    'height': 'auto',
-                    'padding': '20px'
-                }}>Italian Verb Quiz
-                </h3>
+                <h1>Italian Verb Quiz</h1>
                 <Quiz />
             </div>
         );

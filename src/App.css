@@ -1,70 +1,106 @@
+html {
+  font-size: 16px;
+}
 
-.App {
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #444;
+  background: #32A332;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  
+}
+.App h1{
+  color: #fff;
+  background-color: red;
+  margin: auto;
+  min-width:100%;
   text-align: center;
+  font-size: 1.4rem;
+  padding:.3rem;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App div.questionContainer{
-  text-align: left; 
-  padding-left: 20px;
-  color: #ffffff
-}
-
-.questionContainer{
-  height: 140px;
-}
-
-.questionContainer p.questionText p.displayQuestionText{
-  padding-left: 20px;
-}
-
-.questionContainer p.questionText{
+.App .startContainer{
   text-align: center;
+  min-width: 100%;
+
 }
 
-.questionContainer p.displayQuestionText span.param{
-  color: #f5c03f
+.App .startContainer .introText{
+  color: #fff
 }
 
-/* answer styles*/
-#answerList{
+.App .startContainer button, .App .startButtonContainer button{
+  border: 0;
+  padding: .4rem;
+  background: #097CF7;
+  color: #fff;
+}
+
+.App .startButtonContainer{
+  padding: .5rem;
+  flex-grow: 1;
+}
+
+.App .questionContainer{
+  text-align: center;
+  min-width: 100%;
+}
+
+.App .questionContainer .questionText{
+  color: #fff
+}
+
+.App .questionContainer .questionText .param{
+  color: #F5DA09;
+  font-style: bold;
+}
+
+.App .answerListContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+
+.App .answerListContainer #answerList{
   list-style: none;
-  margin-top: 20px;
+  padding: 0;
+  margin-bottom: 1rem;
 }
-
-/*verb tables*/
+.App .answerListContainer #answerList li{
+  text-align: left;
+  padding: auto 0;
+  
+}
 
 #verbTableContainer{
-  position: relative;
-  left: 200px;
-  top: -70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .2rem 0;
+  margin: 1rem;
 }
 
 table {		
-  width: 50%;
+  width: 320px;
   background-color: #fff;
-  color: #333333
+  color: #333333;
+  border: 1px solid color#333;
 }
-  
-td {	
-  text-align: left;
-  padding: 0 10px;
-  width: 50%;
-}
-  
+
 th {	
   text-align: left;
-  padding: 0 10px;
-  width: 50%;
+  padding: 0 .11rem;
+  width: 40%;
 }
+
+td {	
+  text-align: left;
+  padding-left: 0 .2rem;
+  width: 60%;
+}
+  
+

@@ -269,7 +269,7 @@ class Questions extends Component {
         const buttonLabel = this.getButtonLabel();
         console.log(rules)
         return (
-            <div>
+            <div className="questionContainer">
                 {inProgress &&
                 <div>
                     <DisplayQuestion pronoun={rules.pronouns[personIndex]} tense={tense} verbName={verbName} />
@@ -278,8 +278,10 @@ class Questions extends Component {
 
                 </div>
                 }
-                <button onClick={this.nextQuestion} disabled={disabled}>{buttonLabel}</button>
+                <div className="startButtonContainer">
+                    <button onClick={this.nextQuestion} disabled={disabled}>{buttonLabel}</button>
                 </div>
+            </div>
         );
 
     }

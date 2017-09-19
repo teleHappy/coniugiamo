@@ -31,15 +31,14 @@ class Quiz extends Component {
         return (
             <div>
                 {!inProgress &&
-                    <div>
-                        <p className="questionText">Click Start Quiz to get Started</p>
+                    <div className="startContainer">
+                        <p className="introText">Click Start Quiz to get Started</p>
                         <button onClick={this.startQuiz}>Start Quiz</button>
                     </div>
                 }
                 {inProgress &&
-                    <div className="questionContainer">
-                        <Questions inProgress={inProgress}
-                        />
+                    <div>    
+                        <Questions inProgress={inProgress}/>
                     </div>
                 }
             </div>

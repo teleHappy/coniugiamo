@@ -20,9 +20,11 @@ const DisplayAnswers = ({verbTablesArray, personIndex, checkAnswer}) => {
     });
 
     return (
-        <ul id="answerList">
-            {listItems}
-        </ul>
+        <div className="answerListContainer">
+            <ul id="answerList">
+                {listItems}
+            </ul>
+        </div>
     );
 
 };
