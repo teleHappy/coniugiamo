@@ -8,7 +8,9 @@ class App extends Component {
 
         return (
             <div className="App">
-                <h1>Italian Verb Quiz</h1>
+                <div className="appHeader">
+                    <h1>Italian Verb Quiz</h1>
+                </div>
                 <Quiz />
             </div>
         );

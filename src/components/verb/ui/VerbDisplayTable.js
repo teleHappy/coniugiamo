@@ -9,7 +9,7 @@ const VerbDisplayTable = ({verbTablesArray}) =>{
         return (
         
             
-            <div className="tableWrapper">
+            <div className="verbTableContainer">
             <div className="leftCol">
                 <div>{verbTableArray[0][0]}</div>
                 <div>{verbTableArray[0][1]}</div>

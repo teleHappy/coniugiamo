@@ -29,15 +29,19 @@ class Quiz extends Component {
         const {inProgress, count} = this.state;
 
         return (
-            <div>
+            <div className="quizBody">
                 {!inProgress &&
                     <div className="startContainer">
-                        <p className="introText">Click Start Quiz to get Started</p>
-                        <button onClick={this.startQuiz}>Start Quiz</button>
+                        <div className="introTextContainer">    
+                            <p className="introText">Click Start Quiz to get Started</p>
+                        </div>
+                        <div className="startButtonContainer">
+                            <button onClick={this.startQuiz}>Start Quiz</button>
+                        </div>
                     </div>
                 }
                 {inProgress &&
-                    <div>    
+                    <div className="questionContext">    
                         <Questions inProgress={inProgress}/>
                     </div>
                 }

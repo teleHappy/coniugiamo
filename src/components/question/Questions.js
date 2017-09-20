@@ -271,16 +271,16 @@ class Questions extends Component {
         return (
             <div className="questionContainer">
                 {inProgress &&
-                <div>
+                <div className="questionLayout">
                     <DisplayQuestion pronoun={rules.pronouns[personIndex]} tense={tense} verbName={verbName} />
                     <DisplayAnswers verbTablesArray={verbTablesArray} personIndex={personIndex} checkAnswer={this.checkAnswer}/>
                     <VerbDisplayTable verbTablesArray={verbTablesArray} />
-
+                    <div className="startButtonContainer">
+                    <button onClick={this.nextQuestion} disabled={disabled}>{buttonLabel}</button>
+                    </div>
                 </div>
                 }
-                <div className="startButtonContainer">
-                    <button onClick={this.nextQuestion} disabled={disabled}>{buttonLabel}</button>
-                </div>
+
             </div>
         );
 

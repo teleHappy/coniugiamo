@@ -9,29 +9,62 @@ body {
   color: #444;
   background: #32A332;
 }
+
+#root{
+  height: 100vh;
+ 
+}
+
 .App{
   display: flex;
   flex-direction: column;
-  
+  height: 100%;
 }
-.App h1{
-  color: #fff;
+
+.App .appHeader{
+  height: 10vh;
   background-color: red;
-  margin: auto;
-  min-width:100%;
-  text-align: center;
-  font-size: 1.4rem;
-  padding:.3rem;
+}
+
+  .App  .appHeader h1{
+    color: #fff;
+    
+    
+    text-align: center;
+    font-size: 1.4rem;
+    padding:.3rem;
+  }
+
+.App .quizBody{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .App .startContainer{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   min-width: 100%;
 
 }
-
+.App .startContainer .introTextContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .App .startContainer .introText{
   color: #fff
+}
+
+.App .startButtonContainer{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .App .startContainer button, .App .startButtonContainer button{
@@ -39,18 +72,40 @@ body {
   padding: .4rem;
   background: #097CF7;
   color: #fff;
+  width: 50vw;
 }
 
-.App .startButtonContainer{
-  margin-top: 2rem;
+
+
+.App .startContext{
+  display: flex;
+}
+
+.App .questionContext{
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .App .questionContainer{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   min-width: 100%;
 }
 
+.App .questionLayout{
+  flex-grow:1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 6vh;
+  padding: 0 1rem;
+}
+
+.App .questionTextContainer{
+
+}
 .App .questionContainer .questionText{
   color: #fff;
 }
@@ -78,7 +133,7 @@ body {
   
 }
 
-.tableWrapper{
+.verbTableContainer{
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
