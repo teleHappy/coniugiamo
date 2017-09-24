@@ -1,7 +1,7 @@
 /* eslint multiline-ternary: 0, no-ternary: 0, no-warning-comments: 0*/
 import React from 'react';
 
-const DisplayAnswers = ({verbTablesArray, personIndex, checkAnswer}) => {
+const DisplayAnswers = ({verbTablesArray, personIdx, checkAnswer}) => {
 
     const isCorrect = vt => vt[vt.length - 1].isCorrect;
 
@@ -14,7 +14,7 @@ const DisplayAnswers = ({verbTablesArray, personIndex, checkAnswer}) => {
 
         return <li key={idx}
             className={classNameString}
-            onClick={checkAnswer}>{vt[personIndex][1]}
+            onClick={checkAnswer}>{vt[personIdx][1]}
         </li>;
 
     });

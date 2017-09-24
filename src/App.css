@@ -59,7 +59,7 @@ body {
   color: #fff
 }
 
-.App .startButtonContainer{
+.App .buttonContainer{
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -67,7 +67,7 @@ body {
   justify-content: center;
 }
 
-.App .startContainer button, .App .startButtonContainer button{
+.App .buttonContainer button{
   border: 0;
   padding: .4rem;
   background: #097CF7;
@@ -75,7 +75,9 @@ body {
   width: 50vw;
 }
 
-
+.App .buttonContainer button:disabled{
+  background: #999;
+}
 
 .App .startContext{
   display: flex;
