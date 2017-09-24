@@ -7,7 +7,7 @@ import Verb from '../verb/Verb';
 import {are} from '../../data/verbs';
 import _ from 'lodash';
 
-const verb = new Verb(); // helper methods
+const verb = new Verb(); // Helper methods
 const ANSWERS_LENGTH = 3;
 const QUESTIONS_LENGTH = 5;
 
@@ -25,31 +25,36 @@ class Quiz extends Component {
             'currentQuestion': {}
         };
         this.startQuiz = this.startQuiz.bind(this);
-        this.nextQuestion = this.nextQuestion.bind(this)
+        this.nextQuestion = this.nextQuestion.bind(this);
+
     }
 
-    componentWillMount(){
+    componentWillMount () {
+
         this.quizVerbArray = this.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH);
+
     }
 
     startQuiz () {
+
         this.setState({
             'inProgress': true
         });
         this.nextQuestion();
+
     }
 
     nextQuestion () {
-        
+
         // Call next on Question Observable
         const {verbObj, personIdx, newTense, tenses, verbTables} = this.getQuestionParams();
-        const newCount = this.state.count +1;
-        
+        const newCount = this.state.count + 1;
+
         // TODO: question state should be moved to Question
         this.setState({
             'count': newCount,
             'currentQuestion': {
-                'personIdx': personIdx,
+                personIdx,
                 'tense': newTense,
                 'verbEnding': 'are',
                 'verbName': verbObj.name,
@@ -57,34 +62,36 @@ class Quiz extends Component {
             }
 
         });
-        
+
     }
 
     getQuestionParams () {
+
         const verbObj = this.quizVerbArray[this.state.count];
         const tenses = this.getUniqueTenseArrayByCount(this.getRandomTense(), ANSWERS_LENGTH);
         const verbTables = this.getThreeVerbTables(verbObj.name, tenses);
         const personIdx = this.getRandomPersonIndex();
-        
+
         const questionParams = {
-            verbObj : verbObj,
-            personIdx : personIdx,
-            tenses : tenses,
-            verbTables : verbTables
-        }
+            verbObj,
+            personIdx,
+            tenses,
+            verbTables
+        };
 
         return questionParams;
+
     }
 
     getVerbNamesFromObjectArray (arr) {
-        
-                const newArray = arr.map(obj => obj.name);
-        
-        
-                return newArray;
-        
-            }
-        
+
+        const newArray = arr.map(obj => obj.name);
+
+
+        return newArray;
+
+    }
+
     // Gets an array of unique verb objects
     // Used to instatiate verb quiz and assure that there are no duplicate verbs in any quiz
     // TODO: incorporate ere, ire and irregular verbs
@@ -217,7 +224,7 @@ class Quiz extends Component {
             <div className="quizBody">
                 {!inProgress &&
                     <div className="startContainer">
-                        <div className="introTextContainer">    
+                        <div className="introTextContainer">
                             <p className="introText">Click Start Quiz to get Started</p>
                         </div>
                         <div className="buttonContainer">
@@ -226,7 +233,7 @@ class Quiz extends Component {
                     </div>
                 }
                 {inProgress &&
-                    <div className="questionContext">    
+                    <div className="questionContext">
                         <Questions count={this.state.count} params={this.state.currentQuestion} clickHandler={this.nextQuestion}/>
                     </div>
                 }
