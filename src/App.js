@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Quiz from './components/quiz/Quiz';
 import './App.css';
-import bulma from 'bulma';
+
 class App extends Component {
 
     render () {
