@@ -26,7 +26,7 @@ class Quiz extends Component {
         };
         this.startQuiz = this.startQuiz.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
-
+        this.checkAnswer = this.checkAnswer.bind(this);
     }
 
     componentWillMount () {
@@ -44,6 +44,41 @@ class Quiz extends Component {
 
     }
 
+    /**
+     * Increment state.correctAnswers in this method
+     * @param {Object} evt Button click event
+     * @returns {Boolean} true or false
+     */
+    checkAnswer (evt) {
+        
+        if (this.state.count === 4) {
+            console.log('count finished at 4')
+            return false;
+
+        }
+
+        const isCorrect = evt.target.className.match(/correct/) !== null;
+        
+        // should be an observable that Quiz observes
+        // get rid of state in here!
+        const {correctAnswers} = this.state;
+        let newCorrectAnswers = null;
+
+        if (isCorrect) {
+
+            newCorrectAnswers = correctAnswers + 1;
+
+        }
+
+        this.setState({
+            'correctAnswers': newCorrectAnswers
+
+        });
+
+        return true;
+
+    }
+
     nextQuestion () {
 
         // Call next on Question Observable
@@ -54,7 +89,7 @@ class Quiz extends Component {
         this.setState({
             'count': newCount,
             'currentQuestion': {
-                personIdx,
+                'personIdx': personIdx,
                 'tense': newTense,
                 'verbEnding': 'are',
                 'verbName': verbObj.name,
@@ -234,7 +269,7 @@ class Quiz extends Component {
                 }
                 {inProgress &&
                     <div className="questionContext">
-                        <Questions count={this.state.count} params={this.state.currentQuestion} clickHandler={this.nextQuestion}/>
+                        <Questions count={this.state.count} params={this.state.currentQuestion} checkAnswer={this.checkAnswer} clickHandler={this.nextQuestion}/>
                     </div>
                 }
             </div>

@@ -22,45 +22,12 @@ class Questions extends Component {
 
         super(props);
 
-        this.checkAnswer = this.checkAnswer.bind(this);
+        
         this.isCompleted = this.isCompleted.bind(this);
     }
 
 
-    /**
-     * Increment state.correctAnswers in this method
-     * @param {Object} evt Button click event
-     * @returns {Boolean} true or false
-     */
-    checkAnswer (evt) {
-
-        if (this.props.count === 4) {
-            console.log('count finished at 4')
-            return false;
-
-        }
-
-        const isCorrect = evt.target.className.match(/correct/) !== null;
-        
-        // should be an observable that Quiz observes
-        // get rid of state in here!
-        const {correctAnswers} = this.state;
-        let newCorrectAnswers = null;
-
-        if (isCorrect) {
-
-            newCorrectAnswers = correctAnswers + 1;
-
-        }
-
-        this.setState({
-            'correctAnswers': newCorrectAnswers
-
-        });
-
-        return true;
-
-    }
+    
 
     getButtonLabel(){
         if(this.isCompleted()){
@@ -86,7 +53,7 @@ class Questions extends Component {
             <div className="questionContainer">
                 <div className="questionLayout">
                     <DisplayQuestion pronoun={rules.pronouns[personIdx]} tense={tense} verbName={verbName} />
-                    <DisplayAnswers verbTablesArray={verbTablesArray} personIdx={personIdx} checkAnswer={this.checkAnswer}/>
+                    <DisplayAnswers verbTablesArray={verbTablesArray} personIdx={personIdx} checkAnswer={this.props.checkAnswer}/>
                     <VerbDisplayTable verbTablesArray={verbTablesArray} />
                     <div className="buttonContainer">
                         <button onClick={clickHandler} disabled={this.isCompleted()}>{this.getButtonLabel()}</button>

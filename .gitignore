@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+# assets
+/graphics-assets
+
 # testing
 /coverage
 
