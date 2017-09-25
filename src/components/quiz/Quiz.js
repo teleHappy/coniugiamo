@@ -51,12 +51,7 @@ class Quiz extends Component {
      * @returns {Boolean} true or false
      */
     checkAnswer (evt) {
-        
-        if (this.state.count === 4) {
-            console.log('count finished at 4')
-            return false;
 
-        }
 
         const isCorrect = evt.target.className.match(/correct/) !== null;
         
