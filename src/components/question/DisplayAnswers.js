@@ -24,8 +24,8 @@ const DisplayAnswers = ({verbTablesArray, personIdx, checkAnswer, showVerbTable}
             <ul id="answerList">
                 {listItems}
             </ul>
-        <div className="verbTableLink">
-            <a href="#" onClick={showVerbTable}>View Verb Table</a>
+        <div className="verbTableLinkContainer">
+            <a href="#" className="verbTableLink" onClick={showVerbTable}>View Verb Table</a>
         </div>
         </div>
     );

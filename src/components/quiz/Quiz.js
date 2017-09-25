@@ -63,12 +63,16 @@ class Quiz extends Component {
         // should be an observable that Quiz observes
         // get rid of state in here!
         const {correctAnswers} = this.state;
-        let newCorrectAnswers = null;
+        let newCorrectAnswers = correctAnswers;
+
+        document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'block';
 
         if (isCorrect) {
-
-            newCorrectAnswers = correctAnswers + 1;
-            document.getElementsByClassName('verbTableLink')[0].style.display = 'block';
+            document.getElementsByClassName('verbTableLink')[0].style.color = "#fff";
+            newCorrectAnswers++;
+        }
+        else {
+            document.getElementsByClassName('verbTableLink')[0].style.color = "red";    
         }
 
         this.setState({
@@ -88,7 +92,8 @@ class Quiz extends Component {
 
         // reset UI
         if(this.state.count > 0){
-            document.getElementsByClassName('verbTableLink')[0].style.display = 'none';
+            
+            document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'none';
             document.getElementsByClassName('verbTableContainer')[0].style.display = 'none'
         }
         // Call next on Question Observable
@@ -263,6 +268,16 @@ class Quiz extends Component {
 
     }
 
+    getScoreView(){
+        return (
+            <div className="scoreContainer">
+                <h3>Score:</h3>
+                <span>{this.state.correctAnswers} / {QUESTIONS_LENGTH}</span>
+            </div>
+        );
+
+    }
+
     render () {
 
         const {inProgress, count} = this.state;
@@ -281,11 +296,13 @@ class Quiz extends Component {
                 }
                 {inProgress &&
                     <div className="questionContext">
+                        
                         <Questions count={this.state.count} 
                             params={this.state.currentQuestion} 
                             checkAnswer={this.checkAnswer} 
                             clickHandler={this.nextQuestion}
                             showVerbTable={this.showVerbTable}/>
+                        {this.getScoreView()}
                     </div>
                 }
             </div>

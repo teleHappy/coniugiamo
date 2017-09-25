@@ -83,6 +83,15 @@ body {
   display: flex;
 }
 
+.App .scoreContainer{
+  text-align: center;
+  color: #F5DA09;
+}
+
+.App .scoreContainer h3{
+  margin: .5rem;
+}
+
 .App .questionContext{
   flex-grow: 1;
   display: flex;
@@ -95,6 +104,7 @@ body {
   flex-direction: column;
   text-align: center;
   min-width: 100%;
+  max-height: 500px;
 }
 
 .App .questionLayout{
@@ -105,9 +115,6 @@ body {
   padding: 0 1rem;
 }
 
-.App .questionTextContainer{
-
-}
 .App .questionContainer .questionText{
   color: #fff;
 }
@@ -142,11 +149,11 @@ body {
   margin-top: 3rem;
 }
 
-.verbTableLink{
+.verbTableLinkContainer{
   display: none;
 }
 
-.verbTableLink a{
+.verbTableLinkContainer a.verbTableLink{
   font-size: .8rem;
   color: #fff;
   text-decoration: none; 
