@@ -27,6 +27,7 @@ class Quiz extends Component {
         this.startQuiz = this.startQuiz.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
         this.checkAnswer = this.checkAnswer.bind(this);
+        this.showVerbTable = this.showVerbTable.bind(this);
     }
 
     componentWillMount () {
@@ -67,7 +68,7 @@ class Quiz extends Component {
         if (isCorrect) {
 
             newCorrectAnswers = correctAnswers + 1;
-
+            document.getElementsByClassName('verbTableLink')[0].style.display = 'block';
         }
 
         this.setState({
@@ -79,8 +80,17 @@ class Quiz extends Component {
 
     }
 
+    showVerbTable(){
+        document.getElementsByClassName('verbTableContainer')[0].style.display = 'flex';
+    }
+
     nextQuestion () {
 
+        // reset UI
+        if(this.state.count > 0){
+            document.getElementsByClassName('verbTableLink')[0].style.display = 'none';
+            document.getElementsByClassName('verbTableContainer')[0].style.display = 'none'
+        }
         // Call next on Question Observable
         const {verbObj, personIdx, newTense, tenses, verbTables} = this.getQuestionParams();
         const newCount = this.state.count + 1;
@@ -103,15 +113,17 @@ class Quiz extends Component {
     getQuestionParams () {
 
         const verbObj = this.quizVerbArray[this.state.count];
-        const tenses = this.getUniqueTenseArrayByCount(this.getRandomTense(), ANSWERS_LENGTH);
+        const newTense = this.getRandomTense();
+        const tenses = this.getUniqueTenseArrayByCount(newTense, ANSWERS_LENGTH);
         const verbTables = this.getThreeVerbTables(verbObj.name, tenses);
         const personIdx = this.getRandomPersonIndex();
 
         const questionParams = {
-            verbObj,
-            personIdx,
-            tenses,
-            verbTables
+            verbObj: verbObj,
+            newTense: newTense,
+            personIdx: personIdx,
+            tenses: tenses,
+            verbTables: verbTables
         };
 
         return questionParams;
@@ -269,7 +281,11 @@ class Quiz extends Component {
                 }
                 {inProgress &&
                     <div className="questionContext">
-                        <Questions count={this.state.count} params={this.state.currentQuestion} checkAnswer={this.checkAnswer} clickHandler={this.nextQuestion}/>
+                        <Questions count={this.state.count} 
+                            params={this.state.currentQuestion} 
+                            checkAnswer={this.checkAnswer} 
+                            clickHandler={this.nextQuestion}
+                            showVerbTable={this.showVerbTable}/>
                     </div>
                 }
             </div>

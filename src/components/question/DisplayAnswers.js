@@ -1,7 +1,7 @@
 /* eslint multiline-ternary: 0, no-ternary: 0, no-warning-comments: 0*/
 import React from 'react';
 
-const DisplayAnswers = ({verbTablesArray, personIdx, checkAnswer}) => {
+const DisplayAnswers = ({verbTablesArray, personIdx, checkAnswer, showVerbTable}) => {
 
     const isCorrect = vt => vt[vt.length - 1].isCorrect;
 
@@ -24,6 +24,9 @@ const DisplayAnswers = ({verbTablesArray, personIdx, checkAnswer}) => {
             <ul id="answerList">
                 {listItems}
             </ul>
+        <div className="verbTableLink">
+            <a href="#" onClick={showVerbTable}>View Verb Table</a>
+        </div>
         </div>
     );
 

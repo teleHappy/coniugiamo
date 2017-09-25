@@ -119,27 +119,37 @@ body {
 
 .App .answerListContainer{
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  
+  flex-direction: column;
+  min-height: 120px;
+  align-items: center;
 }
 
 .App .answerListContainer #answerList{
   list-style: none;
   padding: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .App .answerListContainer #answerList li{
   text-align: left;
   padding: auto 0;
-  
+  cursor: pointer;
 }
 
 .verbTableContainer{
-  display: flex;
+  display: none;
   flex-flow: row wrap;
   justify-content: center;
+  margin-top: 3rem;
+}
 
+.verbTableLink{
+  display: none;
+}
+
+.verbTableLink a{
+  font-size: .8rem;
+  color: #fff;
+  text-decoration: none; 
 }
 
 .leftCol, .rightCol{
