@@ -31,7 +31,7 @@ class Questions extends Component {
 
     getButtonLabel(){
         if(this.isCompleted()){
-            return 'Finished!'
+            return 'Last Question!'
         }
         else {
             return 'Next Question'

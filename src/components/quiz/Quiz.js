@@ -22,6 +22,7 @@ class Quiz extends Component {
             'correctAnswers': 0,
             'count': 0,
             'inProgress': false,
+            'currentQuestionAnswered': false,
             'currentQuestion': {}
         };
         this.startQuiz = this.startQuiz.bind(this);
@@ -52,6 +53,9 @@ class Quiz extends Component {
      */
     checkAnswer (evt) {
 
+        if(this.state.currentQuestionAnswered){
+            return false;
+        }
 
         const isCorrect = evt.target.className.match(/correct/) !== null;
         
@@ -71,8 +75,8 @@ class Quiz extends Component {
         }
 
         this.setState({
-            'correctAnswers': newCorrectAnswers
-
+            'correctAnswers': newCorrectAnswers,
+            'currentQuestionAnswered': true
         });
 
         return true;
@@ -98,6 +102,7 @@ class Quiz extends Component {
         // TODO: question state should be moved to Question
         this.setState({
             'count': newCount,
+            'currentQuestionAnswered': false,
             'currentQuestion': {
                 'personIdx': personIdx,
                 'tense': newTense,
@@ -266,8 +271,10 @@ class Quiz extends Component {
     getScoreView(){
         return (
             <div className="scoreContainer">
-                <h3>Score:</h3>
-                <span>{this.state.correctAnswers} / {QUESTIONS_LENGTH}</span>
+                <div className="score">
+                    <h3>Score</h3>
+                    <span>{this.state.correctAnswers} / {QUESTIONS_LENGTH}</span>
+                </div>
             </div>
         );
 
@@ -291,14 +298,15 @@ class Quiz extends Component {
                 }
                 {inProgress &&
                     <div className="questionContext">
-                        
+                    
                         <Questions count={this.state.count} 
                             params={this.state.currentQuestion} 
                             checkAnswer={this.checkAnswer} 
                             clickHandler={this.nextQuestion}
                             showVerbTable={this.showVerbTable}/>
-                        {this.getScoreView()}
+                            {this.getScoreView()}    
                     </div>
+                    
                 }
             </div>
         );

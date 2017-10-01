@@ -35,10 +35,8 @@ body {
     align-items: center;
     justify-content: center;
     color: #fff;
-    
-    
     font-size: 1.4rem;
-    padding:.3rem;
+    margin-top: 2.5rem;
   }
 
 .App .quizBody{
@@ -62,6 +60,7 @@ body {
   align-items: center;
 }
 .App .startContainer .introText{
+  font-size:  1.2rem;
   margin-top: 40px;
   color: #fff
 }
@@ -71,7 +70,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  min-height: 5rem;
 }
 
 .App .buttonContainer button{
@@ -91,8 +91,12 @@ body {
 }
 
 .App .scoreContainer{
-  text-align: center;
+  display: flex;
+  justify-content: center;
   color: #F5DA09;
+}
+.App .scoreContainer .score{
+  text-align: center
 }
 
 .App .scoreContainer h3{
@@ -106,12 +110,8 @@ body {
 }
 
 .App .questionContainer{
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
   text-align: center;
-  min-width: 100%;
-  max-height: 500px;
+  font-size: 1.4rem;
 }
 
 .App .questionLayout{
@@ -134,7 +134,7 @@ body {
 .App .answerListContainer{
   display: flex;
   flex-direction: column;
-  min-height: 120px;
+  min-height: 200px;
   align-items: center;
 }
 
@@ -144,16 +144,19 @@ body {
   margin-bottom: 2rem;
 }
 .App .answerListContainer #answerList li{
+  line-height: 2rem;
   text-align: left;
   padding: auto 0;
   cursor: pointer;
 }
 
+.verbTableWrapper{
+  min-height: 100px;
+}
+
 .verbTableContainer{
   display: none;
-  flex-flow: row wrap;
-  justify-content: center;
-  
+  font-size: 1.2rem;
 }
 
 .verbTableLinkContainer{
@@ -161,7 +164,7 @@ body {
 }
 
 .verbTableLinkContainer a.verbTableLink{
-  font-size: .8rem;
+  font-size: 1rem;
   color: #fff;
   text-decoration: none; 
 }
@@ -171,7 +174,7 @@ body {
   grid-template-columns: 1fr 1fr;
   background-color: #eee;
   grid-gap: 1px;
-  width: 180px;
+  width: 20rem;;
   
 }
 
