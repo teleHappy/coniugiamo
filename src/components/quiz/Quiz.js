@@ -91,7 +91,9 @@ class Quiz extends Component {
 
         // reset UI
         if(this.state.count > 0){
-            
+            document.getElementById('answerList').style.display="none";
+            document.getElementById('answerList').classList.remove('fadeIn');
+            document.getElementsByClassName('questionTextContainer')[0].style.display='none';
             document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'none';
             document.getElementsByClassName('verbTableContainer')[0].style.display = 'none'
         }
@@ -112,7 +114,7 @@ class Quiz extends Component {
             }
 
         });
-
+        
     }
 
     getQuestionParams () {
@@ -298,7 +300,7 @@ class Quiz extends Component {
                 }
                 {inProgress &&
                     <div className="questionContext">
-                    
+
                         <Questions count={this.state.count} 
                             params={this.state.currentQuestion} 
                             checkAnswer={this.checkAnswer} 

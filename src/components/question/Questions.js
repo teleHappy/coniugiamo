@@ -51,14 +51,15 @@ class Questions extends Component {
         
         return (
             <div className="questionContainer">
+                <VerbDisplayTable verbTablesArray={verbTablesArray} />
                 <div className="questionLayout">
                     <DisplayQuestion pronoun={rules.pronouns[personIdx]} tense={tense} verbName={verbName} />
                     <DisplayAnswers verbTablesArray={verbTablesArray} personIdx={personIdx} checkAnswer={this.props.checkAnswer} showVerbTable={this.props.showVerbTable}/>
-                    <VerbDisplayTable verbTablesArray={verbTablesArray} />
-                    <div className="buttonContainer">
+                    
+                </div>
+                <div className="buttonContainer">
                         <button onClick={clickHandler} disabled={this.isCompleted()}>{this.getButtonLabel()}</button>
                     </div>
-                </div>
             </div>
         );
 

@@ -1,34 +1,59 @@
 /* eslint multiline-ternary: 0, no-ternary: 0, no-warning-comments: 0*/
-import React from 'react';
+import React, {Component} from 'react';
 
-const DisplayAnswers = ({verbTablesArray, personIdx, checkAnswer, showVerbTable}) => {
+class DisplayAnswers extends Component {
 
-    const isCorrect = vt => vt[vt.length - 1].isCorrect;
+    constructor(props){
+        super(props)
+    }
 
-    const listItems = verbTablesArray.map((vt, idx) => {
+    isCorrect(vt){
+        vt[vt.length - 1].isCorrect;
+    }
 
-        let classNameString = 'questionText';
+    getListItems(){
+        let listItems = this.props.verbTablesArray.map((vt, idx) => {
+            
+            let classNameString = 'questionText';
+    
+            classNameString += this.isCorrect(vt) ? ' correct' : '';
+            // TODO: event delagation
+    
+            return <li key={idx}
+                className={classNameString}
+                onClick={this.props.checkAnswer}>{vt[this.props.personIdx][1]}
+            </li>;
+    
+        });
+        return listItems;
+    }
+    
+    componentDidMount(){
+        document.getElementById('answerList').style.opacity="block";
+        document.getElementById('answerList').classList.add('fadeIn');
+    }
 
-        classNameString += isCorrect(vt) ? ' correct' : '';
-        // TODO: event delagation
+    componentWillReceiveProps(){
+        
+        setTimeout(function(){
+            document.getElementById('answerList').style.display="block";
+            document.getElementById('answerList').classList.add('fadeIn');
+        },500)
+        
+    }
 
-        return <li key={idx}
-            className={classNameString}
-            onClick={checkAnswer}>{vt[personIdx][1]}
-        </li>;
-
-    });
-
-    return (
-        <div className="answerListContainer">
-            <ul id="answerList">
-                {listItems}
-            </ul>
-        <div className="verbTableLinkContainer">
-            <a href="#" className="verbTableLink" onClick={showVerbTable}>View Verb Table</a>
-        </div>
-        </div>
-    );
+    render(){
+        return (
+            <div className="answerListContainer">
+                <ul id="answerList">
+                    {this.getListItems()}
+                </ul>
+            <div className="verbTableLinkContainer">
+                <a href="#" className="verbTableLink" onClick={this.props.showVerbTable}>View Verb Table</a>
+            </div>
+            </div>
+        );
+    }
 
 };
 

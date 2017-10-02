@@ -1,14 +1,37 @@
 /* eslint arrow-body-style: 0 */
-import React from 'react';
+import React, {Component} from 'react';
 
 
-const DisplayQuestion = ({pronoun, tense, verbName}) => {
+class DisplayQuestion extends Component {
 
-    return (
-        <div className="questionTextContainer">    
-            <p className="questionText">Which is the correct <span className="param">{pronoun}</span> form for the <span className="param">{tense}</span> tense of <span className="param">{verbName}</span>?</p>
-        </div>
-    );
+    constructor(props){
+        super(props);
+    }
+
+    componentDidMount(){
+        document.querySelector('.questionTextContainer').style.display='block';
+        
+    }
+
+    componentWillReceiveProps(){
+        setTimeout(function(){
+            document.querySelector('.questionTextContainer').style.display='block';
+        }, 200)
+        
+        
+    }
+
+    render(){
+        
+        return (
+            <div className="questionTextWrapper">
+                <div className="questionTextContainer">    
+                    <p className="questionText">Which is the correct <span className="param">{this.props.pronoun}</span> form for the <span className="param">{this.props.tense}</span> tense of <span className="param">{this.props.verbName}</span>?</p>
+                </div>
+            </div>
+        );
+    }
+    
 
 };
 

@@ -41,6 +41,7 @@ body {
 
 .App .quizBody{
   display: flex;
+  position: relative;
   flex-direction: column;
   flex-grow: 1;
   align-items: center;
@@ -103,6 +104,22 @@ body {
   margin: .5rem;
 }
 
+.App .questionTextWrapper{
+  height: 120px;
+  display:block;
+}
+
+.App .questionTextContainer{
+  height: 120px;
+  display: none;
+  animation: slide-in .4s ease-in;
+}
+
+@keyframes slide-in{
+  0% {opacity: 0; transform: translate3d(90%, 0, 0)}
+  100% {opacity: 1; transform: none}
+}
+
 .App .questionContext{
   flex-grow: 1;
   display: flex;
@@ -110,6 +127,7 @@ body {
 }
 
 .App .questionContainer{
+  margin-top: 80px;
   text-align: center;
   font-size: 1.4rem;
 }
@@ -139,28 +157,38 @@ body {
 }
 
 .App .answerListContainer #answerList{
+  opacity: 0;
   list-style: none;
   padding: 0;
   margin-bottom: 2rem;
+  transition: opacity .7s ease-in
 }
+
+.App .answerListContainer #answerList.fadeIn{
+  opacity: 1
+}
+
 .App .answerListContainer #answerList li{
   line-height: 2rem;
   text-align: left;
   padding: auto 0;
   cursor: pointer;
-}
-
-.verbTableWrapper{
-  min-height: 100px;
-}
-
-.verbTableContainer{
-  display: none;
-  font-size: 1.2rem;
+  
 }
 
 .verbTableLinkContainer{
   display: none;
+}
+
+.verbTableWrapper{
+  display: none;
+  position: absolute;
+  max-width: 700px;
+}
+
+.verbTableContainer{
+  display: flex;
+  font-size: 1.2rem;
 }
 
 .verbTableLinkContainer a.verbTableLink{
@@ -170,11 +198,9 @@ body {
 }
 
 .leftCol, .rightCol{
-  display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #eee;
-  grid-gap: 1px;
-  width: 20rem;;
+  width: 50%;
   
 }
 
@@ -184,11 +210,14 @@ body {
 
 
 .leftCol :nth-child(odd), .rightCol :nth-child(odd){
-  background-color: #aaa
+  float: left;
+  width: 30%;
+  background-color: #aaa;
 }
 
 .leftCol :nth-child(even), .rightCol :nth-child(even){
-
+  float: left;
+  width: 70%
 }
 
 
