@@ -52,7 +52,7 @@ class Quiz extends Component {
      * @returns {Boolean} true or false
      */
     checkAnswer (evt) {
-
+        
         if(this.state.currentQuestionAnswered){
             return false;
         }
@@ -84,7 +84,8 @@ class Quiz extends Component {
     }
 
     showVerbTable(){
-        document.getElementsByClassName('verbTableContainer')[0].style.display = 'flex';
+        
+        document.getElementsByClassName('verbTableWrapper')[0].style.display = 'flex';
     }
 
     nextQuestion () {

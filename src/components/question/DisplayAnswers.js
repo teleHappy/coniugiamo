@@ -8,14 +8,14 @@ class DisplayAnswers extends Component {
     }
 
     isCorrect(vt){
-        vt[vt.length - 1].isCorrect;
+        return vt[vt.length - 1].isCorrect;
     }
 
     getListItems(){
         let listItems = this.props.verbTablesArray.map((vt, idx) => {
             
             let classNameString = 'questionText';
-    
+            
             classNameString += this.isCorrect(vt) ? ' correct' : '';
             // TODO: event delagation
     
