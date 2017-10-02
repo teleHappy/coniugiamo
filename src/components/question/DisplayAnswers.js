@@ -29,16 +29,24 @@ class DisplayAnswers extends Component {
     }
     
     componentDidMount(){
-        document.getElementById('answerList').style.opacity="block";
-        document.getElementById('answerList').classList.add('fadeIn');
+        this.answerList = document.getElementById('answerList');
+        this.answerListContainer = document.getElementsByClassName('answerListContainer')[0];
+        
+        this.answerList.style.display='block';
+        this.answerList.classList.add('fadeIn')
+
     }
 
     componentWillReceiveProps(){
         
+        const that = this;
+
         setTimeout(function(){
-            document.getElementById('answerList').style.display="block";
-            document.getElementById('answerList').classList.add('fadeIn');
-        },500)
+            that.answerListContainer.style.visibility='visible'
+            that.answerList.classList.add('fadeIn');
+        }, 500);        
+        
+        
         
     }
 

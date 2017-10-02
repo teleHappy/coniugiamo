@@ -161,7 +161,7 @@ body {
   list-style: none;
   padding: 0;
   margin-bottom: 2rem;
-  transition: opacity .7s ease-in
+  transition: opacity .3s ease-in
 }
 
 .App .answerListContainer #answerList.fadeIn{

@@ -92,11 +92,16 @@ class Quiz extends Component {
 
         // reset UI
         if(this.state.count > 0){
-            document.getElementById('answerList').style.display="none";
-            document.getElementById('answerList').classList.remove('fadeIn');
+            
             document.getElementsByClassName('questionTextContainer')[0].style.display='none';
+            
+            document.getElementsByClassName('answerListContainer')[0].style.visibility='hidden';
+            document.getElementById('answerList').classList.remove('fadeIn')            
+            
+
             document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'none';
-            document.getElementsByClassName('verbTableContainer')[0].style.display = 'none'
+            document.getElementsByClassName('verbTableWrapper')[0].style.display = 'none'
+            
         }
         // Call next on Question Observable
         const {verbObj, personIdx, newTense, tenses, verbTables} = this.getQuestionParams();

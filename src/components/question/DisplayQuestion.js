@@ -9,13 +9,13 @@ class DisplayQuestion extends Component {
     }
 
     componentDidMount(){
-        document.querySelector('.questionTextContainer').style.display='block';
+        document.getElementsByClassName('questionTextContainer')[0].style.display='block';
         
     }
 
     componentWillReceiveProps(){
         setTimeout(function(){
-            document.querySelector('.questionTextContainer').style.display='block';
+            document.getElementsByClassName('questionTextContainer')[0].style.display='block';
         }, 200)
         
         
