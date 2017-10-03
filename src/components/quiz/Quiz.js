@@ -29,6 +29,7 @@ class Quiz extends Component {
         this.nextQuestion = this.nextQuestion.bind(this);
         this.checkAnswer = this.checkAnswer.bind(this);
         this.showVerbTable = this.showVerbTable.bind(this);
+
     }
 
     componentWillMount () {
@@ -52,26 +53,29 @@ class Quiz extends Component {
      * @returns {Boolean} true or false
      */
     checkAnswer (evt) {
-        
-        if(this.state.currentQuestionAnswered){
+
+        if (this.state.currentQuestionAnswered) {
+
             return false;
+
         }
 
         const isCorrect = evt.target.className.match(/correct/) !== null;
-        
-        // should be an observable that Quiz observes
-        // get rid of state in here!
+
         const {correctAnswers} = this.state;
         let newCorrectAnswers = correctAnswers;
 
         document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'block';
 
         if (isCorrect) {
-            document.getElementsByClassName('verbTableLink')[0].style.color = "#fff";
+
+            document.getElementsByClassName('verbTableLink')[0].style.color = '#fff';
             newCorrectAnswers++;
-        }
-        else {
-            document.getElementsByClassName('verbTableLink')[0].style.color = "red";    
+
+        } else {
+
+            document.getElementsByClassName('verbTableLink')[0].style.color = 'red';
+
         }
 
         this.setState({
@@ -83,25 +87,26 @@ class Quiz extends Component {
 
     }
 
-    showVerbTable(){
-        
+    showVerbTable () {
+
         document.getElementsByClassName('verbTableWrapper')[0].style.display = 'flex';
+
     }
 
     nextQuestion () {
 
-        // reset UI
-        if(this.state.count > 0){
-            
-            document.getElementsByClassName('questionTextContainer')[0].style.display='none';
-            
-            document.getElementsByClassName('answerListContainer')[0].style.visibility='hidden';
-            document.getElementById('answerList').classList.remove('fadeIn')            
-            
+        // Reset UI
+        if (this.state.count > 0) {
+
+            document.getElementsByClassName('questionTextContainer')[0].style.display = 'none';
+
+            document.getElementsByClassName('answerListContainer')[0].style.visibility = 'hidden';
+            document.getElementById('answerList').classList.remove('fadeIn');
+
 
             document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'none';
-            document.getElementsByClassName('verbTableWrapper')[0].style.display = 'none'
-            
+            document.getElementsByClassName('verbTableWrapper')[0].style.display = 'none';
+
         }
         // Call next on Question Observable
         const {verbObj, personIdx, newTense, tenses, verbTables} = this.getQuestionParams();
@@ -112,7 +117,7 @@ class Quiz extends Component {
             'count': newCount,
             'currentQuestionAnswered': false,
             'currentQuestion': {
-                'personIdx': personIdx,
+                personIdx,
                 'tense': newTense,
                 'verbEnding': 'are',
                 'verbName': verbObj.name,
@@ -120,7 +125,7 @@ class Quiz extends Component {
             }
 
         });
-        
+
     }
 
     getQuestionParams () {
@@ -132,11 +137,11 @@ class Quiz extends Component {
         const personIdx = this.getRandomPersonIndex();
 
         const questionParams = {
-            verbObj: verbObj,
-            newTense: newTense,
-            personIdx: personIdx,
-            tenses: tenses,
-            verbTables: verbTables
+            verbObj,
+            newTense,
+            personIdx,
+            tenses,
+            verbTables
         };
 
         return questionParams;
@@ -276,7 +281,8 @@ class Quiz extends Component {
 
     }
 
-    getScoreView(){
+    getScoreView () {
+
         return (
             <div className="scoreContainer">
                 <div className="score">
@@ -307,14 +313,14 @@ class Quiz extends Component {
                 {inProgress &&
                     <div className="questionContext">
 
-                        <Questions count={this.state.count} 
-                            params={this.state.currentQuestion} 
-                            checkAnswer={this.checkAnswer} 
+                        <Questions count={this.state.count}
+                            params={this.state.currentQuestion}
+                            checkAnswer={this.checkAnswer}
                             clickHandler={this.nextQuestion}
                             showVerbTable={this.showVerbTable}/>
-                            {this.getScoreView()}    
+                            {this.getScoreView()}
                     </div>
-                    
+
                 }
             </div>
         );

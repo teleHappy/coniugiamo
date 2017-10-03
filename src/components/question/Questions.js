@@ -22,40 +22,47 @@ class Questions extends Component {
 
         super(props);
 
-        
+
         this.isCompleted = this.isCompleted.bind(this);
+
     }
 
 
-    
+    getButtonLabel () {
 
-    getButtonLabel(){
-        if(this.isCompleted()){
-            return 'Last Question!'
+        if (this.isCompleted()) {
+
+            return 'Last Question!';
+
         }
-        else {
-            return 'Next Question'
-        }
+
+        return 'Next Question';
+
+
     }
 
-    isCompleted(){
+    isCompleted () {
+
         const {count} = this.props;
-        return (count === 5) ? true : false;
+
+
+        return count === 5;
+
     }
 
     render () {
 
         const {personIdx, tense, verbName, pronoun, verbTablesArray} = this.props.params;
         const {count, clickHandler} = this.props;
-        const buttonLabel = 'Next Question'
-        
+        const buttonLabel = 'Next Question';
+
         return (
             <div className="questionContainer">
                 <VerbDisplayTable verbTablesArray={verbTablesArray} />
                 <div className="questionLayout">
                     <DisplayQuestion pronoun={rules.pronouns[personIdx]} tense={tense} verbName={verbName} />
                     <DisplayAnswers verbTablesArray={verbTablesArray} personIdx={personIdx} checkAnswer={this.props.checkAnswer} showVerbTable={this.props.showVerbTable}/>
-                    
+
                 </div>
                 <div className="buttonContainer">
                         <button onClick={clickHandler} disabled={this.isCompleted()}>{this.getButtonLabel()}</button>
