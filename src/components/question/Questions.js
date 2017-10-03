@@ -46,7 +46,7 @@ class Questions extends Component {
         const {count} = this.props;
 
 
-        return count === 5;
+        return count === QUESTIONS_LENGTH;
 
     }
 
@@ -65,8 +65,8 @@ class Questions extends Component {
 
                 </div>
                 <div className="buttonContainer">
-                        <button onClick={clickHandler} disabled={this.isCompleted()}>{this.getButtonLabel()}</button>
-                    </div>
+                    <button onClick={clickHandler} disabled={this.isCompleted()}>{this.getButtonLabel()}</button>
+                </div>
             </div>
         );
 

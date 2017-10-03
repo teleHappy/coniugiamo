@@ -7,7 +7,7 @@ import Verb from '../verb/Verb';
 import {are} from '../../data/verbs';
 import _ from 'lodash';
 
-const verb = new Verb(); // Helper methods
+const verb = new Verb();
 const ANSWERS_LENGTH = 3;
 const QUESTIONS_LENGTH = 5;
 
@@ -21,10 +21,11 @@ class Quiz extends Component {
         this.state = {
             'correctAnswers': 0,
             'count': 0,
-            'inProgress': false,
+            'currentQuestion': {},
             'currentQuestionAnswered': false,
-            'currentQuestion': {}
+            'inProgress': false
         };
+
         this.startQuiz = this.startQuiz.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
         this.checkAnswer = this.checkAnswer.bind(this);
@@ -70,7 +71,7 @@ class Quiz extends Component {
         if (isCorrect) {
 
             document.getElementsByClassName('verbTableLink')[0].style.color = '#fff';
-            newCorrectAnswers++;
+            newCorrectAnswers += 1;
 
         } else {
 
@@ -112,17 +113,16 @@ class Quiz extends Component {
         const {verbObj, personIdx, newTense, tenses, verbTables} = this.getQuestionParams();
         const newCount = this.state.count + 1;
 
-        // TODO: question state should be moved to Question
         this.setState({
             'count': newCount,
-            'currentQuestionAnswered': false,
             'currentQuestion': {
                 personIdx,
                 'tense': newTense,
                 'verbEnding': 'are',
                 'verbName': verbObj.name,
                 'verbTablesArray': verbTables
-            }
+            },
+            'currentQuestionAnswered': false
 
         });
 
@@ -137,10 +137,10 @@ class Quiz extends Component {
         const personIdx = this.getRandomPersonIndex();
 
         const questionParams = {
-            verbObj,
             newTense,
             personIdx,
             tenses,
+            verbObj,
             verbTables
         };
 

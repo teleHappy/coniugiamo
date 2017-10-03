@@ -1,13 +1,8 @@
 /* eslint multiline-ternary: 0, no-ternary: 0, no-warning-comments: 0*/
 import React, {Component} from 'react';
+const FADEIN_TIMEOUT = 500;
 
 class DisplayAnswers extends Component {
-
-    constructor (props) {
-
-        super(props);
-
-    }
 
     isCorrect (vt) {
 
@@ -39,7 +34,7 @@ class DisplayAnswers extends Component {
     componentDidMount () {
 
         this.answerList = document.getElementById('answerList');
-        this.answerListContainer = document.getElementsByClassName('answerListContainer')[0];
+        this.answerListContainer = document.getElementsByClassName('answerListContainer');
 
         this.answerList.style.display = 'block';
         this.answerList.classList.add('fadeIn');
@@ -52,10 +47,10 @@ class DisplayAnswers extends Component {
 
         setTimeout(() => {
 
-            that.answerListContainer.style.visibility = 'visible';
+            that.answerListContainer[0].style.visibility = 'visible';
             that.answerList.classList.add('fadeIn');
 
-        }, 500);
+        }, FADEIN_TIMEOUT);
 
 
     }
@@ -67,9 +62,9 @@ class DisplayAnswers extends Component {
                 <ul id="answerList">
                     {this.getListItems()}
                 </ul>
-            <div className="verbTableLinkContainer">
-                <a href="#" className="verbTableLink" onClick={this.props.showVerbTable}>View Verb Table</a>
-            </div>
+                <div className="verbTableLinkContainer">
+                    <a href="#" className="verbTableLink" onClick={this.props.showVerbTable}>View Verb Table</a>
+                </div>
             </div>
         );
 

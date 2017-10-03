@@ -1,6 +1,6 @@
 
 /**
- * areTableGenerator: manages logic for forming regular "are" verb conjugations
+ * AreTableGenerator: manages logic for forming regular "are" verb conjugations
  */
 
 const rules = require('../../data/rules.json');

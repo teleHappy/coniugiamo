@@ -1,14 +1,9 @@
 /* eslint arrow-body-style: 0 */
 import React, {Component} from 'react';
 
+const QUESTION_TEXT_CONTAINER_TIMEOUT = 200;
 
 class DisplayQuestion extends Component {
-
-    constructor (props) {
-
-        super(props);
-
-    }
 
     componentDidMount () {
 
@@ -22,7 +17,7 @@ class DisplayQuestion extends Component {
 
             document.getElementsByClassName('questionTextContainer')[0].style.display = 'block';
 
-        }, 200);
+        }, QUESTION_TEXT_CONTAINER_TIMEOUT);
 
 
     }

@@ -1,5 +1,5 @@
 /**
- * ireTableGenerator: manages logic for forming regular "ire" verb conjugations
+ * IreTableGenerator: manages logic for forming regular "ire" verb conjugations
  */
 
 const rules = require('../../data/rules.json');
