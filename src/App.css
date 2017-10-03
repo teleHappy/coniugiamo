@@ -63,7 +63,8 @@ body {
 .App .startContainer .introText{
   font-size:  1.2rem;
   margin-top: 40px;
-  color: #fff
+  color: #fff;
+  text-shadow: 1px 1px 1px #3B3B3B;
 }
 
 .App .buttonContainer{
@@ -116,7 +117,7 @@ body {
 }
 
 @keyframes slide-in{
-  0% {opacity: 0; transform: translate3d(90%, 0, 0)}
+  0% {opacity: 0; transform: translate3d(40%, 0, 0)}
   100% {opacity: 1; transform: none}
 }
 
@@ -142,6 +143,7 @@ body {
 
 .App .questionContainer .questionText{
   color: #fff;
+  text-shadow: 1px 1px 1px #3B3B3B;
 }
 
 .App .questionContainer .questionText .param{
@@ -173,7 +175,7 @@ body {
   text-align: left;
   padding: auto 0;
   cursor: pointer;
-  
+  text-shadow: 1px 1px 1px #3B3B3B;
 }
 
 .verbTableLinkContainer{
