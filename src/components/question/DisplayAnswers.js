@@ -17,7 +17,6 @@ class DisplayAnswers extends Component {
             let classNameString = 'questionText';
 
             classNameString += this.isCorrect(vt) ? ' correct' : '';
-            // TODO: event delagation
 
             return <li key={idx}
                 className={classNameString}
@@ -52,7 +51,6 @@ class DisplayAnswers extends Component {
 
         }, FADEIN_TIMEOUT);
 
-
     }
 
     render () {
@@ -63,7 +61,9 @@ class DisplayAnswers extends Component {
                     {this.getListItems()}
                 </ul>
                 <div className="verbTableLinkContainer">
-                    <a href="#" className="verbTableLink" onClick={this.props.showVerbTable}>View Verb Table</a>
+                    <a href="#" className="verbTableLink" onClick={this.props.showVerbTable}>
+                        View Verb Table
+                    </a>
                 </div>
             </div>
         );

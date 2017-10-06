@@ -27,7 +27,12 @@ class DisplayQuestion extends Component {
         return (
             <div className="questionTextWrapper">
                 <div className="questionTextContainer">
-                    <p className="questionText">Which is the correct <span className="param">{this.props.pronoun}</span> form for the <span className="param">{this.props.tense}</span> tense of <span className="param">{this.props.verbName}</span>?</p>
+                    <p className="questionText">
+                        Which is the correct
+                        <span className="param">&nbsp;{this.props.pronoun}</span> form for the
+                        <span className="param">&nbsp;{this.props.tense}</span> tense of
+                        <span className="param">&nbsp;{this.props.verbName}</span>?
+                    </p>
                 </div>
             </div>
         );
