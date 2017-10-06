@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-
+import AppHeader from './components/views/AppHeader';
 import Questions from './components/question/Questions';
-import Verb from './components/verb/Verb';
-import {are} from './data/verbs';
-import _ from 'lodash';
+import VerbUtils from './components/verb/VerbUtils';
 
-const verb = new Verb();
+const verbUtils = new VerbUtils();
 const ANSWERS_LENGTH = 3;
 const QUESTIONS_LENGTH = 5;
 const rules = require('./data/rules.json');
@@ -32,7 +30,13 @@ class Quiz extends Component {
 
     componentWillMount () {
 
-        this.quizVerbArray = this.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH);
+        this.initializeQuizVerbs();
+
+    }
+
+    initializeQuizVerbs () {
+
+        this.quizVerbArray = verbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH);
 
     }
 
@@ -94,24 +98,28 @@ class Quiz extends Component {
 
     }
 
+    resetUI () {
+
+        document.getElementsByClassName('questionTextContainer')[0].style.display = 'none';
+        document.getElementsByClassName('answerListContainer')[0].style.visibility = 'hidden';
+        document.getElementById('answerList').classList.remove('fadeIn');
+        document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'none';
+        document.getElementsByClassName('verbTableWrapper')[0].style.display = 'none';
+
+        return true;
+
+    }
+
     nextQuestion () {
 
-        // Reset UI
         if (this.state.count > 0) {
 
-            document.getElementsByClassName('questionTextContainer')[0].style.display = 'none';
-
-            document.getElementsByClassName('answerListContainer')[0].style.visibility = 'hidden';
-            document.getElementById('answerList').classList.remove('fadeIn');
-
-
-            document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'none';
-            document.getElementsByClassName('verbTableWrapper')[0].style.display = 'none';
+            this.resetUI();
 
         }
-        // Call next on Question Observable
-        const {verbObj, personIdx, newTense, tenses, verbTables} = this.getQuestionParams();
-        const newCount = this.state.count + 1;
+
+        const {newTense, personIdx, tenses, verbObj, verbTables} = this.getQuestionParams();
+        const newCount = parseInt(this.state.count + 1, 10);
 
         this.setState({
             'count': newCount,
@@ -123,7 +131,6 @@ class Quiz extends Component {
                 'verbTablesArray': verbTables
             },
             'currentQuestionAnswered': false
-
         });
 
     }
@@ -131,10 +138,10 @@ class Quiz extends Component {
     getQuestionParams () {
 
         const verbObj = this.quizVerbArray[this.state.count];
-        const newTense = this.getRandomTense();
-        const tenses = this.getUniqueTenseArrayByCount(newTense, ANSWERS_LENGTH);
-        const verbTables = this.getThreeVerbTables(verbObj.name, tenses);
-        const personIdx = this.getRandomPersonIndex();
+        const newTense = verbUtils.getRandomTense();
+        const tenses = verbUtils.getUniqueTenseArrayByCount(newTense, ANSWERS_LENGTH);
+        const verbTables = verbUtils.getThreeVerbTables(verbObj.name, tenses);
+        const personIdx = verbUtils.getRandomPersonIndex();
 
         const questionParams = {
             newTense,
@@ -145,138 +152,6 @@ class Quiz extends Component {
         };
 
         return questionParams;
-
-    }
-
-    getVerbNamesFromObjectArray (arr) {
-
-        const newArray = arr.map(obj => obj.name);
-
-        return newArray;
-
-    }
-
-    // Gets an array of unique verb objects
-    // Used to instatiate verb quiz and assure that there are no duplicate verbs in any quiz
-    // TODO: incorporate ere, ire and irregular verbs
-    getUniqueAreVerbObjectsByCount (count) {
-
-        const verbObjArray = are;
-        const offset = count - 1;
-        const uniqueArray = [are[0]];
-
-        for (let idx = 0; idx < offset; idx += 1) {
-
-            const differenceArray = _.difference(verbObjArray, uniqueArray);
-            const min = Math.ceil(0);
-
-            const max = Math.floor(differenceArray.length - 1);
-
-            uniqueArray.push(differenceArray[Math.floor(Math.random() * (max - min)) + 1]);
-
-        }
-
-        return uniqueArray;
-
-    }
-
-
-    getUniqueTenseArrayByCount (tense, count) {
-
-        const tensesArray = rules.tenses;
-        const countOffset = count - 1;
-        const uniqueArray = [tense];
-
-        for (let idx = 0; idx < countOffset; idx += 1) {
-
-            const differenceArray = _.difference(tensesArray, uniqueArray);
-            const min = Math.ceil(0);
-            const max = Math.floor(differenceArray.length);
-
-            uniqueArray.push(differenceArray[Math.floor(Math.random() * (max - min)) + min]);
-
-        }
-
-        return uniqueArray;
-
-    }
-
-    // Handle generating three unique verb tables and decorate each with an 'isCorrect' object
-    getThreeVerbTables (name, tenses) {
-
-        let vt = [];
-        const conjugatedVerbTables = [];
-        // Populate three conjugation tables
-
-        for (let idx = 0; idx < tenses.length; idx += 1) {
-
-            vt = verb.getConjugatedVerbTable(name, tenses[idx]);
-            // The first entry is the correct quiz verb, track with this added object
-            if (idx === 0) {
-
-                vt.push({'isCorrect': true});
-
-            } else {
-
-                vt.push({'isCorrect': false});
-
-            }
-
-            conjugatedVerbTables.push(vt);
-
-        }
-
-        return conjugatedVerbTables;
-
-    }
-
-    getRandomTense () {
-
-        const min = Math.ceil(0);
-        const max = Math.floor(rules.tenses.length);
-
-
-        return rules.tenses[Math.floor(Math.random() * (max - min)) + min];
-
-    }
-
-    getRandomPersonIndex () {
-
-        const min = Math.ceil(0);
-        const max = Math.floor(rules.pronouns.length);
-
-        return Math.floor(Math.random() * (max - min) + min);
-
-    }
-
-    // Not used ...
-    getRandomQuizVerbObject () {
-
-        const verbs = this.quizVerbArray;
-        const min = Math.ceil(0);
-        const max = Math.floor(verbs.length);
-
-        return verbs[Math.floor(Math.random() * (max - min)) + min];
-
-    }
-
-    // Returns an array of {count} random verb names from verbObjectArry
-    getUniqueKeyValuesFromObjectArrayByCount (value, array, count) {
-
-        const verbNameArray = this.getVerbNamesFromObjectArray(array);
-        const uniqueArray = [];
-
-        for (let int = 0; int < count; int += 1) {
-
-            const differenceArray = _.difference(verbNameArray, uniqueArray);
-            const min = Math.ceil(0);
-            const max = Math.floor(differenceArray.length);
-
-            uniqueArray.push(differenceArray[Math.floor(Math.random() * (max - min)) + min]);
-
-        }
-
-        return uniqueArray;
 
     }
 
@@ -293,15 +168,35 @@ class Quiz extends Component {
 
     }
 
+    getButtonLabel () {
+
+        if (this.isCompleted()) {
+
+            return 'Last Question!';
+
+        }
+
+        return 'Next Question';
+
+
+    }
+
+    isCompleted () {
+
+        const {count} = this.state;
+
+
+        return count === QUESTIONS_LENGTH;
+
+    }
+
     render () {
 
         const {inProgress, count} = this.state;
 
         return (
             <div className="App">
-                <div className="appHeader">
-                    <h1>Italian Verb Quiz</h1>
-                </div>
+                <AppHeader />
                 <div className="quizBody">
                     {!inProgress &&
                         <div className="startContainer">
@@ -321,7 +216,15 @@ class Quiz extends Component {
                                 checkAnswer={this.checkAnswer}
                                 clickHandler={this.nextQuestion}
                                 showVerbTable={this.showVerbTable}/>
+
+                            <div className="buttonContainer">
+                                <button onClick={this.nextQuestion} disabled={this.isCompleted()}>
+                                        {this.getButtonLabel()}
+                                </button>
+                            </div>
+
                             {this.getScoreView()}
+
                         </div>
                     }
                 </div>
