@@ -56,14 +56,19 @@ class Verb {
         // TODO: handle irregular verbs
 
         if (regular) {
+            if(conjugation === 'are'){
+                verbTableData = this.areTableGenerator.getTableData(verbDataObj, tense)
+            }
+            if(conjugation === 'ere'){
+                verbTableData = this.ereTableGenerator.getTableData(verbDataObj, tense)
+            }
+            if(conjugation === 'ire'){
+                verbTableData = this.ireTableGenerator.getTableData(verbDataObj, tense)
+            }
 
-            verbTableData = conjugation === 'are' ? this.areTableGenerator.getTableData(verbDataObj, tense)
-                : conjugation === 'ere' ? this.ereTableGenerator.getTableData(verbDataObj, tense)
-                    : conjugation === 'ire' ? this.ireTableGenerator.getTableData(verbDataObj, tense) : () => {
-
-                        throw new Error('unhandled verb');
-
-                    };
+            if(conjugation === []){
+                throw new Error('unhandled verb');
+            }
 
         }
 

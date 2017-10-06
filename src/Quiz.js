@@ -1,17 +1,14 @@
 import React, {Component} from 'react';
 
-
-import Questions from '../question/Questions';
-
-import Verb from '../verb/Verb';
-import {are} from '../../data/verbs';
+import Questions from './components/question/Questions';
+import Verb from './components/verb/Verb';
+import {are} from './data/verbs';
 import _ from 'lodash';
 
 const verb = new Verb();
 const ANSWERS_LENGTH = 3;
 const QUESTIONS_LENGTH = 5;
-
-const rules = require('../../data/rules.json');
+const rules = require('./data/rules.json');
 
 class Quiz extends Component {
 
@@ -61,17 +58,14 @@ class Quiz extends Component {
 
         }
 
-        const isCorrect = evt.target.className.match(/correct/) !== null;
-
-        const {correctAnswers} = this.state;
-        let newCorrectAnswers = correctAnswers;
+        let correctAnswers = parseInt(this.state.correctAnswers, 10);
 
         document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'block';
 
-        if (isCorrect) {
+        if (this.isCorrectAnswer(evt)) {
 
             document.getElementsByClassName('verbTableLink')[0].style.color = '#fff';
-            newCorrectAnswers += 1;
+            correctAnswers += 1;
 
         } else {
 
@@ -80,11 +74,17 @@ class Quiz extends Component {
         }
 
         this.setState({
-            'correctAnswers': newCorrectAnswers,
+            correctAnswers,
             'currentQuestionAnswered': true
         });
 
         return true;
+
+    }
+
+    isCorrectAnswer (evt) {
+
+        return evt.target.className.match(/correct/) !== null;
 
     }
 
@@ -151,7 +151,6 @@ class Quiz extends Component {
     getVerbNamesFromObjectArray (arr) {
 
         const newArray = arr.map(obj => obj.name);
-
 
         return newArray;
 
@@ -299,33 +298,38 @@ class Quiz extends Component {
         const {inProgress, count} = this.state;
 
         return (
-            <div className="quizBody">
-                {!inProgress &&
-                    <div className="startContainer">
-                        <div className="introTextContainer">
-                            <p className="introText">Click Start Quiz to get Started</p>
+            <div className="App">
+                <div className="appHeader">
+                    <h1>Italian Verb Quiz</h1>
+                </div>
+                <div className="quizBody">
+                    {!inProgress &&
+                        <div className="startContainer">
+                            <div className="introTextContainer">
+                                <p className="introText">Click Start Quiz to get Started</p>
+                            </div>
+                            <div className="buttonContainer">
+                                <button onClick={this.startQuiz}>Start Quiz</button>
+                            </div>
                         </div>
-                        <div className="buttonContainer">
-                            <button onClick={this.startQuiz}>Start Quiz</button>
-                        </div>
-                    </div>
-                }
-                {inProgress &&
-                    <div className="questionContext">
+                    }
+                    {inProgress &&
+                        <div className="questionContext">
 
-                        <Questions count={this.state.count}
-                            params={this.state.currentQuestion}
-                            checkAnswer={this.checkAnswer}
-                            clickHandler={this.nextQuestion}
-                            showVerbTable={this.showVerbTable}/>
+                            <Questions count={this.state.count}
+                                params={this.state.currentQuestion}
+                                checkAnswer={this.checkAnswer}
+                                clickHandler={this.nextQuestion}
+                                showVerbTable={this.showVerbTable}/>
                             {this.getScoreView()}
-                    </div>
-
-                }
+                        </div>
+                    }
+                </div>
             </div>
         );
 
     }
+
 }
 
 export default Quiz;
