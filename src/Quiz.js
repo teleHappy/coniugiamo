@@ -6,6 +6,8 @@ import VerbUtils from './components/verb/VerbUtils';
 import ScoreCard from './components/views/ScoreCard';
 import Button from './components/controls/Button';
 
+import {are, ere, ire} from './data/verbs';
+
 const ANSWERS_LENGTH = 3;
 const QUESTIONS_LENGTH = 5;
 const rules = require('./data/rules.json');
@@ -37,15 +39,17 @@ class Quiz extends Component {
 
     }
 
-    initializeQuizVerbs () {
+    initializeQuizVerbs (verbEnding) {
         
-        this.quizVerbArray = VerbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH);
+        this.quizVerbArray = VerbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH, verbEnding);
 
     }
 
     startQuiz () {
-
-        this.initializeQuizVerbs();
+        // get selected verb ending from DOM
+        // set currentQuestion.verbEnding to that value
+        // pass that value to initializeQuizVerbs
+        this.initializeQuizVerbs(are);
         this.initProgress(Quiz.progressStatusEnums.IN_PROGRESS);
         this.nextQuestion();
 

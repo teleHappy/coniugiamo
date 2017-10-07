@@ -1,5 +1,4 @@
 import Verb from './Verb';
-import {are} from '../../data/verbs';
 
 import _ from 'lodash';
 
@@ -78,11 +77,11 @@ class VerbUtils {
     // Gets an array of unique verb objects
     // Used to instatiate verb quiz and assure that there are no duplicate verbs in any quiz
     // TODO: incorporate ere, ire and irregular verbs
-    getUniqueAreVerbObjectsByCount (count) {
+    getUniqueAreVerbObjectsByCount (count, verbArray) {
 
-        const verbObjArray = are;
+        const verbObjArray = verbArray; // shall be passed in from 
         const offset = count - 1;
-        const uniqueArray = [are[0]];
+        const uniqueArray = [verbObjArray[0]];
 
         for (let idx = 0; idx < offset; idx += 1) {
 
