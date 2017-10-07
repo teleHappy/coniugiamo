@@ -17,8 +17,6 @@ const rules = require('../../data/rules.json');
 const Questions = props => {
 
     const {personIdx, tense, verbName, pronoun, verbTablesArray} = props.params;
-    const {count, clickHandler} = props;
-    const buttonLabel = 'Next Question';
 
     return (
         <div className="questionContainer">
