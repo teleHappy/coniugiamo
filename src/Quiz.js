@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+
 import AppHeader from './components/views/AppHeader';
 import Questions from './components/question/Questions';
 import VerbUtils from './components/verb/VerbUtils';
+import ScoreCard from './components/views/ScoreCard';
 
 const verbUtils = new VerbUtils();
 const ANSWERS_LENGTH = 3;
@@ -155,19 +157,6 @@ class Quiz extends Component {
 
     }
 
-    getScoreView () {
-
-        return (
-            <div className="scoreContainer">
-                <div className="score">
-                    <h3>Score</h3>
-                    <span>{this.state.correctAnswers} / {QUESTIONS_LENGTH}</span>
-                </div>
-            </div>
-        );
-
-    }
-
     getButtonLabel () {
 
         if (this.isCompleted()) {
@@ -223,7 +212,9 @@ class Quiz extends Component {
                                 </button>
                             </div>
 
-                            {this.getScoreView()}
+                            <ScoreCard
+                                correctAnswers = {this.state.correctAnswers}
+                                numberOfQuestions = {QUESTIONS_LENGTH} />
 
                         </div>
                     }
