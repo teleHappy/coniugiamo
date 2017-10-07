@@ -20,7 +20,7 @@ class Quiz extends Component {
             'count': 0,
             'currentQuestion': {},
             'currentQuestionAnswered': false,
-            'inProgress': false
+            'progressStatus': Quiz.progressStatusEnums.NOT_INITIALIZED
         };
 
         this.startQuiz = this.startQuiz.bind(this);
@@ -32,27 +32,28 @@ class Quiz extends Component {
 
     componentWillMount () {
 
-        this.initializeQuizVerbs();
+        
 
     }
 
     initializeQuizVerbs () {
-
+        
         this.quizVerbArray = VerbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH);
 
     }
 
     startQuiz () {
 
-        this.initProgress();
+        this.initializeQuizVerbs();
+        this.initProgress(Quiz.progressStatusEnums.IN_PROGRESS);
         this.nextQuestion();
 
     }
 
-    initProgress (init = true) {
+    initProgress (status) {
 
         this.setState({
-            'inProgress': init
+            'progressStatus': status
         });
 
     }
@@ -128,7 +129,7 @@ class Quiz extends Component {
 
         if(this.state.count === QUESTIONS_LENGTH - 1){
             
-            this.initProgress(false);
+            this.initProgress(Quiz.progressStatusEnums.COMPLETE);
         }
 
         const {newTense, personIdx, tenses, verbObj, verbTables} = this.getQuestionParams();
@@ -139,7 +140,7 @@ class Quiz extends Component {
             'currentQuestion': {
                 personIdx,
                 'tense': newTense,
-                'verbEnding': 'are',
+                'verbEnding': 'are', //
                 'verbName': verbObj.name,
                 'verbTablesArray': verbTables
             },
@@ -192,13 +193,13 @@ class Quiz extends Component {
 
     render () {
 
-        const {inProgress, count} = this.state;
+        const {progressStatus, count} = this.state;
 
         return (
             <div className="App">
                 <AppHeader />
                 <div className="quizBody">
-                    {!inProgress &&
+                    {progressStatus === Quiz.progressStatusEnums.NOT_INITIALIZED &&
                         <div className="startContainer">
                             <div className="introTextContainer">
                                 <p className="introText">Click Start Quiz to get Started</p>
@@ -208,7 +209,7 @@ class Quiz extends Component {
                                 label="Start Quiz"/>
                         </div>
                     }
-                    {inProgress &&
+                    {(progressStatus === Quiz.progressStatusEnums.IN_PROGRESS || progressStatus === Quiz.progressStatusEnums.COMPLETE)  &&
                         <div className="questionContext">
 
                             <Questions
@@ -236,5 +237,11 @@ class Quiz extends Component {
     }
 
 }
+
+Quiz.progressStatusEnums = Object.freeze({
+    'NOT_INITIALIZED': 'NOT_INITIALIZED',
+    'IN_PROGRESS': 'IN_PROGRESS',
+    'COMPLETE': 'COMPLETE'
+}); 
 
 export default Quiz;
