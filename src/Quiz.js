@@ -4,6 +4,7 @@ import AppHeader from './components/views/AppHeader';
 import Questions from './components/question/Questions';
 import VerbUtils from './components/verb/VerbUtils';
 import ScoreCard from './components/views/ScoreCard';
+import Button from './components/controls/Button';
 
 const ANSWERS_LENGTH = 3;
 const QUESTIONS_LENGTH = 5;
@@ -43,10 +44,16 @@ class Quiz extends Component {
 
     startQuiz () {
 
+        this.initProgress();
+        this.nextQuestion();
+
+    }
+
+    initProgress () {
+
         this.setState({
             'inProgress': true
         });
-        this.nextQuestion();
 
     }
 
@@ -191,25 +198,25 @@ class Quiz extends Component {
                             <div className="introTextContainer">
                                 <p className="introText">Click Start Quiz to get Started</p>
                             </div>
-                            <div className="buttonContainer">
-                                <button onClick={this.startQuiz}>Start Quiz</button>
-                            </div>
+                            <Button 
+                                action={this.startQuiz}
+                                label="Start Quiz"/>
                         </div>
                     }
                     {inProgress &&
                         <div className="questionContext">
 
-                            <Questions count={this.state.count}
+                            <Questions
+                                count={this.state.count}
                                 params={this.state.currentQuestion}
                                 checkAnswer={this.checkAnswer}
                                 clickHandler={this.nextQuestion}
                                 showVerbTable={this.showVerbTable}/>
 
-                            <div className="buttonContainer">
-                                <button onClick={this.nextQuestion} disabled={this.isCompleted()}>
-                                    {this.getButtonLabel()}
-                                </button>
-                            </div>
+                            <Button
+                                action={this.nextQuestion}
+                                disabled={this.isCompleted()}
+                                label={this.getButtonLabel()}/>
 
                             <ScoreCard
                                 correctAnswers = {this.state.correctAnswers}
