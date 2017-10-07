@@ -6,7 +6,7 @@ const QUESTION_TEXT_CONTAINER_TIMEOUT = 200;
 class DisplayQuestion extends Component {
 
     componentDidMount () {
-
+        
         document.getElementsByClassName('questionTextContainer')[0].style.display = 'block';
 
     }

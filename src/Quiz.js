@@ -5,7 +5,6 @@ import Questions from './components/question/Questions';
 import VerbUtils from './components/verb/VerbUtils';
 import ScoreCard from './components/views/ScoreCard';
 
-const verbUtils = new VerbUtils();
 const ANSWERS_LENGTH = 3;
 const QUESTIONS_LENGTH = 5;
 const rules = require('./data/rules.json');
@@ -38,7 +37,7 @@ class Quiz extends Component {
 
     initializeQuizVerbs () {
 
-        this.quizVerbArray = verbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH);
+        this.quizVerbArray = VerbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH);
 
     }
 
@@ -140,10 +139,10 @@ class Quiz extends Component {
     getQuestionParams () {
 
         const verbObj = this.quizVerbArray[this.state.count];
-        const newTense = verbUtils.getRandomTense();
-        const tenses = verbUtils.getUniqueTenseArrayByCount(newTense, ANSWERS_LENGTH);
-        const verbTables = verbUtils.getThreeVerbTables(verbObj.name, tenses);
-        const personIdx = verbUtils.getRandomPersonIndex();
+        const newTense = VerbUtils.getRandomTense();
+        const tenses = VerbUtils.getUniqueTenseArrayByCount(newTense, ANSWERS_LENGTH);
+        const verbTables = VerbUtils.getThreeVerbTables(verbObj.name, tenses);
+        const personIdx = VerbUtils.getRandomPersonIndex();
 
         const questionParams = {
             newTense,

@@ -139,4 +139,4 @@ class VerbUtils {
 
 }
 
-export default VerbUtils;
+export default new VerbUtils();
