@@ -24,6 +24,7 @@ class Quiz extends Component {
         };
 
         this.startQuiz = this.startQuiz.bind(this);
+        this.restartQuiz = this.restartQuiz.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
         this.checkAnswer = this.checkAnswer.bind(this);
         this.showVerbTable = this.showVerbTable.bind(this);
@@ -50,12 +51,19 @@ class Quiz extends Component {
 
     }
 
+    restartQuiz(){
+        
+        this.initProgress(Quiz.progressStatusEnums.NOT_INITIALIZED);
+    }
+
     initProgress (status) {
 
         this.setState({
-            'progressStatus': status
+            'count': 0,
+            'currentQuestion': {},
+            'currentQuestionAnswered': false,
+            'progressStatus': status,
         });
-
     }
 
     /**
@@ -121,15 +129,15 @@ class Quiz extends Component {
 
     nextQuestion () {
 
-        if (this.state.count > 0) {
+        if (this.state.progressStatus === Quiz.progressStatusEnums.IN_PROGRESS) {
 
             this.resetUI();
 
         }
 
-        if(this.state.count === QUESTIONS_LENGTH - 1){
-            
+        if(this.state.count === QUESTIONS_LENGTH){
             this.initProgress(Quiz.progressStatusEnums.COMPLETE);
+            return;
         }
 
         const {newTense, personIdx, tenses, verbObj, verbTables} = this.getQuestionParams();
@@ -150,7 +158,7 @@ class Quiz extends Component {
     }
 
     getQuestionParams () {
-
+        
         const verbObj = this.quizVerbArray[this.state.count];
         const newTense = VerbUtils.getRandomTense();
         const tenses = VerbUtils.getUniqueTenseArrayByCount(newTense, ANSWERS_LENGTH);
@@ -209,7 +217,7 @@ class Quiz extends Component {
                                 label="Start Quiz"/>
                         </div>
                     }
-                    {(progressStatus === Quiz.progressStatusEnums.IN_PROGRESS || progressStatus === Quiz.progressStatusEnums.COMPLETE)  &&
+                    {progressStatus === Quiz.progressStatusEnums.IN_PROGRESS  &&
                         <div className="questionContext">
 
                             <Questions
@@ -221,13 +229,24 @@ class Quiz extends Component {
 
                             <Button
                                 action={this.nextQuestion}
-                                disabled={this.isCompleted()}
                                 label={this.getButtonLabel()}/>
 
                             <ScoreCard
                                 correctAnswers = {this.state.correctAnswers}
                                 numberOfQuestions = {QUESTIONS_LENGTH} />
 
+                        </div>
+                    }
+                    {progressStatus === Quiz.progressStatusEnums.COMPLETE  &&
+                        <div className="startContainer">
+                            <div className="introTextContainer">
+                                <p className="introText">
+                                    Si, po fare!
+                                </p>
+                                <Button 
+                                    action={this.restartQuiz}
+                                    label="Vai Ancora"/>
+                            </div>
                         </div>
                     }
                 </div>
