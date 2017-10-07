@@ -49,10 +49,10 @@ class Quiz extends Component {
 
     }
 
-    initProgress () {
+    initProgress (init = true) {
 
         this.setState({
-            'inProgress': true
+            'inProgress': init
         });
 
     }
@@ -124,6 +124,11 @@ class Quiz extends Component {
 
             this.resetUI();
 
+        }
+
+        if(this.state.count === QUESTIONS_LENGTH - 1){
+            
+            this.initProgress(false);
         }
 
         const {newTense, personIdx, tenses, verbObj, verbTables} = this.getQuestionParams();
