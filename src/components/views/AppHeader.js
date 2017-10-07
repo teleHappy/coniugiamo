@@ -1,13 +1,9 @@
 import React from 'react';
 
-const AppHeader = () => {
+const AppHeader = props => 
 
-    return (
-        <div className="appHeader">
-            <h1>Italian Verb Quiz</h1>
-        </div>
-    );
-
-};
+    <div className="appHeader">
+        <h1>Italian Verb Quiz</h1>
+    </div>
 
 export default AppHeader;
