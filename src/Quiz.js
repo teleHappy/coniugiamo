@@ -207,7 +207,7 @@ class Quiz extends Component {
 
                             <div className="buttonContainer">
                                 <button onClick={this.nextQuestion} disabled={this.isCompleted()}>
-                                        {this.getButtonLabel()}
+                                    {this.getButtonLabel()}
                                 </button>
                             </div>
 

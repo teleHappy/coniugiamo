@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ScoreCard = (props) => {
-    
+const ScoreCard = props => {
+
     return (
         <div className="scoreContainer">
             <div className="score">

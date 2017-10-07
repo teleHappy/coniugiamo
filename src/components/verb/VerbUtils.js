@@ -79,7 +79,7 @@ class VerbUtils {
     // Used to instatiate verb quiz and assure that there are no duplicate verbs in any quiz
     // TODO: incorporate ere, ire and irregular verbs
     getUniqueAreVerbObjectsByCount (count) {
-        
+
         const verbObjArray = are;
         const offset = count - 1;
         const uniqueArray = [are[0]];
@@ -117,7 +117,7 @@ class VerbUtils {
 
     }
 
-            // Returns an array of {count} random verb names from verbObjectArry
+    // Returns an array of {count} random verb names from verbObjectArry
     getUniqueKeyValuesFromObjectArrayByCount (value, array, count) {
 
         const verbNameArray = this.getVerbNamesFromObjectArray(array);
