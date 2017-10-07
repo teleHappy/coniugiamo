@@ -181,11 +181,11 @@ class Quiz extends Component {
 
         if (this.isCompleted()) {
 
-            return 'Last Question!';
+            return 'Ultima Domanda';
 
         }
 
-        return 'Next Question';
+        return 'Prossima Domanda';
 
 
     }
@@ -210,11 +210,11 @@ class Quiz extends Component {
                     {progressStatus === Quiz.progressStatusEnums.NOT_INITIALIZED &&
                         <div className="startContainer">
                             <div className="introTextContainer">
-                                <p className="introText">Click Start Quiz to get Started</p>
+                                <p className="introText">Click Coniugiamo to get Started</p>
                             </div>
                             <Button 
                                 action={this.startQuiz}
-                                label="Start Quiz"/>
+                                label="Coniugiamo"/>
                         </div>
                     }
                     {progressStatus === Quiz.progressStatusEnums.IN_PROGRESS  &&
