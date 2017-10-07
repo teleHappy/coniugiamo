@@ -1,4 +1,3 @@
-/* eslint arrow-body-style: 0 */
 import React, {Component} from 'react';
 
 const QUESTION_TEXT_CONTAINER_TIMEOUT = 200;
