@@ -1,21 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Button extends Component{
-
-    constructor(props){
-        super(props);
-    }
-    render(){
-        const disabled = this.props.disabled || false;
-        return(
+const Button = props =>
             <div className="buttonContainer">
-                <button onClick={this.props.action} disabled={this.props.disabled}>
-                    {this.props.label}
+                <button onClick={props.action} disabled={props.disabled}>
+                    {props.label}
                 </button>
             </div>
-            )
-    }
-    
-};
 
 export default Button;
