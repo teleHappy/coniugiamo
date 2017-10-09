@@ -105,6 +105,25 @@ body {
   margin: .5rem;
 }
 
+.formWrapper{
+  padding: 20px 10px;
+}
+.formWrapper fieldset{
+  width: 500px;
+  border: 0;
+}
+
+.formWrapper fieldset div{
+  float: left;
+  width: 33%;
+}
+
+.formWrapper fieldset div label{
+  color: #F5DA09;
+  font-size: 1.2rem;
+  padding-left: 4px;
+}
+
 .App .questionTextWrapper{
   height: 120px;
   display:block;

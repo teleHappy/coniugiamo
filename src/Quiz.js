@@ -4,6 +4,7 @@ import AppHeader from './components/views/AppHeader';
 import Questions from './components/question/Questions';
 import VerbUtils from './components/verb/VerbUtils';
 import ScoreCard from './components/views/ScoreCard';
+import QuizForm from './components/views/QuizForm';
 import Button from './components/controls/Button';
 
 import {are, ere, ire} from './data/verbs';
@@ -214,11 +215,12 @@ class Quiz extends Component {
                     {progressStatus === Quiz.progressStatusEnums.NOT_INITIALIZED &&
                         <div className="startContainer">
                             <div className="introTextContainer">
-                                <p className="introText">Click Coniugiamo to get Started</p>
-                            </div>
+                                <p className="introText">Select a verb ending, then click Coniugiamo to get started</p>
+                                <QuizForm />
                             <Button 
                                 action={this.startQuiz}
                                 label="Coniugiamo"/>
+                            </div>
                         </div>
                     }
                     {progressStatus === Quiz.progressStatusEnums.IN_PROGRESS  &&
@@ -247,6 +249,11 @@ class Quiz extends Component {
                                 <p className="introText">
                                     Si, po fare!
                                 </p>
+
+                                <ScoreCard
+                                correctAnswers = {this.state.correctAnswers}
+                                numberOfQuestions = {QUESTIONS_LENGTH} />
+
                                 <Button 
                                     action={this.restartQuiz}
                                     label="Vai Ancora"/>
