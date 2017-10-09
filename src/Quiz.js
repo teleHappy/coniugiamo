@@ -40,7 +40,7 @@ class Quiz extends Component {
 
         // TODO: remove following alert when ere and ire are added to verb data
         if(verbEnding === 'ere' || verbEnding === 'ire') {
-            alert(`{verbEnding} verbs are not yet implemeted`);
+            alert(`${verbEnding} verbs are not yet implemeted`);
             return false;
         }
 
@@ -89,6 +89,7 @@ class Quiz extends Component {
             'currentQuestion': {},
             'currentQuestionAnswered': false,
             'progressStatus': status,
+            'verbEnding': ''
         });
     }
 
