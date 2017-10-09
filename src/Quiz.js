@@ -23,7 +23,8 @@ class Quiz extends Component {
             'count': 0,
             'currentQuestion': {},
             'currentQuestionAnswered': false,
-            'progressStatus': Quiz.progressStatusEnums.NOT_INITIALIZED
+            'progressStatus': Quiz.progressStatusEnums.NOT_INITIALIZED,
+            'verbEnding': ''
         };
 
         this.startQuiz = this.startQuiz.bind(this);
@@ -31,26 +32,39 @@ class Quiz extends Component {
         this.nextQuestion = this.nextQuestion.bind(this);
         this.checkAnswer = this.checkAnswer.bind(this);
         this.showVerbTable = this.showVerbTable.bind(this);
-
+        this.setVerbEnding = this.setVerbEnding.bind(this);
     }
 
-    componentWillMount () {
+    setVerbEnding (evt) {
+        const verbEnding = evt.target.value;
 
-        
-
+        this.setState({
+            verbEnding
+        })
     }
 
-    initializeQuizVerbs (verbEnding) {
+    initializeQuizVerbs (verbDataArray) {
         
-        this.quizVerbArray = VerbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH, verbEnding);
+        this.quizVerbArray = VerbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH, verbDataArray);
 
     }
 
     startQuiz () {
-        // get selected verb ending from DOM
-        // set currentQuestion.verbEnding to that value
-        // pass that value to initializeQuizVerbs
-        this.initializeQuizVerbs(are);
+
+        const verbEnding = this.state.verbEnding;
+        let verbDataArray = [];
+
+        // TODO: ugh, alerts, replace with modal message
+        
+        if(verbEnding === ''){
+            alert('Please select a verb ending to begin.')
+        }
+
+        if(verbEnding === 'are') {
+            verbDataArray = are;
+        }
+
+        this.initializeQuizVerbs(verbDataArray);
         this.initProgress(Quiz.progressStatusEnums.IN_PROGRESS);
         this.nextQuestion();
 
@@ -153,7 +167,6 @@ class Quiz extends Component {
             'currentQuestion': {
                 personIdx,
                 'tense': newTense,
-                'verbEnding': 'are', //
                 'verbName': verbObj.name,
                 'verbTablesArray': verbTables
             },
@@ -216,7 +229,7 @@ class Quiz extends Component {
                         <div className="startContainer">
                             <div className="introTextContainer">
                                 <p className="introText">Select a verb ending, then click Coniugiamo to get started</p>
-                                <QuizForm />
+                                <QuizForm verbEndingHandler={this.setVerbEnding} />
                             <Button 
                                 action={this.startQuiz}
                                 label="Coniugiamo"/>

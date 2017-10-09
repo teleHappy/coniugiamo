@@ -79,13 +79,13 @@ class VerbUtils {
     // TODO: incorporate ere, ire and irregular verbs
     getUniqueAreVerbObjectsByCount (count, verbArray) {
 
-        const verbObjArray = verbArray; // shall be passed in from 
+        const verbDataArray = verbArray; // shall be passed in from 
         const offset = count - 1;
-        const uniqueArray = [verbObjArray[0]];
+        const uniqueArray = [verbDataArray[0]];
 
         for (let idx = 0; idx < offset; idx += 1) {
 
-            const differenceArray = _.difference(verbObjArray, uniqueArray);
+            const differenceArray = _.difference(verbDataArray, uniqueArray);
             const min = Math.ceil(0);
 
             const max = Math.floor(differenceArray.length - 1);
