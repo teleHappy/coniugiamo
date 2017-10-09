@@ -38,6 +38,12 @@ class Quiz extends Component {
     setVerbEnding (evt) {
         const verbEnding = evt.target.value;
 
+        // TODO: remove following alert when ere and ire are added to verb data
+        if(verbEnding === 'ere' || verbEnding === 'ire') {
+            alert(`{verbEnding} verbs are not yet implemeted`);
+            return false;
+        }
+
         this.setState({
             verbEnding
         })
@@ -58,6 +64,7 @@ class Quiz extends Component {
         
         if(verbEnding === ''){
             alert('Please select a verb ending to begin.')
+            return false;
         }
 
         if(verbEnding === 'are') {
