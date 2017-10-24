@@ -29,7 +29,7 @@ class Verb {
 
     }
 
-    getConjugatedVerbTable (name, tense) {
+    getConjugatedVerbTable (name, tense, verbGroup) {
 
         if (!name) {
 
@@ -49,7 +49,7 @@ class Verb {
 
         }
 
-        const verbDataObj = this.getVerbDataObj(name);
+        const verbDataObj = this.getVerbDataObj(name, verbGroup);
         const {regular} = verbDataObj;
         const conjugation = name.slice(name.length - 3);
         let verbTableData = [];
@@ -82,9 +82,9 @@ class Verb {
 
     }
 
-    getVerbDataObj (verb) {
+    getVerbDataObj (name, verbGroup) {
 
-        return _.find(are, {'name': verb});
+        return _.find(verbGroup, {'name': name});
 
     }
 

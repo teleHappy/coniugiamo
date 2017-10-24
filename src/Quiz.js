@@ -24,7 +24,7 @@ class Quiz extends Component {
             'currentQuestion': {},
             'currentQuestionAnswered': false,
             'progressStatus': Quiz.progressStatusEnums.NOT_INITIALIZED,
-            'verbEnding': ''
+            'verbGroup': null
         };
 
         this.startQuiz = this.startQuiz.bind(this);
@@ -32,46 +32,49 @@ class Quiz extends Component {
         this.nextQuestion = this.nextQuestion.bind(this);
         this.checkAnswer = this.checkAnswer.bind(this);
         this.showVerbTable = this.showVerbTable.bind(this);
-        this.setVerbEnding = this.setVerbEnding.bind(this);
+        this.setVerbGroup = this.setVerbGroup.bind(this);
+        this.getQuestionParams = this.getQuestionParams.bind(this);
     }
 
-    setVerbEnding (evt) {
+    setVerbGroup (evt) {
         const verbEnding = evt.target.value;
-
+        let verbGroup = null;
+        
         // TODO: remove following alert when ere and ire are added to verb data
-        if(verbEnding === 'ere' || verbEnding === 'ire') {
+        if(verbEnding === 'ire') {
             alert(`${verbEnding} verbs are not yet implemeted`);
             return false;
         }
+        if(verbEnding === 'are'){
+            verbGroup = are;
+        }
+        if(verbEnding === 'ere'){
+            verbGroup = ere;
+        }
 
         this.setState({
-            verbEnding
-        })
+            verbGroup
+        });
     }
 
-    initializeQuizVerbs (verbDataArray) {
+    initializeQuizVerbs () {
         
-        this.quizVerbArray = VerbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH, verbDataArray);
+        const {verbGroup} = this.state;
+
+        this.quizVerbArray = VerbUtils.getUniqueAreVerbObjectsByCount(QUESTIONS_LENGTH, verbGroup);
 
     }
 
     startQuiz () {
 
-        const verbEnding = this.state.verbEnding;
-        let verbDataArray = [];
+        const {verbGroup} = this.state;
 
-        // TODO: ugh, alerts, replace with modal message
-        
-        if(verbEnding === ''){
+        if(verbGroup === ''){
             alert('Please select a verb ending to begin.')
             return false;
         }
 
-        if(verbEnding === 'are') {
-            verbDataArray = are;
-        }
-
-        this.initializeQuizVerbs(verbDataArray);
+        this.initializeQuizVerbs();
         this.initProgress(Quiz.progressStatusEnums.IN_PROGRESS);
         this.nextQuestion();
 
@@ -88,8 +91,7 @@ class Quiz extends Component {
             'count': 0,
             'currentQuestion': {},
             'currentQuestionAnswered': false,
-            'progressStatus': status,
-            'verbEnding': ''
+            'progressStatus': status
         });
     }
 
@@ -184,11 +186,12 @@ class Quiz extends Component {
     }
 
     getQuestionParams () {
-        
+      
+        const {verbGroup} = this.state;
         const verbObj = this.quizVerbArray[this.state.count];
         const newTense = VerbUtils.getRandomTense();
         const tenses = VerbUtils.getUniqueTenseArrayByCount(newTense, ANSWERS_LENGTH);
-        const verbTables = VerbUtils.getThreeVerbTables(verbObj.name, tenses);
+        const verbTables = VerbUtils.getThreeVerbTables(verbObj.name, tenses, verbGroup);
         const personIdx = VerbUtils.getRandomPersonIndex();
 
         const questionParams = {
@@ -237,7 +240,7 @@ class Quiz extends Component {
                         <div className="startContainer">
                             <div className="introTextContainer">
                                 <p className="introText">Select a verb ending, then click Coniugiamo to get started</p>
-                                <QuizForm verbEndingHandler={this.setVerbEnding} />
+                                <QuizForm verbGroupHandler={this.setVerbGroup} />
                             <Button 
                                 action={this.startQuiz}
                                 label="Coniugiamo"/>

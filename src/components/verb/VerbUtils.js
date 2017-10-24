@@ -37,7 +37,7 @@ class VerbUtils {
     }
 
     // Handle generating three unique verb tables and decorate each with an 'isCorrect' object
-    getThreeVerbTables (name, tenses) {
+    getThreeVerbTables (name, tenses, verbGroup) {
 
         let vt = [];
         const conjugatedVerbTables = [];
@@ -45,7 +45,7 @@ class VerbUtils {
 
         for (let idx = 0; idx < tenses.length; idx += 1) {
 
-            vt = verb.getConjugatedVerbTable(name, tenses[idx]);
+            vt = verb.getConjugatedVerbTable(name, tenses[idx], verbGroup);
             // The first entry is the correct quiz verb, track with this added object
             if (idx === 0) {
 
@@ -77,15 +77,14 @@ class VerbUtils {
     // Gets an array of unique verb objects
     // Used to instatiate verb quiz and assure that there are no duplicate verbs in any quiz
     // TODO: incorporate ere, ire and irregular verbs
-    getUniqueAreVerbObjectsByCount (count, verbArray) {
-
-        const verbDataArray = verbArray; // shall be passed in from 
+    getUniqueAreVerbObjectsByCount (count, verbGroup) {
+        
         const offset = count - 1;
-        const uniqueArray = [verbDataArray[0]];
+        const uniqueArray = [verbGroup[0]];
 
         for (let idx = 0; idx < offset; idx += 1) {
 
-            const differenceArray = _.difference(verbDataArray, uniqueArray);
+            const differenceArray = _.difference(verbGroup, uniqueArray);
             const min = Math.ceil(0);
 
             const max = Math.floor(differenceArray.length - 1);

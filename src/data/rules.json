@@ -9,7 +9,12 @@
         "subjunctive": ["i", "i", "i", "iamo", "iate", "ino"] 
     },
     "ere" : {
-        "present": ["o", "i", "e", "iamo", "ete", "ono"]
+        "present": ["o", "i", "e", "iamo", "ete", "ono"],
+        "future": ["ò", "ai", "à", "emo", "ete", "anno" ],
+        "conditional": ["ei", "esti", "ebbe", "emmo", "este", "ebbero" ],
+        "imperfect": ["evo", "evi", "eva", "evamo", "evate", "evano"],
+        "pastAbsolute": ["ei", "esti", "é", "emmo", "este", "erono"],
+        "subjunctive": ["a", "a", "a", "iamo", "iate", "ano"] 
     },
     "ire" : {
         "present": {
