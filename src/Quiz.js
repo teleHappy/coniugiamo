@@ -89,6 +89,7 @@ class Quiz extends Component {
 
         this.setState({
             'count': 0,
+            'correctAnswers': 0,
             'currentQuestion': {},
             'currentQuestionAnswered': false,
             'progressStatus': status
