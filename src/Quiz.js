@@ -166,7 +166,12 @@ class Quiz extends Component {
         }
 
         if(this.state.count === QUESTIONS_LENGTH){
-            this.initProgress(Quiz.progressStatusEnums.COMPLETE);
+            
+            
+            this.setState({
+                'progressStatus': Quiz.progressStatusEnums.COMPLETE
+            });
+
             return;
         }
 
