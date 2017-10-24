@@ -1,11 +1,83 @@
-import Verb from './Verb';
-
 import _ from 'lodash';
 
+import are from '../../data/verbs/are';
+import areTableGenerator from './areTableGenerator';
+import ereTableGenerator from './ereTableGenerator';
+import ireTableGenerator from './ireTableGenerator';
+
 const rules = require('../../data/rules.json');
-const verb = new Verb();
+
+const ereTG = new ereTableGenerator();
+
+const areTG = new areTableGenerator();
+
+const ireTG = new ireTableGenerator();
 
 class VerbUtils {
+
+    getConjugation(name){
+        return name.slice(name.length - 3);
+    }
+
+    getConjugatedVerbTable (name, tense, verbGroup) {
+        
+        if (!name) {
+
+            throw new Error('verb not supplied');
+
+        }
+
+        if (!tense) {
+
+            throw new Error('tense not supplied');
+
+        }
+
+        if (!this.validateVerbName(name)) {
+
+            throw new Error('non-valid verb ending');
+
+        }
+
+        const conjugation = this.getConjugation(name);
+        const verbDataObj = this.getVerbDataObj(name, verbGroup);
+        const {regular} = verbDataObj;
+        
+        let verbTableData = [];
+        // TODO: handle irregular verbs
+
+        if (regular) {
+            if(conjugation === 'are'){
+                verbTableData = areTG.getTableData(verbDataObj, tense)
+            }
+            if(conjugation === 'ere'){
+                verbTableData = ereTG.getTableData(verbDataObj, tense)
+            }
+            if(conjugation === 'ire'){
+                verbTableData = ireTG.getTableData(verbDataObj, tense)
+            }
+
+            if(conjugation === []){
+                throw new Error('unhandled verb');
+            }
+
+        }
+
+        return verbTableData;
+
+    }
+
+    validateVerbName (name) {
+
+        return _.indexOf(rules.endingsArray, name.slice(-3)) >= 0;
+
+    }
+
+    getVerbDataObj (name, verbGroup) {
+
+        return _.find(verbGroup, {'name': name});
+
+    }
 
     getRandomTense () {
 
@@ -45,7 +117,7 @@ class VerbUtils {
 
         for (let idx = 0; idx < tenses.length; idx += 1) {
 
-            vt = verb.getConjugatedVerbTable(name, tenses[idx], verbGroup);
+            vt = this.getConjugatedVerbTable(name, tenses[idx], verbGroup);
             // The first entry is the correct quiz verb, track with this added object
             if (idx === 0) {
 
