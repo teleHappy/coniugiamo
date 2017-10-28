@@ -41,15 +41,15 @@ class Quiz extends Component {
         let verbGroup = null;
         
         // TODO: remove following alert when ere and ire are added to verb data
-        if(verbEnding === 'ire') {
-            alert(`${verbEnding} verbs are not yet implemeted`);
-            return false;
-        }
+        
         if(verbEnding === 'are'){
             verbGroup = are;
         }
         if(verbEnding === 'ere'){
             verbGroup = ere;
+        }
+        if(verbEnding === 'ire') {
+            verbGroup = ire;
         }
 
         this.setState({

@@ -29,10 +29,6 @@ class ereTableGenerator {
 
     }
 
-    getPresentVerbStem (name, pronoun) {}
-
-    getFutureVerbStem (name) {}
-
 }
 
 export default ereTableGenerator;
