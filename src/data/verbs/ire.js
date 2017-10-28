@@ -5,24 +5,29 @@ const ire = [
         'type': 1,
         'translation': 'to sleep',
         'regular': 'regular',
-        'past_participle': 'dormito',
-        'gerund': 'dormendo',
-        'aux_verb': 'avere',
-        'conjugation': 3,
-        'present_stem': 'dorm',
-        'future_stem': 'dormir'
+        'past_participle': 'ito',
+        'gerund': 'endo',
+        'aux_verb': 'avere'
     },
-    {'name': 'capire',
+    {
+        'name': 'capire',
         'type': 2,
         'translation': 'to know',
         'regular': 'regular',
-        'past_participle': 'capito',
-        'gerund': 'capendo',
-        'aux_verb': 'avere',
-        'conjugation': 3,
-        'present_stem': 'cap',
-        'future_stem': 'capir'
-    }
+        'past_participle': 'ito',
+        'gerund': 'endo',
+        'aux_verb': 'avere'
+    },
+    {
+        'name': 'servire',
+        'type': 1,
+        'translation': 'to serve',
+        'regular': 'regular',
+        'past_participle': 'ito',
+        'gerund': 'endo',
+        'aux_verb': 'avere'
+    },
+
 ];
 
 export default ire;

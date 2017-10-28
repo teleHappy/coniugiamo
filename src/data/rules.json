@@ -20,7 +20,16 @@
         "present": {
             "type1": ["o", "i", "e", "iamo", "ite", "ono"],
             "type2": ["isco", "isci", "isce", "iamo", "ite", "iscono"]
+        },
+        "imperfect": ["ivo", "ivi", "iva", "ivamo", "ivate", "ivano"],
+        "pastAbsolute": ["ii", "isti", "ì", "immo", "iste", "irono"],
+        "future": ["ò", "ai", "à", "emo", "ete", "anno" ],
+        "conditional": ["ei", "esti", "ebbe", "emmo", "este", "ebbero" ],
+        "subjunctive": {
+            "type1": ["a", "a", "a", "iamo", "iate", "ano"],
+            "type2": ["isca", "isca", "isca", "iamo", "iate", "iscano"]
         }
+
     },
     "pronouns" : ["io", "tu", "lui/lei/Lei", "noi", "voi", "loro/Loro"],
     "tenses" : ["present", "future", "conditional", "imperfect", "pastAbsolute", "subjunctive"]
