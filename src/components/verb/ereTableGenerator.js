@@ -15,7 +15,7 @@ class ereTableGenerator {
 
         for (let i = 0; i < rules.pronouns.length; i++) { // TODO: stem logic
 
-            verbTableData.push([rules.pronouns[i], this.getVerbStem(verbDataObj.name) + rules.are[tense][i]]);
+            verbTableData.push([rules.pronouns[i], this.getVerbStem(verbDataObj.name, tense) + rules.are[tense][i]]);
 
         }
 
@@ -23,15 +23,14 @@ class ereTableGenerator {
 
     }
 
-    getVerbStem (name) {
-
-        return name.slice(0, name.length - 3);
-
+    // TODO: stem ending for future
+    getVerbStem (name, tense) {
+        if(tense === 'future' || tense === 'conditional'){
+            return name.slice(0, name.length - 1);
+        } else {
+            return name.slice(0, name.length - 3);
+        }
     }
-
-    getPresentVerbStem (name, pronoun) {}
-
-    getFutureVerbStem (name) {}
 
 }
 

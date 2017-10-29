@@ -4,11 +4,9 @@ import DisplayQuestion from './DisplayQuestion';
 import DisplayAnswers from './DisplayAnswers';
 import VerbDisplayTable from '../verb/ui/VerbDisplayTable';
 
-import Verb from '../verb/Verb';
 import {are} from '../../data/verbs';
 import _ from 'lodash';
 
-const verb = new Verb();
 const ANSWERS_LENGTH = 3;
 const QUESTIONS_LENGTH = 5;
 

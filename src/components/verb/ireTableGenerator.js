@@ -15,7 +15,7 @@ class ireTableGenerator {
 
         for (let i = 0; i < rules.pronouns.length; i++) { // TODO: stem logic
 
-            verbTableData.push([rules.pronouns[i], this.getVerbStem(verbDataObj.name) + this.getVerbEnding(verbDataObj, tense, i)]);
+            verbTableData.push([rules.pronouns[i], this.getVerbStem(verbDataObj.name, tense) + this.getVerbEnding(verbDataObj, tense, i)]);
 
         }
 
@@ -23,9 +23,13 @@ class ireTableGenerator {
 
     }
 
-    getVerbStem (name) {
+    getVerbStem (name, tense) {
 
-        return name.slice(0, name.length - 3);
+        if(tense === 'future' || tense === 'conditional'){
+            return name.slice(0, name.length - 1); 
+        } else {
+            return name.slice(0, name.length - 3);
+        }
 
     }
 
@@ -34,10 +38,9 @@ class ireTableGenerator {
         const type = verbDataObj.type;
         let ending = rules.ire[tense][idx];
 
+        if (tense === 'present' || tense === 'subjunctive') {
 
-        if (tense === 'present') {
-
-            ending = this.getPresentVerbEnding(type, idx);
+            ending = this.getTypedVerbEnding(type, idx);
 
         }
 
@@ -45,8 +48,8 @@ class ireTableGenerator {
 
     }
 
-    getPresentVerbEnding (type, idx) {
-
+    getTypedVerbEnding (type, idx) {
+        
         let ending = '';
 
         if (type === 1) {
