@@ -24,6 +24,15 @@ body {
   overflow: hidden;
 }
 
+.App .quizBody{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  max-width: 760px;
+}
+
 .App .questionContext{
   position: relative;
   width: 100%;
@@ -32,7 +41,7 @@ body {
 .App .questionContext .appHeader {
   display: flex;
   margin: 4rem auto;
-  width: calc(900px - 10px);
+  width: calc(760px - 10px);
 }
 
 .App .appHeader h1{
@@ -65,15 +74,6 @@ body {
   display: flex;
   margin-top: 4rem;
   justify-content: space-around;
-}
-
-.App .quizBody{
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  flex-grow: 1;
-  align-items: center;
-  max-width: 900px;
 }
 
 .App .startContainer{
