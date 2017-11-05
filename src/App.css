@@ -24,20 +24,63 @@ body {
   overflow: hidden;
 }
 
-.App .appHeader{
+.App .questionContext{
+  position: relative;
+  width: 100%;
+}
+
+.App .questionContext .appHeader {
+  width: 100vw;
+  display: flex;
+  margin-top: 4rem;
+  justify-content: space-around;
+}
+
+
+.App .questionContext .appHeader h1{
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin-top: 2.5rem;
+  flex-grow: 2;
+}
+
+.App .appHeader .step, .App .appHeader .score {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.App .startContainer .appHeader{
   width: 100vw;
   height: 10vh;
   background-color: red;
+  position: relative;
 }
 
-  .App  .appHeader h1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 1.4rem;
-    margin-top: 2.5rem;
-  }
+.App .startContainer .appHeader h1{
+  text-align: center;
+  color: #fff;
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+}
+
+
+
+.App .appHeader .step .title, .App .appHeader .score .title{
+  font-size: 1.2rem;
+  font-weight: bold;
+  
+}
+
+.App .appHeader .step .value, .App .appHeader .score .value{
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
 
 .App .quizBody{
   display: flex;
@@ -140,11 +183,7 @@ body {
   100% {opacity: 1; transform: none}
 }
 
-.App .questionContext{
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
+
 
 .App .questionContainer{
   margin-top: 80px;

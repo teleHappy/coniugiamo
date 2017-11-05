@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import AppHeader from './components/views/AppHeader';
+import ProgressHeader from './components/views/ProgressHeader';
 import Questions from './components/question/Questions';
 import VerbUtils from './components/verb/VerbUtils';
 import ScoreCard from './components/views/ScoreCard';
@@ -240,10 +241,11 @@ class Quiz extends Component {
 
         return (
             <div className="App">
-                <AppHeader />
+                
                 <div className="quizBody">
                     {progressStatus === Quiz.progressStatusEnums.NOT_INITIALIZED &&
                         <div className="startContainer">
+                            <AppHeader />
                             <div className="introTextContainer">
                                 <p className="introText">Select a verb ending, then click Coniugiamo to get started</p>
                                 <QuizForm verbGroupHandler={this.setVerbGroup} />
@@ -255,7 +257,7 @@ class Quiz extends Component {
                     }
                     {progressStatus === Quiz.progressStatusEnums.IN_PROGRESS  &&
                         <div className="questionContext">
-
+                            <ProgressHeader count={this.state.count} totalQuestions={QUESTIONS_LENGTH} correctAnswers = {this.state.correctAnswers}/>
                             <Questions
                                 count={this.state.count}
                                 params={this.state.currentQuestion}
