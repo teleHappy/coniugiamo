@@ -6,7 +6,7 @@ html{
 
 body {
   font-family: "Open Sans", sans-serif;
-  color: #444;
+  color: #fff;
   background: #32A332;
 }
 
@@ -40,23 +40,33 @@ body {
 .App .questionContext .appHeader h1{
   text-align: center;
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.4rem;
   margin-top: 2.5rem;
   flex-grow: 2;
 }
 
-.App .appHeader .step, .App .appHeader .score {
+.App .questionContext .appHeader .step, .App .appHeader .score {
   display: flex;
   flex-direction: column;
   text-align: center;
   flex-grow: 1;
 }
 
+.App .questionContext .appHeader .step .title, .App .appHeader .score .title{
+  font-size: 1.2rem;
+}
+
+.App .questionContext .appHeader .step .value, .App .appHeader .score .value{
+  font-size: 4rem;
+  text-align: center;
+  width: 100%;
+}
+
 .App .startContainer .appHeader{
   width: 100vw;
-  height: 10vh;
-  background-color: red;
-  position: relative;
+  display: flex;
+  margin-top: 4rem;
+  justify-content: space-around;
 }
 
 .App .startContainer .appHeader h1{
@@ -64,18 +74,6 @@ body {
   color: #fff;
   font-size: 1.4rem;
   margin-top: 2.5rem;
-}
-
-
-
-.App .appHeader .step .title, .App .appHeader .score .title{
-  font-size: 1.2rem;
-}
-
-.App .appHeader .step .value, .App .appHeader .score .value{
-  font-size: 4rem;
-  text-align: center;
-  width: 100%;
 }
 
 
