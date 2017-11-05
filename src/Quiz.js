@@ -247,11 +247,11 @@ class Quiz extends Component {
                         <div className="startContainer">
                             <AppHeader />
                             <div className="introTextContainer">
-                                <p className="introText">Select a verb ending, then click Coniugiamo to get started</p>
+                                <p className="introText">Select a verb ending, then click Cominciamo to get started</p>
                                 <QuizForm verbGroupHandler={this.setVerbGroup} />
                             <Button 
                                 action={this.startQuiz}
-                                label="Coniugiamo"/>
+                                label="Cominciamo"/>
                             </div>
                         </div>
                     }
@@ -269,9 +269,6 @@ class Quiz extends Component {
                                 action={this.nextQuestion}
                                 label={this.getButtonLabel()}/>
 
-                            <ScoreCard
-                                correctAnswers = {this.state.correctAnswers}
-                                numberOfQuestions = {QUESTIONS_LENGTH} />
 
                         </div>
                     }
