@@ -70,13 +70,10 @@ body {
 
 .App .appHeader .step .title, .App .appHeader .score .title{
   font-size: 1.2rem;
-  font-weight: bold;
-  
 }
 
 .App .appHeader .step .value, .App .appHeader .score .value{
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 4rem;
   text-align: center;
   width: 100%;
 }

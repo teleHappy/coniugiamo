@@ -3,7 +3,7 @@ import React from 'react';
 const ProgressHeader = props => 
     <div className="appHeader">
         <div className="step">
-            <div className="title">Domande</div>
+            <div className="title">Question</div>
             <div className="value">{props.count}</div>
             <div>of {props.totalQuestions}</div>
         </div>
