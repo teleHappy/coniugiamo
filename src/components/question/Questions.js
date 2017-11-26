@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import DisplayQuestion from './DisplayQuestion';
 import DisplayAnswers from './DisplayAnswers';
-import VerbDisplayTable from '../verb/ui/VerbDisplayTable';
+
 
 import {are} from '../../data/verbs';
 import _ from 'lodash';
