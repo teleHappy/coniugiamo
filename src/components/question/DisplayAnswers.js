@@ -30,29 +30,6 @@ class DisplayAnswers extends Component {
 
     }
 
-    componentDidMount () {
-
-        this.answerList = document.getElementById('answerList');
-        this.answerListContainer = document.getElementsByClassName('answerListContainer');
-
-        this.answerList.style.display = 'block';
-        this.answerList.classList.add('fadeIn');
-
-    }
-
-    componentWillReceiveProps () {
-
-        const that = this;
-
-        setTimeout(() => {
-
-            that.answerListContainer[0].style.visibility = 'visible';
-            that.answerList.classList.add('fadeIn');
-
-        }, FADEIN_TIMEOUT);
-
-    }
-
     render () {
 
         return (

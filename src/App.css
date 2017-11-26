@@ -159,30 +159,24 @@ body {
 
 .App .questionTextContainer{
   height: 120px;
-  display: none;
-  animation: fade-in .4s ease-in;
-}
-
-@keyframes fade-in{
-  0% {opacity: 0;}
-  100% {opacity: 1;}
 }
 
 .App .questionContainer{
   margin-top: 30px;
   text-align: center;
   font-size: 1.4rem;
+  transition: opacity 1s ease-in;
 }
 
 .App .questionLayout{
-  flex-grow:1;
-  display: flex;
-  flex-direction: column;
   margin-top: 3vh;
   padding: 0 1rem;
 }
 
 .App .questionContainer .questionText{
+  margin: 0 auto;
+  max-width: 80%;
+  text-align: center;
   color: #fff;
   text-shadow: 1px 1px 1px #3B3B3B;
 }
@@ -195,20 +189,15 @@ body {
 .App .answerListContainer{
   display: flex;
   flex-direction: column;
-  min-height: 200px;
+  min-height: 220px;
   align-items: center;
+  padding-top:  30px;
 }
 
 .App .answerListContainer #answerList{
-  opacity: 0;
   list-style: none;
   padding: 0;
   margin-bottom: 2rem;
-  transition: opacity .3s ease-in
-}
-
-.App .answerListContainer #answerList.fadeIn{
-  opacity: 1
 }
 
 .App .answerListContainer #answerList li{
@@ -226,7 +215,11 @@ body {
 .verbTableWrapper{
   display: none;
   position: absolute;
-  max-width: 700px;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 80%;
 }
 
 .verbTableContainer{
@@ -242,91 +235,27 @@ body {
 
 .leftCol, .rightCol{
   grid-template-columns: 1fr 1fr;
-  background-color: #eee;
+  background-color: #F5DA09;
   width: 50%;
   
 }
 
 .leftCol > div, .rightCol > div{
-  border: 1px solid #999
+  border: 1px solid #F5DA09;
+  padding: 2px 2px;
 }
 
 
 .leftCol :nth-child(odd), .rightCol :nth-child(odd){
   float: left;
   width: 30%;
-  background-color: #aaa;
+  color: darkolivegreen;
 }
 
 .leftCol :nth-child(even), .rightCol :nth-child(even){
   float: left;
-  width: 70%
-}
-
-/* TODO grid display for questions */
-.App .questionTextContainer .questionGrid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr .5fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-auto-rows: 40px;
-  background-color: rgb(50, 114, 50);
-}
-
-.App .questionTextContainer .questionGrid div{
-  padding: .4rem;
-}
-
-.App .questionTextContainer .questionGrid .person{
-  grid-column-start: 1; 
-  grid-column-end: 2; 
-  grid-row-start: 1; 
-  grid-row-end: 2; 
-}
-
-.App .questionTextContainer .questionGrid .plus1{
-  grid-column-start: 2; 
-  grid-column-end: 3; 
-  grid-row-start: 2; 
-  grid-row-end: 3;
-}
-
-.App .questionTextContainer .questionGrid .tense{
-  grid-column-start: 3; 
-  grid-column-end: 4; 
-  grid-row-start: 1; 
-  grid-row-end: 2;
-}
-
-.App .questionTextContainer .questionGrid .plus2{
-  grid-column-start: 4; 
-  grid-column-end: 5; 
-  grid-row-start: 2; 
-  grid-row-end: 3;
-}
-
-.App .questionTextContainer .questionGrid .verbName{
-  grid-column-start: 5; 
-  grid-column-end: 6; 
-  grid-row-start: 1; 
-  grid-row-end: 2;
-}
-
-.App .questionTextContainer .questionGrid .propsPerson{
-  grid-column-start: 1; 
-  grid-column-end: 2; 
-  grid-row-start: 3; 
-  grid-row-end: 4; 
-}
-.App .questionTextContainer .questionGrid .propsTense{
-  grid-column-start: 3; 
-  grid-column-end: 4; 
-  grid-row-start: 3; 
-  grid-row-end: 4;
-}
-.App .questionTextContainer .questionGrid .propsVerbName{
-  grid-column-start: 5; 
-  grid-column-end: 6; 
-  grid-row-start: 3; 
-  grid-row-end: 4;
+  width: 60%;
+  color: darkolivegreen;
+  padding: 2px 2px 2px 4px;
 }
 
