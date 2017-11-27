@@ -176,7 +176,6 @@ class Quiz extends Component {
         
         const {newTense, personIdx, tenses, verbObj, verbTables} = this.getQuestionParams();
         const newCount = parseInt(this.state.count + 1, 10);
-
         
         this.setState({
             'count': newCount,

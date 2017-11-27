@@ -165,12 +165,14 @@ body {
   margin-top: 30px;
   text-align: center;
   font-size: 1.4rem;
-  transition: opacity 1s ease-in;
+  
 }
 
 .App .questionLayout{
   margin-top: 3vh;
   padding: 0 1rem;
+  opacity: 0;
+  transition: opacity .25s ease-in;
 }
 
 .App .questionContainer .questionText{
