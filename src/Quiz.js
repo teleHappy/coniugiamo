@@ -144,6 +144,7 @@ class Quiz extends Component {
     showVerbTable () {
 
         document.getElementsByClassName('verbTableWrapper')[0].style.display = 'block';
+        document.querySelector('.verbTableWrapper').classList.add('modal-enter');
 
     }
 
