@@ -26,13 +26,6 @@ describe('Tests for the Quiz component', () => {
 
         });
 
-        it('VerbUtils.getRandomVerbObject should return an object', () => {
-
-            const verbObj = VerbUtils.getRandomQuizVerbObject('are');
-
-            assert.isObject(verbObj, 'was expecting an object');
-
-        });
         it('should return an array of "are" verbs by name', () => {
 
             const areVerbNames = VerbUtils.getVerbNamesFromObjectArray(are);
@@ -57,14 +50,14 @@ describe('Tests for the Quiz component', () => {
         it('should return return an array with three verb tables', () => {
 
             const uniqueTenses = VerbUtils.getUniqueTenseArrayByCount('present', 3);
-            const threeVerbTablesArray = VerbUtils.getThreeVerbTables('parlare', uniqueTenses);
+            const threeVerbTablesArray = VerbUtils.getThreeVerbTables('parlare', uniqueTenses, are);
 
             assert.equal(threeVerbTablesArray.length, 3);
 
         });
         it('should produce an array of are verbs whose length equals to 5 and whose values are unique', () => {
 
-            const verbArray = VerbUtils.getUniqueAreVerbObjectsByCount(5);
+            const verbArray = VerbUtils.getUniqueAreVerbObjectsByCount(5, are);
 
             assert.equal(verbArray.length, 5);
 
