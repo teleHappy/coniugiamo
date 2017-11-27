@@ -6,7 +6,7 @@ html{
 
 body {
   font-family: "Open Sans", sans-serif;
-  color: #444;
+  color: #fff;
   background: #32A332;
 }
 
@@ -24,28 +24,56 @@ body {
   overflow: hidden;
 }
 
-.App .appHeader{
-  width: 100vw;
-  height: 10vh;
-  background-color: red;
-}
-
-  .App  .appHeader h1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 1.4rem;
-    margin-top: 2.5rem;
-  }
-
 .App .quizBody{
   display: flex;
   position: relative;
   flex-direction: column;
   flex-grow: 1;
   align-items: center;
-  max-width: 900px;
+  max-width: 760px;
+}
+
+.App .questionContext{
+  position: relative;
+  width: 100%;
+}
+
+.App .questionContext .appHeader {
+  display: flex;
+  margin: 4rem auto;
+  width: calc(760px - 10px);
+}
+
+.App .appHeader h1{
+  flex-grow: 2;
+  text-align: center;
+  color: #fff;
+  font-size: 2.4rem;
+  margin-top: 2.5rem;
+}
+
+.App .questionContext .appHeader .step, .App .appHeader .score {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.App .questionContext .appHeader .step .title, .App .appHeader .score .title{
+  font-size: 1.2rem;
+}
+
+.App .questionContext .appHeader .step .value, .App .appHeader .score .value{
+  font-size: 4rem;
+  text-align: center;
+  width: 100%;
+}
+
+.App .startContainer .appHeader{
+  width: 100vw;
+  display: flex;
+  margin-top: 4rem;
+  justify-content: space-around;
 }
 
 .App .startContainer{
@@ -131,36 +159,26 @@ body {
 
 .App .questionTextContainer{
   height: 120px;
-  display: none;
-  animation: slide-in .4s ease-in;
-}
-
-@keyframes slide-in{
-  0% {opacity: 0; transform: translate3d(80%, 0, 0)}
-  100% {opacity: 1; transform: none}
-}
-
-.App .questionContext{
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .App .questionContainer{
-  margin-top: 80px;
+  margin-top: 30px;
   text-align: center;
   font-size: 1.4rem;
+  
 }
 
 .App .questionLayout{
-  flex-grow:1;
-  display: flex;
-  flex-direction: column;
-  margin-top: 6vh;
+  margin-top: 3vh;
   padding: 0 1rem;
+  opacity: 0;
+  transition: opacity .25s ease-in;
 }
 
 .App .questionContainer .questionText{
+  margin: 0 auto;
+  max-width: 80%;
+  text-align: center;
   color: #fff;
   text-shadow: 1px 1px 1px #3B3B3B;
 }
@@ -173,20 +191,15 @@ body {
 .App .answerListContainer{
   display: flex;
   flex-direction: column;
-  min-height: 200px;
+  min-height: 220px;
   align-items: center;
+  padding-top:  30px;
 }
 
 .App .answerListContainer #answerList{
-  opacity: 0;
   list-style: none;
   padding: 0;
   margin-bottom: 2rem;
-  transition: opacity .3s ease-in
-}
-
-.App .answerListContainer #answerList.fadeIn{
-  opacity: 1
 }
 
 .App .answerListContainer #answerList li{
@@ -201,11 +214,44 @@ body {
   display: none;
 }
 
-.verbTableWrapper{
-  display: none;
+.verbTableWrapper {
+  font-size: 5em;
+  text-align: center;
+  width: 600px;
+  max-width: 80%;
+  padding: 5%;
+  transform: scale(4);
+  z-index: 2;
+  opacity: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  overflow: auto;
+  margin: auto;
   position: absolute;
-  max-width: 700px;
+  top: 10%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  display: none;
 }
+.verbTableWrapper.modal-enter {
+  display: flex;
+  animation: modal-enter .5s ease-in both;
+}
+
+@keyframes modal-enter {
+  from {
+    visibility: visible;
+    opacity: 0;
+  }
+to {
+    transform: scale(1);
+    opacity: 1;
+  }}
 
 .verbTableContainer{
   display: flex;
@@ -220,25 +266,27 @@ body {
 
 .leftCol, .rightCol{
   grid-template-columns: 1fr 1fr;
-  background-color: #eee;
+  background-color: #F5DA09;
   width: 50%;
   
 }
 
 .leftCol > div, .rightCol > div{
-  border: 1px solid #999
+  border: 1px solid #F5DA09;
+  padding: 2px 2px;
 }
 
 
 .leftCol :nth-child(odd), .rightCol :nth-child(odd){
   float: left;
   width: 30%;
-  background-color: #aaa;
+  color: darkolivegreen;
 }
 
 .leftCol :nth-child(even), .rightCol :nth-child(even){
   float: left;
-  width: 70%
+  width: 60%;
+  color: darkolivegreen;
+  padding: 2px 2px 2px 4px;
 }
-
 

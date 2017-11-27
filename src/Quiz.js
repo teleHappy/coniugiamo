@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
 import AppHeader from './components/views/AppHeader';
+import ProgressHeader from './components/views/ProgressHeader';
+import VerbDisplayTable from './components/verb/ui/VerbDisplayTable';
 import Questions from './components/question/Questions';
 import VerbUtils from './components/verb/VerbUtils';
 import ScoreCard from './components/views/ScoreCard';
@@ -141,18 +143,16 @@ class Quiz extends Component {
 
     showVerbTable () {
 
-        document.getElementsByClassName('verbTableWrapper')[0].style.display = 'flex';
+        document.getElementsByClassName('verbTableWrapper')[0].style.display = 'block';
+        document.querySelector('.verbTableWrapper').classList.add('modal-enter');
 
     }
 
     resetUI () {
 
-        document.getElementsByClassName('questionTextContainer')[0].style.display = 'none';
-        document.getElementsByClassName('answerListContainer')[0].style.visibility = 'hidden';
-        document.getElementById('answerList').classList.remove('fadeIn');
         document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'none';
         document.getElementsByClassName('verbTableWrapper')[0].style.display = 'none';
-
+        
         return true;
 
     }
@@ -167,17 +167,16 @@ class Quiz extends Component {
 
         if(this.state.count === QUESTIONS_LENGTH){
             
-            
             this.setState({
                 'progressStatus': Quiz.progressStatusEnums.COMPLETE
             });
 
             return;
         }
-
+        
         const {newTense, personIdx, tenses, verbObj, verbTables} = this.getQuestionParams();
         const newCount = parseInt(this.state.count + 1, 10);
-
+        
         this.setState({
             'count': newCount,
             'currentQuestion': {
@@ -240,22 +239,24 @@ class Quiz extends Component {
 
         return (
             <div className="App">
-                <AppHeader />
+                
                 <div className="quizBody">
                     {progressStatus === Quiz.progressStatusEnums.NOT_INITIALIZED &&
                         <div className="startContainer">
+                            <AppHeader />
                             <div className="introTextContainer">
-                                <p className="introText">Select a verb ending, then click Coniugiamo to get started</p>
+                                <p className="introText">Select a verb ending, then click Cominciamo to get started</p>
                                 <QuizForm verbGroupHandler={this.setVerbGroup} />
                             <Button 
                                 action={this.startQuiz}
-                                label="Coniugiamo"/>
+                                label="Cominciamo"/>
                             </div>
                         </div>
                     }
                     {progressStatus === Quiz.progressStatusEnums.IN_PROGRESS  &&
                         <div className="questionContext">
-
+                            <ProgressHeader count={this.state.count} totalQuestions={QUESTIONS_LENGTH} correctAnswers = {this.state.correctAnswers}/>
+                            <VerbDisplayTable verbTablesArray={this.state.currentQuestion.verbTablesArray} />
                             <Questions
                                 count={this.state.count}
                                 params={this.state.currentQuestion}
@@ -267,9 +268,6 @@ class Quiz extends Component {
                                 action={this.nextQuestion}
                                 label={this.getButtonLabel()}/>
 
-                            <ScoreCard
-                                correctAnswers = {this.state.correctAnswers}
-                                numberOfQuestions = {QUESTIONS_LENGTH} />
 
                         </div>
                     }

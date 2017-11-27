@@ -23,7 +23,6 @@ class ereTableGenerator {
 
     }
 
-    // TODO: stem ending for future
     getVerbStem (name, tense) {
         if(tense === 'future' || tense === 'conditional'){
             return name.slice(0, name.length - 1);

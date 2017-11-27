@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import DisplayQuestion from './DisplayQuestion';
 import DisplayAnswers from './DisplayAnswers';
-import VerbDisplayTable from '../verb/ui/VerbDisplayTable';
+
 
 import {are} from '../../data/verbs';
 import _ from 'lodash';
@@ -12,28 +12,52 @@ const QUESTIONS_LENGTH = 5;
 
 const rules = require('../../data/rules.json');
 
-const Questions = props => {
+class Questions extends Component{
 
-    const {personIdx, tense, verbName, pronoun, verbTablesArray} = props.params;
+    constructor (props) {
+        super(props);
+    }
 
-    return (
-        <div className="questionContainer">
-            <VerbDisplayTable verbTablesArray={verbTablesArray} />
-            <div className="questionLayout">
+    componentDidMount(){
+        document.querySelector('.questionLayout').style.opacity=1;
+    }
 
-                <DisplayQuestion
-                    pronoun={rules.pronouns[personIdx]}
-                    tense={tense}
-                    verbName={verbName} />
+    componentWillReceiveProps (nextProps) {
+        if(JSON.stringify(nextProps) === JSON.stringify(this.props))
+        {
+            return;
+        }
+        document.querySelector('.questionLayout').style.visibility='hidden';
+        document.querySelector('.questionLayout').style.opacity=0;
+        setTimeout(()=>{
+            document.querySelector('.questionLayout').style.visibility='visible';
+            document.querySelector('.questionLayout').style.opacity=1;
+        }, 250);
+    }
 
-                <DisplayAnswers
-                    verbTablesArray={verbTablesArray}
-                    personIdx={personIdx}
-                    checkAnswer={props.checkAnswer}
-                    showVerbTable={props.showVerbTable}/>
+    render () {
+        const {personIdx, tense, verbName, pronoun, verbTablesArray} = this.props.params;
+        const {checkAnswer, showVerbTable} = this.props;
+        
+        return (
+            <div className="questionContainer">
+                
+                <div className="questionLayout">
+    
+                    <DisplayQuestion
+                        pronoun={rules.pronouns[personIdx]}
+                        tense={tense}
+                        verbName={verbName} />
+    
+                    <DisplayAnswers
+                        verbTablesArray={verbTablesArray}
+                        personIdx={personIdx}
+                        checkAnswer={checkAnswer}
+                        showVerbTable={showVerbTable}/>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 
 };
 
