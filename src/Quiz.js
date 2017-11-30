@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 
+import Start from './views/Start';
+import Question from './views/Question';
+
 import AppHeader from './components/views/AppHeader';
 import ProgressHeader from './components/views/ProgressHeader';
 import VerbDisplayTable from './components/verb/ui/VerbDisplayTable';
-import Questions from './components/question/Questions';
 import VerbUtils from './components/verb/VerbUtils';
 import ScoreCard from './components/views/ScoreCard';
 import QuizForm from './components/views/QuizForm';
@@ -245,37 +247,24 @@ class Quiz extends Component {
                 
                 <div className="quizBody">
                     {progressStatus === Quiz.progressStatusEnums.NOT_INITIALIZED &&
-                        <div className="startContainer">
-                            <AppHeader />
-                            <div className="introTextContainer">
-                                <p className="introText">Select a verb ending, then click Cominciamo to get started</p>
-                                <QuizForm verbGroupHandler={this.setVerbGroup} />
-                            <Button 
-                                action={this.startQuiz}
-                                label="Cominciamo"/>
-                            </div>
-                        </div>
+                        <Start startQuiz={this.startQuiz} setVerbGroup={this.setVerbGroup}/>
                     }
                     {progressStatus === Quiz.progressStatusEnums.IN_PROGRESS  &&
-                        <div className="questionContext">
-                            <ProgressHeader count={this.state.count} totalQuestions={QUESTIONS_LENGTH} correctAnswers = {this.state.correctAnswers}/>
-                            <VerbDisplayTable verbTablesArray={this.state.currentQuestion.verbTablesArray} />
-                            <Questions
-                                count={this.state.count}
+                        <div className="questionsContainer">
+                            <Question count={this.state.count} totalQuestions={QUESTIONS_LENGTH} 
+                                correctAnswers = {this.state.correctAnswers}
+                                verbTablesArray={this.state.currentQuestion.verbTablesArray}
                                 params={this.state.currentQuestion}
                                 checkAnswer={this.checkAnswer}
                                 clickHandler={this.nextQuestion}
-                                showVerbTable={this.showVerbTable}/>
-
-                            <Button
+                                showVerbTable={this.showVerbTable}
                                 action={this.nextQuestion}
-                                label={this.getButtonLabel()}/>
-
-
+                                label={this.getButtonLabel()}
+                            />
                         </div>
                     }
                     {progressStatus === Quiz.progressStatusEnums.COMPLETE  &&
-                        <div className="startContainer">
+                        <div className="resultsContainer">
                             <div className="introTextContainer">
                                 <p className="introText">
                                     Si, po fare!
@@ -283,7 +272,7 @@ class Quiz extends Component {
 
                                 <ScoreCard
                                 correctAnswers = {this.state.correctAnswers}
-                                numberOfQuestions = {QUESTIONS_LENGTH} />
+                                totalQuestions = {QUESTIONS_LENGTH} />
 
                                 <Button 
                                     action={this.restartQuiz}

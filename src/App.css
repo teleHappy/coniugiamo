@@ -33,12 +33,12 @@ body {
   max-width: 760px;
 }
 
-.App .questionContext{
+.App .questionsContainer{
   position: relative;
   width: 100%;
 }
 
-.App .questionContext .appHeader {
+.App .questionsContainer .appHeader {
   display: flex;
   margin: 4rem auto;
   width: calc(760px - 10px);
@@ -52,43 +52,44 @@ body {
   margin-top: 2.5rem;
 }
 
-.App .questionContext .appHeader .step, .App .appHeader .score {
+.App .questionsContainer .appHeader .step, .App .appHeader .score {
   display: flex;
   flex-direction: column;
   text-align: center;
   flex-grow: 1;
 }
 
-.App .questionContext .appHeader .step .title, .App .appHeader .score .title{
+.App .questionsContainer .appHeader .step .title, .App .appHeader .score .title{
   font-size: 1.2rem;
 }
 
-.App .questionContext .appHeader .step .value, .App .appHeader .score .value{
+.App .questionsContainer .appHeader .step .value, .App .appHeader .score .value{
   font-size: 4rem;
   text-align: center;
   width: 100%;
 }
 
-.App .startContainer .appHeader{
-  width: 100vw;
-  display: flex;
-  margin-top: 4rem;
-  justify-content: space-around;
-}
-
-.App .startContainer{
+.App .startContainer, .App .resultsContainer{
   flex-grow: .33;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-.App .startContainer .introTextContainer{
+
+.App .startContainer .appHeader, .App .resultsContainer .appHeader{
+  width: 100vw;
+  display: flex;
+  margin-top: 4rem;
+  justify-content: space-around;
+}
+
+.App .startContainer .introTextContainer, .App .resultsContainer .introTextContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.App .startContainer .introText{
+.App .startContainer .introText, .App .resultsContainer .introText{
   font-size:  1.2rem;
   margin-top: 40px;
   color: #fff;
