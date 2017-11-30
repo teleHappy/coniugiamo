@@ -26,7 +26,8 @@ class Quiz extends Component {
             'currentQuestion': {},
             'currentQuestionAnswered': false,
             'progressStatus': Quiz.progressStatusEnums.NOT_INITIALIZED,
-            'verbGroup': null
+            'verbGroup': null,
+            'incorrectQuestions': []
         };
 
         this.startQuiz = this.startQuiz.bind(this);
@@ -41,8 +42,6 @@ class Quiz extends Component {
     setVerbGroup (evt) {
         const verbEnding = evt.target.value;
         let verbGroup = null;
-        
-        // TODO: remove following alert when ere and ire are added to verb data
         
         if(verbEnding === 'are'){
             verbGroup = are;
@@ -112,6 +111,7 @@ class Quiz extends Component {
         }
 
         let correctAnswers = parseInt(this.state.correctAnswers, 10);
+        let {incorrectQuestions} = this.state;
 
         document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'block';
 
@@ -122,12 +122,15 @@ class Quiz extends Component {
 
         } else {
 
+            incorrectQuestions.push(this.state.currentQuestion)
+            
             document.getElementsByClassName('verbTableLink')[0].style.color = 'red';
 
         }
 
         this.setState({
             correctAnswers,
+            incorrectQuestions,
             'currentQuestionAnswered': true
         });
 
