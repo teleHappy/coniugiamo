@@ -31,7 +31,6 @@ class Quiz extends Component {
         this.restartQuiz = this.restartQuiz.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
         this.checkAnswer = this.checkAnswer.bind(this);
-        this.showVerbTable = this.showVerbTable.bind(this);
         this.setVerbGroup = this.setVerbGroup.bind(this);
         this.getQuestionParams = this.getQuestionParams.bind(this);
     }
@@ -260,7 +259,6 @@ class Quiz extends Component {
                         totalQuestions={QUESTIONS_LENGTH}
                         checkAnswer={this.checkAnswer}
                         clickHandler={this.nextQuestion}
-                        showVerbTable={this.showVerbTable}
                         action={this.nextQuestion}
                         label={this.getButtonLabel()}
                     />

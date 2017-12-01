@@ -10,6 +10,15 @@ class Question extends Component{
         
         super(props);
     
+        this.showVerbTable = this.showVerbTable.bind(this);
+        
+    }
+
+    showVerbTable () {
+        
+        document.getElementsByClassName('verbTableWrapper')[0].style.display = 'block';
+        document.querySelector('.verbTableWrapper').classList.add('modal-enter');
+
     }
 
     render () {
@@ -30,15 +39,18 @@ class Question extends Component{
             
             <div className="questionsContainer">
                 <ProgressHeader 
-                    count={params.count}
+                    count={count}
                     totalQuestions={totalQuestions}
-                    correctAnswers = {params.correctAnswers}/>
-                <VerbDisplayTable verbTablesArray={params.verbTablesArray} />
+                    correctAnswers = {correctAnswers}/>
+                
+                <VerbDisplayTable
+                    verbTablesArray={params.verbTablesArray} />
+                
                 <Questions
                     count={params.count}
                     params={params}
                     checkAnswer={checkAnswer}
-                    showVerbTable={showVerbTable}/>
+                    showVerbTable={this.showVerbTable}/>
 
                 <Button
                     action={action}

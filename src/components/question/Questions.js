@@ -26,7 +26,7 @@ class Questions extends Component{
             document.querySelector('.questionLayout').style.visibility='visible';
             document.querySelector('.questionLayout').style.opacity=1;
         }, 250);
-    }
+    }s
 
     render () {
         const {personIdx, tense, verbName, pronoun, verbTablesArray} = this.props.params;
