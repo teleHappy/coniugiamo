@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 
+import AppHeader from './components/views/AppHeader';
+import VerbUtils from './components/verb/VerbUtils';
+
 import Start from './views/Start';
 import Question from './views/Question';
+import Results from './views/Results';
 
-import AppHeader from './components/views/AppHeader';
-import ProgressHeader from './components/views/ProgressHeader';
-import VerbDisplayTable from './components/verb/ui/VerbDisplayTable';
-import VerbUtils from './components/verb/VerbUtils';
-import ScoreCard from './components/views/ScoreCard';
-import QuizForm from './components/views/QuizForm';
-import Button from './components/controls/Button';
 
 import {are, ere, ire} from './data/verbs';
 
@@ -250,7 +247,7 @@ class Quiz extends Component {
                         <Start startQuiz={this.startQuiz} setVerbGroup={this.setVerbGroup}/>
                     }
                     {progressStatus === Quiz.progressStatusEnums.IN_PROGRESS  &&
-                        <div className="questionsContainer">
+                        
                             <Question count={this.state.count} totalQuestions={QUESTIONS_LENGTH} 
                                 correctAnswers = {this.state.correctAnswers}
                                 verbTablesArray={this.state.currentQuestion.verbTablesArray}
@@ -261,24 +258,15 @@ class Quiz extends Component {
                                 action={this.nextQuestion}
                                 label={this.getButtonLabel()}
                             />
-                        </div>
+                    
                     }
+                    
                     {progressStatus === Quiz.progressStatusEnums.COMPLETE  &&
-                        <div className="resultsContainer">
-                            <div className="introTextContainer">
-                                <p className="introText">
-                                    Si, po fare!
-                                </p>
-
-                                <ScoreCard
-                                correctAnswers = {this.state.correctAnswers}
-                                totalQuestions = {QUESTIONS_LENGTH} />
-
-                                <Button 
-                                    action={this.restartQuiz}
-                                    label="Vai Ancora"/>
-                            </div>
-                        </div>
+    
+                        <Results correctAnswers={this.state.correctAnswers}
+                            totalQuestions={QUESTIONS_LENGTH}
+                            action={this.restartQuiz}/>
+    
                     }
                 </div>
             </div>
