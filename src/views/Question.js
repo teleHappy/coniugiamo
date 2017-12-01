@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import ProgressHeader from '../components/views/ProgressHeader';
+import ProgressHeader from '../components/ProgressHeader';
 import VerbDisplayTable from '../components/verb/ui/VerbDisplayTable';
 import Questions from '../components/question/Questions';
 import Button from '../components/controls/Button';
@@ -30,7 +30,6 @@ class Question extends Component{
             totalQuestions,
             params,
             checkAnswer,
-            clickHandler,
             showVerbTable,
             action,
             label

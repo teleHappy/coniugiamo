@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import AppHeader from './components/views/AppHeader';
+import AppHeader from './components/AppHeader';
 import VerbUtils from './components/verb/VerbUtils';
 import {are, ere, ire} from './data/verbs';
 
@@ -258,7 +258,6 @@ class Quiz extends Component {
                         params={this.state.currentQuestion}
                         totalQuestions={QUESTIONS_LENGTH}
                         checkAnswer={this.checkAnswer}
-                        clickHandler={this.nextQuestion}
                         action={this.nextQuestion}
                         label={this.getButtonLabel()}
                     />

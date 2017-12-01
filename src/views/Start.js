@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
-import AppHeader from '../components/views/AppHeader';
-import QuizForm from '../components/views/QuizForm';
+import AppHeader from '../components/AppHeader';
+import QuizForm from '../components/QuizForm';
 import Button from '../components/controls/Button';
 
 

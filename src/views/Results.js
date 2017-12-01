@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import ScoreCard from '../components/views/ScoreCard';
+import ScoreCard from '../components/ScoreCard';
 import Button from '../components/controls/Button';
 
 
