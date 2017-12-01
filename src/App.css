@@ -90,6 +90,8 @@ body {
 
 .App .startContainer .introTextContainer, .App .resultsContainer .introTextContainer{
   display: flex;
+  width: 600px;
+  max-width: 62%;
   flex-direction: column;
   align-items: center;
 }
@@ -140,9 +142,9 @@ body {
 
 .formWrapper{
   padding: 20px 10px;
+  width: 75%;
 }
 .formWrapper fieldset{
-  width: 500px;
   border: 0;
 }
 
