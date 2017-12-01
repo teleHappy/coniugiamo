@@ -263,7 +263,8 @@ class Quiz extends Component {
                     
                     {progressStatus === Quiz.progressStatusEnums.COMPLETE  &&
     
-                        <Results correctAnswers={this.state.correctAnswers}
+                        <Results 
+                            correctAnswers={this.state.correctAnswers}
                             totalQuestions={QUESTIONS_LENGTH}
                             action={this.restartQuiz}/>
     

@@ -3,13 +3,6 @@ import React, {Component} from 'react';
 import DisplayQuestion from './DisplayQuestion';
 import DisplayAnswers from './DisplayAnswers';
 
-
-import {are} from '../../data/verbs';
-import _ from 'lodash';
-
-const ANSWERS_LENGTH = 3;
-const QUESTIONS_LENGTH = 5;
-
 const rules = require('../../data/rules.json');
 
 class Questions extends Component{
