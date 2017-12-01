@@ -12,7 +12,8 @@ class Questions extends Component{
     }
 
     componentDidMount(){
-        document.querySelector('.questionLayout').style.opacity=1;
+        this.questionLayout = document.querySelector('.questionLayout');
+        this.questionLayout.style.opacity=1;
     }
 
     componentWillReceiveProps (nextProps) {
@@ -20,11 +21,11 @@ class Questions extends Component{
         {
             return;
         }
-        document.querySelector('.questionLayout').style.visibility='hidden';
-        document.querySelector('.questionLayout').style.opacity=0;
+        this.questionLayout.style.visibility='hidden';
+        this.questionLayout.style.opacity=0;
         setTimeout(()=>{
-            document.querySelector('.questionLayout').style.visibility='visible';
-            document.querySelector('.questionLayout').style.opacity=1;
+            this.questionLayout.style.visibility='visible';
+            this.questionLayout.style.opacity=1;
         }, 250);
     }s
 
