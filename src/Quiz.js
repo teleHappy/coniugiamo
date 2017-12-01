@@ -2,13 +2,11 @@ import React, {Component} from 'react';
 
 import AppHeader from './components/views/AppHeader';
 import VerbUtils from './components/verb/VerbUtils';
+import {are, ere, ire} from './data/verbs';
 
 import Start from './views/Start';
 import Question from './views/Question';
 import Results from './views/Results';
-
-
-import {are, ere, ire} from './data/verbs';
 
 const ANSWERS_LENGTH = 3;
 const QUESTIONS_LENGTH = 5;
@@ -242,35 +240,45 @@ class Quiz extends Component {
         return (
             <div className="App">
                 
-                <div className="quizBody">
-                    {progressStatus === Quiz.progressStatusEnums.NOT_INITIALIZED &&
-                        <Start startQuiz={this.startQuiz} setVerbGroup={this.setVerbGroup}/>
-                    }
-                    {progressStatus === Quiz.progressStatusEnums.IN_PROGRESS  &&
-                        
-                            <Question count={this.state.count} totalQuestions={QUESTIONS_LENGTH} 
-                                correctAnswers = {this.state.correctAnswers}
-                                verbTablesArray={this.state.currentQuestion.verbTablesArray}
-                                params={this.state.currentQuestion}
-                                checkAnswer={this.checkAnswer}
-                                clickHandler={this.nextQuestion}
-                                showVerbTable={this.showVerbTable}
-                                action={this.nextQuestion}
-                                label={this.getButtonLabel()}
-                            />
+                
+                {progressStatus === Quiz.progressStatusEnums.NOT_INITIALIZED &&
                     
-                    }
+                    <Start 
+                        startQuiz={this.startQuiz}
+                        setVerbGroup={this.setVerbGroup}
+                    />
+                
+                }
+                
+                {progressStatus === Quiz.progressStatusEnums.IN_PROGRESS  &&
                     
-                    {progressStatus === Quiz.progressStatusEnums.COMPLETE  &&
-    
-                        <Results 
-                            correctAnswers={this.state.correctAnswers}
-                            totalQuestions={QUESTIONS_LENGTH}
-                            action={this.restartQuiz}/>
-    
-                    }
-                </div>
+                    <Question 
+                        count={this.state.count} 
+                        correctAnswers = {this.state.correctAnswers}
+                        verbTablesArray={this.state.currentQuestion.verbTablesArray}
+                        params={this.state.currentQuestion}
+                        totalQuestions={QUESTIONS_LENGTH}
+                        checkAnswer={this.checkAnswer}
+                        clickHandler={this.nextQuestion}
+                        showVerbTable={this.showVerbTable}
+                        action={this.nextQuestion}
+                        label={this.getButtonLabel()}
+                    />
+                
+                }
+                
+                {progressStatus === Quiz.progressStatusEnums.COMPLETE  &&
+
+                    <Results 
+                        correctAnswers={this.state.correctAnswers}
+                        totalQuestions={QUESTIONS_LENGTH}
+                        action={this.restartQuiz}
+                    />
+
+                }
+                
             </div>
+            
         );
 
     }

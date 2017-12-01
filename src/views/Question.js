@@ -15,10 +15,10 @@ class Question extends Component{
     render () {
         const {
             count,
-            totalQuestions,
             correctAnswers,
             currentQuestion,
             verbTablesArray,
+            totalQuestions,
             params,
             checkAnswer,
             clickHandler,
@@ -27,11 +27,15 @@ class Question extends Component{
             label
         } = this.props
         return (
+            
             <div className="questionsContainer">
-                <ProgressHeader count={count} totalQuestions={totalQuestions} correctAnswers = {correctAnswers}/>
-                <VerbDisplayTable verbTablesArray={verbTablesArray} />
+                <ProgressHeader 
+                    count={params.count}
+                    totalQuestions={totalQuestions}
+                    correctAnswers = {params.correctAnswers}/>
+                <VerbDisplayTable verbTablesArray={params.verbTablesArray} />
                 <Questions
-                    count={count}
+                    count={params.count}
                     params={params}
                     checkAnswer={checkAnswer}
                     showVerbTable={showVerbTable}/>

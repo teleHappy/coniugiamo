@@ -19,13 +19,17 @@ class Start extends Component{
         return (
             <div className="startContainer">
                 <AppHeader />
+
                 <div className="introTextContainer">
                     <p className="introText">Select a verb ending, then click Cominciamo to get started</p>
-                    <QuizForm verbGroupHandler={setVerbGroup} />
+                </div>
+
+                <QuizForm verbGroupHandler={setVerbGroup} />
+
                 <Button 
                     action={startQuiz}
                     label="Cominciamo"/>
-                </div>
+            
             </div>
         );
         
