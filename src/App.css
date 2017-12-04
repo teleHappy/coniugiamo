@@ -6,13 +6,15 @@ html{
 
 body {
   font-family: "Open Sans", sans-serif;
-  color: #fff;
-  background: #32A332;
+  background: #F44336;
 }
 
 #root{
-  height: 100vh;
- 
+  height: 93vh;
+  margin: 1.3rem;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 1px 8px 5px 2px rgba(0,0,0,0.3); 
 }
 
 .App{
@@ -53,14 +55,12 @@ body {
 .App .appHeader h1{
   flex-grow: 2;
   text-align: center;
-  color: #fff;
+  color: rgb(36, 34, 34);
   font-size: 2.4rem;
   margin-top: 2.5rem;
 }
 
 .App .appHeader .step .value {
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
   position: relative;
 }
 
@@ -106,8 +106,7 @@ body {
 .App .startContainer .introText, .App .resultsContainer .introText{
   font-size:  1.2rem;
   margin-top: 40px;
-  color: #fff;
-  text-shadow: 1px 1px 1px #3B3B3B;
+  color: rgb(36, 34, 34);
 }
 
 .App .buttonContainer{
@@ -121,10 +120,11 @@ body {
 
 .App .buttonContainer button{
   border: 0;
-  padding: .4rem;
-  background: #097CF7;
-  color: #fff;
+  padding: .6rem .4rem;
+  background: #4caf50;
+  color: rgba(255, 255, 255, 0.877);
   width: 23vw;
+  font-size: 1.2rem;
 }
 
 .App .buttonContainer button:disabled{
@@ -138,7 +138,7 @@ body {
 .App .scoreContainer{
   display: flex;
   justify-content: center;
-  color: #F5DA09;
+  color: rgb(36, 34, 34);
 }
 .App .scoreContainer .score{
   text-align: center
@@ -150,7 +150,7 @@ body {
 
 .formWrapper{
   padding: 20px 10px;
-  width: 75%;
+  width: 45%;
 }
 .formWrapper fieldset{
   border: 0;
@@ -162,7 +162,8 @@ body {
 }
 
 .formWrapper fieldset div label{
-  color: #F5DA09;
+  color: rgb(36, 34, 34);
+  text-transform: uppercase;
   font-size: 1.2rem;
   padding-left: 4px;
 }
@@ -194,12 +195,11 @@ body {
   margin: 0 auto;
   max-width: 80%;
   text-align: center;
-  color: #fff;
-  text-shadow: 1px 1px 1px #3B3B3B;
+  color: rgb(36, 34, 34);
 }
 
 .App .questionContainer .questionText .param{
-  color: #F5DA09;
+  color: #4caf50;
   font-style: bold;
 }
 
@@ -222,7 +222,6 @@ body {
   text-align: left;
   padding: auto 0;
   cursor: pointer;
-  text-shadow: 1px 1px 1px #3B3B3B;
 }
 
 .verbTableLinkContainer{
@@ -275,19 +274,19 @@ to {
 
 .verbTableLinkContainer a.verbTableLink{
   font-size: 1rem;
-  color: #fff;
+  color: #4caf50;
   text-decoration: none; 
 }
 
 .leftCol, .rightCol{
   grid-template-columns: 1fr 1fr;
-  background-color: #F5DA09;
+  background-color: #8bc34a;
   width: 50%;
   
 }
 
 .leftCol > div, .rightCol > div{
-  border: 1px solid #F5DA09;
+  border: 1px solid #8bc34a;
   padding: 2px 2px;
 }
 
@@ -295,13 +294,13 @@ to {
 .leftCol :nth-child(odd), .rightCol :nth-child(odd){
   float: left;
   width: 30%;
-  color: darkolivegreen;
+  color: rgb(0,0,0);
 }
 
 .leftCol :nth-child(even), .rightCol :nth-child(even){
   float: left;
   width: 60%;
-  color: darkolivegreen;
+  color: rgb(0,0,0);
   padding: 2px 2px 2px 4px;
 }
 

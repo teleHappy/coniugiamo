@@ -113,14 +113,14 @@ class Quiz extends Component {
 
         if (this.isCorrectAnswer(evt)) {
 
-            document.getElementsByClassName('verbTableLink')[0].style.color = '#fff';
+            document.getElementsByClassName('verbTableLink')[0].style.color = '#4caf50';
             correctAnswers += 1;
 
         } else {
 
             incorrectQuestions.push(this.state.currentQuestion)
             
-            document.getElementsByClassName('verbTableLink')[0].style.color = 'red';
+            document.getElementsByClassName('verbTableLink')[0].style.color = '#F44336';
 
         }
 
