@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import AppHeader from '../components/AppHeader';
 import ScoreCard from '../components/ScoreCard';
 import Button from '../components/controls/Button';
 
@@ -18,6 +19,7 @@ class Results extends Component {
 
         return (
             <div className="resultsContainer">
+                <AppHeader />
                 <div className="introTextContainer">
                     <p className="introText">
                         Si, po fare!

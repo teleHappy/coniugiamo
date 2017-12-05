@@ -109,7 +109,7 @@ class Quiz extends Component {
         let correctAnswers = parseInt(this.state.correctAnswers, 10);
         let {incorrectQuestions} = this.state;
 
-        document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'block';
+        document.getElementsByClassName('verbTableLinkContainer')[0].style.visibility = 'visible';
 
         if (this.isCorrectAnswer(evt)) {
 
@@ -149,7 +149,7 @@ class Quiz extends Component {
 
     resetUI () {
 
-        document.getElementsByClassName('verbTableLinkContainer')[0].style.display = 'none';
+        document.getElementsByClassName('verbTableLinkContainer')[0].style.visibility = 'hidden';
         document.getElementsByClassName('verbTableWrapper')[0].style.display = 'none';
         
         return true;

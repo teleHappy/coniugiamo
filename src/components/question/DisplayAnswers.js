@@ -67,10 +67,13 @@ class DisplayAnswers extends Component {
     render () {
 
         return (
-            <div className="answerListContainer">
-                <ul id="answerList">
-                    {this.getListItems()}
-                </ul>
+            <div> 
+                <div className="answerListContainer">
+                    <ul id="answerList">
+                        {this.getListItems()}
+                    </ul>
+                    
+                </div>
                 <div className="verbTableLinkContainer">
                     <a href="#" className="verbTableLink" onClick={this.props.showVerbTable}>
                         View Verb Table
