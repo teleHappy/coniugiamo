@@ -148,11 +148,13 @@ class VerbUtils {
 
     // Gets an array of unique verb objects
     // Used to instatiate verb quiz and assure that there are no duplicate verbs in any quiz
-    // TODO: incorporate ere, ire and irregular verbs
     getUniqueAreVerbObjectsByCount (count, verbGroup) {
         
         const offset = count - 1;
-        const uniqueArray = [verbGroup[0]];
+
+        const x = Math.floor(Math.random() * verbGroup.length);
+
+        const uniqueArray = [verbGroup[Math.floor(Math.random() * verbGroup.length)]];
 
         for (let idx = 0; idx < offset; idx += 1) {
 
@@ -165,7 +167,7 @@ class VerbUtils {
 
         }
 
-        return uniqueArray;
+        return this.getShuffledVerbArray(uniqueArray);
 
     }
 
@@ -205,6 +207,29 @@ class VerbUtils {
 
         return uniqueArray;
 
+    }
+
+    getShuffledVerbArray (array) {
+        var currentIndex = array.length, 
+            temporaryValue, 
+            randomIndex;
+    
+        while (0 !== currentIndex) {
+    
+
+            randomIndex = Math.floor(Math.random() * currentIndex);
+
+            currentIndex -= 1;
+        
+            temporaryValue = array[currentIndex];
+
+            array[currentIndex] = array[randomIndex];
+
+            array[randomIndex] = temporaryValue;
+
+        }
+    
+        return array;
     }
 
 }

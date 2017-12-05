@@ -10,8 +10,10 @@ body {
 }
 
 #root{
+  margin: 1.3rem auto;
   height: 93vh;
-  margin: 1.3rem;
+  width: 80vw;
+  max-width: 700px;
   background: #ffffff;
   overflow: hidden;
   box-shadow: 1px 8px 5px 2px rgba(0,0,0,0.3); 
@@ -120,10 +122,10 @@ body {
 
 .App .buttonContainer button{
   border: 0;
-  padding: .6rem .4rem;
+  padding: .6rem 1.2rem;
   background: #4caf50;
   color: rgba(255, 255, 255, 0.877);
-  width: 23vw;
+  /* width: 23vw; */
   font-size: 1.2rem;
 }
 
@@ -231,8 +233,6 @@ body {
 .verbTableWrapper {
   font-size: 5em;
   text-align: center;
-  width: 600px;
-  max-width: 80%;
   padding: 5%;
   transform: scale(4);
   z-index: 2;
@@ -242,14 +242,13 @@ body {
   justify-content: center;
   height: 200px;
   overflow: auto;
-  margin: 15rem auto auto;
+  margin: 0 auto;
   position: absolute;
-  top: 10%;
+  top: 36%;
   left: 0;
   bottom: 0;
   right: 0;
   backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
   display: none;
 }
 .verbTableWrapper.modal-enter {
@@ -270,6 +269,7 @@ to {
 .verbTableContainer{
   display: flex;
   font-size: 1.2rem;
+  box-shadow: 1px 0px 8px 2px rgba(0, 0, 0, 0.3);
 }
 
 .verbTableLinkContainer a.verbTableLink{
@@ -280,13 +280,13 @@ to {
 
 .leftCol, .rightCol{
   grid-template-columns: 1fr 1fr;
-  background-color: #8bc34a;
+  background-color: #4caf50;
   width: 50%;
   
 }
 
 .leftCol > div, .rightCol > div{
-  border: 1px solid #8bc34a;
+  border: 1px solid transparent;
   padding: 2px 2px;
 }
 
@@ -294,13 +294,13 @@ to {
 .leftCol :nth-child(odd), .rightCol :nth-child(odd){
   float: left;
   width: 30%;
-  color: rgb(0,0,0);
+  color: #ffffff;
 }
 
 .leftCol :nth-child(even), .rightCol :nth-child(even){
   float: left;
   width: 60%;
-  color: rgb(0,0,0);
+  color: #ffffff;
   padding: 2px 2px 2px 4px;
 }
 

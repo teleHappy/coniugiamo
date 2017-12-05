@@ -25,9 +25,11 @@ class ProgressHeader extends Component {
         this.stepValue.style.opacity = 0;
 
         setTimeout(()=> {
+            
             this.stepValue.style.visibility = 'visible';
+            
             this.stepValue.style.opacity = 1;
-            console.log(this.stepValue)
+
         }, 300);
 
     }
