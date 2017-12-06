@@ -166,7 +166,12 @@ body {
 }
 
 .App .scoreContainer h3 {
+  font-size: 2rem;
   margin: 0.5rem;
+}
+
+.App .scoreContainer p {
+  font-size: 1.6rem;
 }
 
 .formWrapper {
