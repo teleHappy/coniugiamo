@@ -1,64 +1,46 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+
+import StepCounter from "./StepCounter";
+import CurrentScore from "./CurrentScore";
 
 class ProgressHeader extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    constructor (props) {
+  componentDidMount() {
+    this.stepValue = document.querySelector(".appHeader .step .value");
+    this.stepValue.style.opacity = 1;
+  }
 
-        super(props);
-
+  componentWillReceiveProps(nextProps) {
+    if (JSON.stringify(nextProps) === JSON.stringify(this.props)) {
+      return;
     }
 
-    componentDidMount () {
+    this.stepValue.style.visibility = "hidden";
+    this.stepValue.style.opacity = 0;
 
-        this.stepValue = document.querySelector('.appHeader .step .value');
-        this.stepValue.style.opacity = 1;
+    setTimeout(() => {
+      this.stepValue.style.visibility = "visible";
 
-    }
-    
-    componentWillReceiveProps (nextProps) {
-        if(JSON.stringify(nextProps) === JSON.stringify(this.props))
-        {
-            return;
-        }
+      this.stepValue.style.opacity = 1;
+    }, 300);
+  }
 
-        this.stepValue.style.visibility = 'hidden';
-        this.stepValue.style.opacity = 0;
+  render() {
+    const { count, totalQuestions, correctAnswers } = this.props;
 
-        setTimeout(()=> {
-            
-            this.stepValue.style.visibility = 'visible';
-            
-            this.stepValue.style.opacity = 1;
+    return (
+      <div className="appHeader">
+        <StepCounter count={count} totalQuestions={totalQuestions} />
 
-        }, 300);
+        <h1>Coniugiamo</h1>
 
-    }
-
-    render () {
-        
-        const {count, totalQuestions, correctAnswers} = this.props;
-
-        return (
-            <div className="appHeader">
-                <div className="step">
-                    <div className="title">Question</div>
-                    <div className="value">{count}</div>
-                    <div>of {totalQuestions}</div>
-                </div>
-                <h1>Coniugiamo</h1>
-                <div className="score">
-                    <div className="title">Score</div>
-                    <div className="value">{correctAnswers}</div>
-                    <div>points</div>
-                </div>
-            
-        
-            </div>
-        );
-
-    }    
-
-};
+        <CurrentScore correctAnswers={correctAnswers} />
+      </div>
+    );
+  }
+}
 
 export default ProgressHeader;
-

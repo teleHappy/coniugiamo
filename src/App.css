@@ -1,26 +1,28 @@
-* {box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 
-html{
+html {
   font-size: 16px;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #F44336;
+  font-family: "Roboto", sans-serif;
+  background: #f44336;
 }
 
-#root{
+#root {
   margin: 1.3rem auto;
   height: 93vh;
   width: 80vw;
   max-width: 700px;
   background: #ffffff;
   overflow: hidden;
-  box-shadow: 1px 8px 5px 2px rgba(0,0,0,0.3); 
+  box-shadow: 1px 8px 5px 2px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
 }
 
-.App{
+.App {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,7 +31,7 @@ body {
   overflow: hidden;
 }
 
-.App .quizBody{
+.App .quizBody {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -38,7 +40,7 @@ body {
   max-width: 760px;
 }
 
-.App .questionsContainer{
+.App .questionsContainer {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -56,11 +58,11 @@ body {
   overflow: hidden;
 }
 
-.App .appHeader h1{
+.App .appHeader h1 {
   flex-grow: 2;
   text-align: center;
   color: #212121;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   font-size: 2.4rem;
   margin-top: 2.5rem;
 }
@@ -69,24 +71,28 @@ body {
   position: relative;
 }
 
-.App .questionsContainer .appHeader .step, .App .appHeader .score {
+.App .questionsContainer .appHeader .step,
+.App .appHeader .score {
   display: flex;
   flex-direction: column;
   text-align: center;
   flex-grow: 1;
 }
 
-.App .questionsContainer .appHeader .step .title, .App .appHeader .score .title{
+.App .questionsContainer .appHeader .step .title,
+.App .appHeader .score .title {
   font-size: 1.2rem;
 }
 
-.App .questionsContainer .appHeader .step .value, .App .appHeader .score .value{
+.App .questionsContainer .appHeader .step .value,
+.App .appHeader .score .value {
   font-size: 4rem;
   text-align: center;
   width: 100%;
 }
 
-.App .startContainer, .App .resultsContainer{
+.App .startContainer,
+.App .resultsContainer {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -94,28 +100,31 @@ body {
   text-align: center;
 }
 
-.App .startContainer .appHeader, .App .resultsContainer .appHeader{
+.App .startContainer .appHeader,
+.App .resultsContainer .appHeader {
   width: 100vw;
   display: flex;
   margin-top: 4rem;
   justify-content: space-around;
 }
 
-.App .startContainer .introTextContainer, .App .resultsContainer .introTextContainer{
+.App .startContainer .introTextContainer,
+.App .resultsContainer .introTextContainer {
   display: flex;
   width: 600px;
   max-width: 62%;
   flex-direction: column;
   align-items: center;
 }
-.App .startContainer .introText, .App .resultsContainer .introText{
-  font-size:  1.2rem;
+.App .startContainer .introText,
+.App .resultsContainer .introText {
+  font-size: 1.2rem;
   margin-top: 40px;
   color: #616161;
 }
 
-.App .buttonContainer{
-  flex-grow: .5;
+.App .buttonContainer {
+  flex-grow: 0.5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,106 +132,104 @@ body {
   min-height: 5rem;
 }
 
-.App .buttonContainer button{
+.App .buttonContainer button {
   border: 0;
-  padding: .6rem 1.2rem;
+  padding: 0.6rem 1.2rem;
   color: #4caf50;
   font-size: 1.2rem;
   text-transform: uppercase;
   font-family: Roboto, sans-serif;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 }
 
-
-.App .buttonContainer button:active, .App .buttonContainer button:focus {
+.App .buttonContainer button:active,
+.App .buttonContainer button:focus {
   border: 0px solid transparent;
   outline: none;
 }
 
-.App .buttonContainer button:disabled{
+.App .buttonContainer button:disabled {
   background: #999;
 }
 
-.App .startContext{
+.App .startContext {
   display: flex;
 }
 
-.App .scoreContainer{
+.App .scoreContainer {
   display: flex;
   justify-content: center;
   color: #616161;
 }
-.App .scoreContainer .score{
-  text-align: center
+.App .scoreContainer .score {
+  text-align: center;
 }
 
-.App .scoreContainer h3{
-  margin: .5rem;
+.App .scoreContainer h3 {
+  margin: 0.5rem;
 }
 
-.formWrapper{
+.formWrapper {
   padding: 20px 10px;
   width: 45%;
   background: #f5f5f5;
   margin-top: 50px;
   border-radius: 4px;
 }
-.formWrapper fieldset{
+.formWrapper fieldset {
   border: 0;
 }
 
-.formWrapper fieldset div{
+.formWrapper fieldset div {
   float: left;
   width: 33%;
 }
 
-.formWrapper fieldset div label{
+.formWrapper fieldset div label {
   color: #3f8670;
   text-transform: uppercase;
   font-size: 1.2rem;
   padding-left: 4px;
 }
 
-.formWrapper fieldset input:focus{
+.formWrapper fieldset input:focus {
   outline-color: red;
 }
 
-.App .questionTextWrapper{
+.App .questionTextWrapper {
   height: 120px;
-  display:block;
+  display: block;
 }
 
-.App .questionTextContainer{
+.App .questionTextContainer {
   height: 120px;
 }
 
-.App .questionContainer{
+.App .questionContainer {
   margin-top: 30px;
   text-align: center;
   font-size: 1.4rem;
-  
 }
 
-.App .questionLayout{
-  margin-top: 3vh;
+.App .questionLayout {
   padding: 0 1rem;
   opacity: 0;
-  transition: opacity .25s ease-in;
+  transition: opacity 0.25s ease-in;
 }
 
-.App .questionContainer .questionText{
+.App .questionContainer .questionText {
   margin: 0 auto;
   max-width: 80%;
   text-align: center;
   color: #616161;
 }
 
-.App .questionContainer .questionText .param{
+.App .questionContainer .questionText .param {
   color: #4caf50;
   font-style: bold;
 }
 
-.App .answerListContainer{
+.App .answerListContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -232,20 +239,20 @@ body {
   border-radius: 4px;
 }
 
-.App .answerListContainer #answerList{
+.App .answerListContainer #answerList {
   list-style: none;
   padding: 0;
   margin-bottom: 2rem;
 }
 
-.App .answerListContainer #answerList li{
+.App .answerListContainer #answerList li {
   line-height: 2rem;
   text-align: left;
   padding: auto 0;
   cursor: pointer;
 }
 
-.verbTableLinkContainer{
+.verbTableLinkContainer {
   visibility: hidden;
   margin-top: 20px;
 }
@@ -273,7 +280,7 @@ body {
 }
 .verbTableWrapper.modal-enter {
   display: flex;
-  animation: modal-enter .5s ease-in both;
+  animation: modal-enter 0.5s ease-in both;
 }
 
 @keyframes modal-enter {
@@ -281,46 +288,49 @@ body {
     visibility: visible;
     opacity: 0;
   }
-to {
+  to {
     transform: scale(1);
     opacity: 1;
-  }}
+  }
+}
 
-.verbTableContainer{
+.verbTableContainer {
   display: flex;
   font-size: 1.2rem;
+  text-align: right;
   box-shadow: 1px 0px 8px 2px rgba(0, 0, 0, 0.3);
 }
 
-.verbTableLinkContainer a.verbTableLink{
+.verbTableLinkContainer a.verbTableLink {
   font-size: 1rem;
   color: #4caf50;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
-.leftCol, .rightCol{
+.leftCol,
+.rightCol {
   grid-template-columns: 1fr 1fr;
   background-color: #4caf50;
   width: 50%;
-  
 }
 
-.leftCol > div, .rightCol > div{
+.leftCol > div,
+.rightCol > div {
   border: 1px solid transparent;
   padding: 2px 2px;
 }
 
-
-.leftCol :nth-child(odd), .rightCol :nth-child(odd){
+.leftCol :nth-child(odd),
+.rightCol :nth-child(odd) {
   float: left;
   width: 30%;
   color: #ffffff;
 }
 
-.leftCol :nth-child(even), .rightCol :nth-child(even){
+.leftCol :nth-child(even),
+.rightCol :nth-child(even) {
   float: left;
   width: 60%;
   color: #ffffff;
   padding: 2px 2px 2px 4px;
 }
-

@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const ScoreCard = props =>
+// correctAnswers={correctAnswers}
+// totalQuestions={totalQuestions}
 
-    <div className="scoreContainer">
-        <div className="score">
-            <h3>Score</h3>
-            <span>{props.correctAnswers} / {props.totalQuestions}</span>
-        </div>
-    </div>;
+const ScoreCard = props => (
+  <div className="scoreContainer">
+    <div className="score">
+      <h3>Molto bene!</h3>
+      <p>You scored {props.correctAnswers / props.totalQuestions * 100}%</p>
+    </div>
+  </div>
+);
 
 export default ScoreCard;
