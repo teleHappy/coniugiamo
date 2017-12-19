@@ -1,15 +1,16 @@
 import React from 'react';
 
-const QuizForm = props => 
+// QuizForm
+const QuizForm = props =>
 
     <div className="formWrapper">
         <form action="" className="verbEndingForm">
-            <fieldset>        
+            <fieldset>
                 <div>
                     <input onClick={props.verbGroupHandler} value="are" type="radio" name="verbradio" id="areVerb"/>
                     <label htmlFor="areVerb">are</label>
                 </div>
-                <div>    
+                <div>
                     <input onClick={props.verbGroupHandler} value="ere" type="radio" name="verbradio" id="ereVerb"/>
                     <label htmlFor="ereVerb">ere</label>
                 </div>
