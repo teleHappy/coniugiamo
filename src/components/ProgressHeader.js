@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Component files
 import StepCounter from './StepCounter';
 import CurrentScore from './CurrentScore';
 
