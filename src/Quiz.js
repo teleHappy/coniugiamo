@@ -207,13 +207,7 @@ class Quiz extends Component {
     return questionParams;
   }
 
-  getButtonLabel() {
-    if (this.isCompleted()) {
-      return "Ultima Domanda";
-    }
 
-    return "Prossima Domanda";
-  }
 
   isCompleted() {
     const { count } = this.state;
@@ -239,7 +233,7 @@ class Quiz extends Component {
             totalQuestions={QUESTIONS_LENGTH}
             checkAnswer={this.checkAnswer}
             action={this.nextQuestion}
-            label={this.getButtonLabel()}
+            isCompleted={this.isCompleted()}
           />
         )}
 

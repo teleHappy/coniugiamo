@@ -1,27 +1,35 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import ProgressHeader from '../components/ProgressHeader';
 import VerbDisplayTable from '../components/verb/ui/VerbDisplayTable';
 import Questions from '../components/question/Questions';
 import Button from '../components/controls/Button';
 
-class Question extends Component{
-    constructor (props) {
-        
+class Question extends Component {
+    constructor(props) {
+
         super(props);
-    
+
         this.showVerbTable = this.showVerbTable.bind(this);
-        
+
     }
 
-    showVerbTable () {
-        
+    showVerbTable() {
+
         document.getElementsByClassName('verbTableWrapper')[0].style.display = 'block';
         document.querySelector('.verbTableWrapper').classList.add('modal-enter');
 
     }
 
-    render () {
+    getButtonLabel() {
+        if (this.props.isCompleted) {
+            return "Ultima Domanda";
+        }
+
+        return "Prossima Domanda";
+    }
+
+    render() {
         const {
             count,
             correctAnswers,
@@ -32,28 +40,29 @@ class Question extends Component{
             checkAnswer,
             showVerbTable,
             action,
-            label
+            label,
+            isCompleted,
         } = this.props
         return (
-            
+
             <div className="questionsContainer">
-                <ProgressHeader 
+                <ProgressHeader
                     count={count}
                     totalQuestions={totalQuestions}
-                    correctAnswers = {correctAnswers}/>
-                
+                    correctAnswers={correctAnswers} />
+
                 <VerbDisplayTable
                     verbTablesArray={params.verbTablesArray} />
-                
+
                 <Questions
                     count={params.count}
                     params={params}
                     checkAnswer={checkAnswer}
-                    showVerbTable={this.showVerbTable}/>
+                    showVerbTable={this.showVerbTable} />
 
                 <Button
                     action={action}
-                    label={label}/>
+                    label={this.getButtonLabel()} />
 
 
             </div>
