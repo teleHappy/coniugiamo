@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+//Components
 import AppHeader from "./components/AppHeader";
 import VerbUtils from "./components/verb/VerbUtils";
 import { are, ere, ire } from "./data/verbs";
