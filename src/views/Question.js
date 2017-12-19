@@ -21,6 +21,7 @@ class Question extends Component {
 
     }
 
+    //
     getButtonLabel() {
         if (this.props.isCompleted) {
             return "Ultima Domanda";
