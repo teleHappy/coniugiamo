@@ -1,46 +1,32 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import StepCounter from "./StepCounter";
-import CurrentScore from "./CurrentScore";
+import StepCounter from './StepCounter';
+import CurrentScore from './CurrentScore';
 
 class ProgressHeader extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  componentDidMount() {
-    this.stepValue = document.querySelector(".appHeader .step .value");
-    this.stepValue.style.opacity = 1;
-  }
+    constructor(props) {
 
-  componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(nextProps) === JSON.stringify(this.props)) {
-      return;
+        super(props);
+
     }
 
-    this.stepValue.style.visibility = "hidden";
-    this.stepValue.style.opacity = 0;
+    render() {
 
-    setTimeout(() => {
-      this.stepValue.style.visibility = "visible";
+        const { count, totalQuestions, correctAnswers } = this.props;
 
-      this.stepValue.style.opacity = 1;
-    }, 300);
-  }
+        return (
+            <div className="appHeader">
+                <StepCounter count={count} totalQuestions={totalQuestions} />
 
-  render() {
-    const { count, totalQuestions, correctAnswers } = this.props;
+                <h1>Coniugiamo</h1>
 
-    return (
-      <div className="appHeader">
-        <StepCounter count={count} totalQuestions={totalQuestions} />
+                <CurrentScore correctAnswers={correctAnswers} />
+            </div>
+        );
 
-        <h1>Coniugiamo</h1>
+    }
 
-        <CurrentScore correctAnswers={correctAnswers} />
-      </div>
-    );
-  }
 }
 
 export default ProgressHeader;
