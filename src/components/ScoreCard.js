@@ -1,8 +1,5 @@
 import React from "react";
 
-// correctAnswers={correctAnswers}
-// totalQuestions={totalQuestions}
-
 const ScoreCard = props => (
   <div className="scoreContainer">
     <div className="score">
