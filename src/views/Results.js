@@ -14,7 +14,6 @@ class Results extends Component {
 
     return (
       <div className="resultsContainer">
-        <AppHeader />
         <div className="introTextContainer">
           <ScoreCard
             correctAnswers={correctAnswers}

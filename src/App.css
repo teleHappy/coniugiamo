@@ -51,11 +51,20 @@ body {
 
 .App .questionsContainer .appHeader {
   display: flex;
-  margin: 4rem auto;
+  margin: 2rem auto;
   width: 600px;
   max-width: 80%;
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 414px){
+  .App .questionsContainer .appHeader {
+    margin: 12px auto ;
+    max-width: 80%;
+    position: relative;
+    overflow: hidden;
+  }
 }
 
 .App .appHeader h1 {
@@ -65,6 +74,12 @@ body {
   letter-spacing: 0.2rem;
   font-size: 2.4rem;
   margin-top: 2.5rem;
+}
+
+@media (max-width: 414px){
+  .App .appHeader h1 {
+    font-size: .8rem;
+  }
 }
 
 .App .appHeader .step .value {
@@ -81,14 +96,30 @@ body {
 
 .App .questionsContainer .appHeader .step .title,
 .App .appHeader .score .title {
-  font-size: 1.2rem;
+  font-size: 2rem;
+}
+
+@media (max-width: 414px){
+.App .questionsContainer .appHeader .step .title,
+.App .appHeader .score .title {
+  font-size: .8rem;
+}
 }
 
 .App .questionsContainer .appHeader .step .value,
-.App .appHeader .score .value {
-  font-size: 4rem;
-  text-align: center;
-  width: 100%;
+  .App .appHeader .score .value {
+    font-size: 4rem;
+    text-align: center;
+    width: 100%;
+  }
+
+@media (max-width: 414px){
+  .App .questionsContainer .appHeader .step .value,
+  .App .appHeader .score .value {
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .App .startContainer,
@@ -110,6 +141,7 @@ body {
 
 .App .startContainer .introTextContainer,
 .App .resultsContainer .introTextContainer {
+  margin: 50px 0;
   display: flex;
   width: 600px;
   max-width: 62%;
@@ -206,6 +238,12 @@ body {
   display: block;
 }
 
+@media (max-width: 414px){
+  .App .questionTextWrapper {
+    margin: 0 auto 20px;
+  }
+}
+
 .App .questionTextContainer {
   height: 120px;
 }
@@ -214,6 +252,12 @@ body {
   margin-top: 30px;
   text-align: center;
   font-size: 1.4rem;
+}
+
+@media (max-width: 414px){
+  .App .questionContainer {
+    margin-top: 10px;
+  }
 }
 
 .App .questionLayout {
@@ -239,7 +283,6 @@ body {
   flex-direction: column;
   align-items: center;
   background: #f5f5f5;
-  width: 50%;
   margin: auto;
   border-radius: 4px;
 }

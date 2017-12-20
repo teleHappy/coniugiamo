@@ -1,24 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import AppHeader from '../components/AppHeader';
 import QuizForm from '../components/QuizForm';
 import Button from '../components/controls/Button';
 
 
-class Start extends Component{
+class Start extends Component {
 
-    constructor(props){
-        
+    constructor(props) {
+
         super(props);
-    
+
     }
 
-    render () {
+    render() {
 
-        const {setVerbGroup, startQuiz} = this.props; 
+        const { setVerbGroup, startQuiz } = this.props;
         return (
             <div className="startContainer">
-                <AppHeader />
 
                 <div className="introTextContainer">
                     <p className="introText">Select a verb ending, then click Cominciamo to get started</p>
@@ -26,13 +25,13 @@ class Start extends Component{
 
                 <QuizForm verbGroupHandler={setVerbGroup} />
 
-                <Button 
+                <Button
                     action={startQuiz}
-                    label="Cominciamo"/>
-            
+                    label="Cominciamo" />
+
             </div>
         );
-        
+
     }
 };
 
