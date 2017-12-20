@@ -51,9 +51,6 @@ class Question extends Component {
                     totalQuestions={totalQuestions}
                     correctAnswers={correctAnswers} />
 
-                <VerbDisplayTable
-                    verbTablesArray={params.verbTablesArray} />
-
                 <Questions
                     count={params.count}
                     params={params}
