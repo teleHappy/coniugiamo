@@ -350,6 +350,14 @@ body {
   height: 150px;
 }
 
+.verbTableWrapper .verbTableHeader{
+  background: #4caf50;
+  color: #ffffff;
+  font-size: 1rem;
+  border-bottom: 1px #ffffff solid;
+  padding: 2px 0;
+}
+
 .verbTableContainer {
   display: flex;
   font-size: 1.2rem;

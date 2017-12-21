@@ -176,6 +176,7 @@ class Quiz extends Component {
         personIdx,
         tense: newTense,
         verbName: verbObj.name,
+        verbTranslation: verbObj.translation,
         verbTablesArray: verbTables
       },
       currentQuestionAnswered: false

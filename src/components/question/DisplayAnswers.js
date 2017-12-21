@@ -21,7 +21,6 @@ class DisplayAnswers extends Component {
         document.querySelectorAll('li.answerText').forEach((li) => {
             li.classList.remove('answer-correct', 'answer-incorrect')
         })
-
     }
 
     getListItems() {
@@ -81,7 +80,6 @@ class DisplayAnswers extends Component {
     }
 
     render() {
-
         return (
             <div style={{ position: "relative" }}>
                 <div className="revealer">
@@ -93,7 +91,9 @@ class DisplayAnswers extends Component {
                     </div>
                     <div className="answerTable">
                         <VerbDisplayTable
-                            verbTablesArray={this.props.verbTablesArray} />
+                            verbName={this.props.verbName}
+                            verbTablesArray={this.props.verbTablesArray}
+                            verbTranslation={this.props.verbTranslation} />
                     </div>
 
                 </div>

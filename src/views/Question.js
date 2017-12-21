@@ -33,7 +33,6 @@ class Question extends Component {
         const {
             count,
             correctAnswers,
-            currentQuestion,
             verbTablesArray,
             totalQuestions,
             params,
@@ -43,6 +42,7 @@ class Question extends Component {
             label,
             isCompleted,
         } = this.props
+
         return (
 
             <div className="questionsContainer">
