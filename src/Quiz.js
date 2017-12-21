@@ -131,19 +131,14 @@ class Quiz extends Component {
     return evt.target.className.match(/correct/) !== null;
   }
 
-  showVerbTable() {
-    document.getElementsByClassName("verbTableWrapper")[0].style.display =
-      "block";
-    document.querySelector(".verbTableWrapper").classList.add("modal-enter");
-  }
-
   resetUI() {
     document.getElementsByClassName(
       "verbTableLinkContainer"
     )[0].style.visibility =
       "hidden";
-    document.getElementsByClassName("verbTableWrapper")[0].style.display =
-      "none";
+
+    const revealer = document.querySelector('.revealer');
+    revealer.classList.remove('is-transitioned')
 
     return true;
   }

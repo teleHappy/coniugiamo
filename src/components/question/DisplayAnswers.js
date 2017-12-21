@@ -65,24 +65,35 @@ class DisplayAnswers extends Component {
 
     }
 
+    showVerbTable() {
+        // apply transition to answerTable and answerListContainer
+        const revealer = document.querySelector('.revealer');
+        revealer.classList.toggle('is-transitioned')
+        const answerListContainer = document.querySelector('.answerListContainer');
+        const answerTable = document.querySelector('.answerTable')
+    }
+
     render() {
 
         return (
-            <div className="belt">
-                <div className="answerListContainer">
-                    <ul id="answerList">
-                        {this.getListItems()}
-                    </ul>
+            <div style={{ position: "relative" }}>
+                <div className="revealer">
+                    <div className="answerListContainer">
+                        <ul id="answerList">
+                            {this.getListItems()}
+                        </ul>
+
+                    </div>
+                    <div className="answerTable">
+                        <VerbDisplayTable
+                            verbTablesArray={this.props.verbTablesArray} />
+                    </div>
 
                 </div>
-                <div className="answerTable">
-                    <VerbDisplayTable
-                        verbTablesArray={this.props.verbTablesArray} />
-                </div>
                 <div className="verbTableLinkContainer">
-                    <a href="#" className="verbTableLink" onClick={this.props.showVerbTable}>
+                    <a href="#" className="verbTableLink" onClick={this.showVerbTable}>
                         View Verb Table
-                    </a>
+                        </a>
                 </div>
             </div>
         );

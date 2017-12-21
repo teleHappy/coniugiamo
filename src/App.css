@@ -162,6 +162,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 5rem;
+  margin-top: 20px;
 }
 
 .App .buttonContainer button {
@@ -183,6 +184,8 @@ body {
 .App .buttonContainer button:disabled {
   background: #999;
 }
+
+
 
 .App .startContext {
   display: flex;
@@ -278,75 +281,67 @@ body {
   font-style: bold;
 }
 
-.App .answerListContainer {
+.revealer{
+  background: #f5f5f5;
+  height: 150px;
+  overflow: hidden;
+}
+
+.App .revealer .answerListContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #f5f5f5;
   margin: auto;
   border-radius: 4px;
+  height: 150px;
+  position: relative;
+  transition: transform 300ms ease-in-out;
+
 }
 
-.App .answerListContainer #answerList {
+.App .revealer.is-transitioned .answerListContainer{
+  transform: translateY(-150px)
+}
+
+.App .revealer .answerListContainer #answerList {
   list-style: none;
   padding: 0;
   margin-bottom: 2rem;
 }
 
-.App .answerListContainer #answerList li {
+.App .revealer .answerListContainer #answerList li {
   line-height: 2rem;
   text-align: left;
   padding: auto 0;
   cursor: pointer;
 }
 
+.App .revealer .answerTable{
+  height: 150px;
+  position: relative;
+  transition: transform 300ms ease-in-out;
+}
+
+.App .revealer.is-transitioned .answerTable{
+  transform: translateY(-150px)
+}
+
 .verbTableLinkContainer {
+  width: 100%;
   visibility: hidden;
-  margin-top: 20px;
+  position: absolute;
+  bottom: -24px;
 }
 
 .verbTableWrapper {
-  font-size: 5em;
-  text-align: center;
   padding: 5%;
-  transform: scale(4);
-  z-index: 2;
-  opacity: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 200px;
-  overflow: auto;
-  margin: 0 auto;
-  position: absolute;
-  top: 40%;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  backface-visibility: hidden;
-  display: none;
-}
-.verbTableWrapper.modal-enter {
-  display: flex;
-  animation: modal-enter 0.5s ease-in both;
-}
-
-@keyframes modal-enter {
-  from {
-    visibility: visible;
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 .verbTableContainer {
   display: flex;
   font-size: 1.2rem;
   text-align: right;
-  box-shadow: 1px 0px 8px 2px rgba(0, 0, 0, 0.3);
 }
 
 .verbTableLinkContainer a.verbTableLink {
@@ -381,4 +376,10 @@ body {
   width: 60%;
   color: #ffffff;
   padding: 2px 2px 2px 4px;
+}
+
+@media (max-width: 414px){
+  .verbTableContainer .leftCol div:nth-child(odd), .verbTableContainer .rightCol div:nth-child(odd){
+    display: none
+  }
 }

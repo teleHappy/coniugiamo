@@ -5,6 +5,7 @@ const ScoreCard = props => {
     const exclamations = [
         'Peccato',
         'Mamma Mia',
+        'Meno Male',
         'Bravo',
         'Molt Bene',
         'Benissimo'
@@ -12,7 +13,7 @@ const ScoreCard = props => {
 
     const getScore = () => props.correctAnswers / props.totalQuestions * 100
 
-    const getExclamation = () => <h3>{exclamations[props.correctAnswers - 1]}!!!</h3>
+    const getExclamation = () => <h3>{exclamations[props.correctAnswers]}!!!</h3>
 
     const getScoreGreeting = () => <div><p>You scored {getScore()}%</p></div>
 
