@@ -17,11 +17,18 @@ class DisplayAnswers extends Component {
         return JSON.stringify(a) !== JSON.stringify(this.props)
     }
 
+    componentWillUpdate() {
+        document.querySelectorAll('li.answerText').forEach((li) => {
+            li.classList.remove('answer-correct', 'answer-incorrect')
+        })
+
+    }
+
     getListItems() {
 
         let listItems = this.props.verbTablesArray.map((vt, idx) => {
 
-            let classNameString = 'questionText';
+            let classNameString = 'answerText';
 
             classNameString += this.isCorrect(vt) ? ' correct' : '';
 

@@ -99,23 +99,28 @@ class Quiz extends Component {
       return false;
     }
 
+    const listElement = evt.target;
+
     let correctAnswers = parseInt(this.state.correctAnswers, 10);
     let { incorrectQuestions } = this.state;
 
-    document.getElementsByClassName(
-      "verbTableLinkContainer"
-    )[0].style.visibility =
-      "visible";
+
+
+    document.getElementsByClassName("verbTableLinkContainer")[0].style.visibility = "visible";
 
     if (this.isCorrectAnswer(evt)) {
-      document.getElementsByClassName("verbTableLink")[0].style.color =
-        "#4caf50";
+
+      listElement.classList.add('answer-correct');
+
       correctAnswers += 1;
+
     } else {
+
+      listElement.classList.add('answer-incorrect');
+
+      // TODO: persist to local storage for 'weakest verbs' feature
       incorrectQuestions.push(this.state.currentQuestion);
 
-      document.getElementsByClassName("verbTableLink")[0].style.color =
-        "#F44336";
     }
 
     this.setState({
@@ -132,13 +137,13 @@ class Quiz extends Component {
   }
 
   resetUI() {
-    document.getElementsByClassName(
-      "verbTableLinkContainer"
-    )[0].style.visibility =
-      "hidden";
 
     const revealer = document.querySelector('.revealer');
-    revealer.classList.remove('is-transitioned')
+    const verbTableLinkContainer = document.querySelector('.verbTableLinkContainer');
+
+    revealer.classList.remove('is-transitioned');
+
+    verbTableLinkContainer.style.visibility = "hidden";
 
     return true;
   }
