@@ -20,7 +20,7 @@ class ProgressHeader extends Component {
             <div className="appHeader">
                 <StepCounter count={count} totalQuestions={totalQuestions} />
 
-                <h1>Coniugiamo</h1>
+                <h1>Coniughiamo</h1>
 
                 <CurrentScore correctAnswers={correctAnswers} />
             </div>

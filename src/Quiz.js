@@ -222,6 +222,10 @@ class Quiz extends Component {
 
     return (
       <div className="App">
+
+
+        <AppHeader count={this.state.count} questionsLength={QUESTIONS_LENGTH} />
+
         {progressStatus === Quiz.progressStatusEnums.NOT_INITIALIZED && (
           <Start startQuiz={this.startQuiz} setVerbGroup={this.setVerbGroup} />
         )}

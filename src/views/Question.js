@@ -46,10 +46,6 @@ class Question extends Component {
         return (
 
             <div className="questionsContainer">
-                <ProgressHeader
-                    count={count}
-                    totalQuestions={totalQuestions}
-                    correctAnswers={correctAnswers} />
 
                 <Questions
                     count={params.count}

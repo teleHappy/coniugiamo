@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const AppHeader = props => 
+import ProgressTracker from './ProgressTracker';
 
-    <div className="appHeader">
-        <h1>Coniugiamo</h1>
-    </div>
+class AppHeader extends Component {
+    constructor(props) {
+        super(props);
+
+    }
+    render() {
+        return (
+            <div className="header">
+                <h1>ITALOVERBI</h1>
+                {this.props.count > 0 &&
+                    <ProgressTracker count={this.props.count} questionsLength={this.props.questionsLength} />
+                }
+            </div>
+        );
+    }
+}
 
 export default AppHeader;
