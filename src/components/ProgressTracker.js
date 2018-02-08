@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 class ProgressTracker extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            count: props.count,
-            questions_length: props.questionsLength
-        };
     }
 
     componentDidMount() {
@@ -14,8 +10,15 @@ class ProgressTracker extends Component {
     }
 
     showProgress() {
+        let items = [];
+        for (let i = 0; i < this.props.questionsLength; i++) {
+            let className = (i + 1 <= this.props.count) ? "active" : "inactive"
+            items.push(<li key={i} className={className}><span></span></li>)
+        }
 
+        return items;
     }
+
 
     render() {
         return (
@@ -23,11 +26,7 @@ class ProgressTracker extends Component {
             <div className="progressbarWrapper" >
                 <div className="progressbarTrack"></div>
                 <ol className="progressbar">
-                    <li className="inactive"><span></span></li>
-                    <li className="inactive"><span></span></li>
-                    <li className="inactive"><span></span></li>
-                    <li className="inactive"><span></span></li>
-                    <li className="inactive"><span></span></li>
+                    {this.showProgress()}
                 </ol>
             </div>
 
