@@ -11,8 +11,8 @@ class AppHeader extends Component {
         return (
             <div className="header">
                 <h1>ITALOVERBI</h1>
-                {this.props.count > 0 &&
-                    <ProgressTracker count={this.props.count} questionsLength={this.props.questionsLength} />
+                {this.props.count > 0 && this.props.progressStatus === 'IN_PROGRESS' &&
+                    < ProgressTracker count={this.props.count} questionsLength={this.props.questionsLength} />
                 }
             </div>
         );
